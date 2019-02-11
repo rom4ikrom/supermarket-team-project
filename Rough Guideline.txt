@@ -12,7 +12,8 @@ Website
 
 
 Admin Stuff
--Add Item
+-Add/Delete Item
+
 
 
 Backend
