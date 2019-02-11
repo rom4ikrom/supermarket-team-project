@@ -1,0 +1,35 @@
+Website
+-Login page
+-Home Page, Displays single row of fruits from each category (eg.3)
+-Product Page by Country
+-Display all Products
+-Buy Screen(Basket)
+-Payment Details Screen
+-Address details screen etc
+-Confirmation Screen
+-Reciept Screen-> Products bought, Payment details(Hidden most numbers), Address, Buyer Info
+-User Edit/Delete Account Page
+
+
+Admin Stuff
+-Add Item
+
+
+Backend
+-Get Login Details
+-Check Login Details
+-DB Connection Class
+-Update/Delete Details
+-Get Product Information
+-Get Payment Information
+-Get Address Information
+-Get Basket
+-Create Reciept/Send to DB
+
+
+Database
+-Login Details(PK Username, Password)
+-Product Details(PK ID, Name, Description, Picture, Country, Price)
+-Transactions(Pk UserID, PK RecieptID, Date+Time) <--Shows Every Transaction made. 
+-Purchased Items(PK RecieptID,PK ItemID, PK User, Quantity, Price) <-- Since cant have Repeating Primary keys, Composite key will be used so Rows can share same Reciept IDs
+-Search Query Reciept(Get ID of all rows with certain Reciept ID)?
