@@ -1,0 +1,144 @@
+-------------------------------
+||| Website FrontEnd Design |||
+-------------------------------
+- Login Page - Sign In (Changed to Account) - as a pop-up window
+    -- username
+    -- password
+    -- sign in button
+    -- create account button
+    -- login with facebook / gmail - optional
+    -- forgot password - optional
+
+- Create Account Page
+    -- username *
+    -- password *
+    -- first name *
+    -- last name *
+    -- email *
+    -- telephone
+    -- 1st address line *
+    -- 2nd address line
+    -- town *
+    -- postcode *
+    -- add payment details (PayPal, debit card, credit card)
+        -- PayPal - email, password - optional
+        -- Card - card number, name on card, end date, cvv
+    -- link facebook / gmail accounts - optional
+    -- create account button (-> sends an email to customer about successfully registration)
+
+- Account Page
+    -- view/edit personal information
+    -- view/edit login details
+    -- add/view/edit delivery and billing address
+    -- add/view/edit payments information
+    -- view last orders
+    -- view/apply personal discounts - optional
+    -- sign out
+    -- delete account - optional
+
+- Home Page - the main page of website, has the navigation bar, most popular products for each region
+    -- navigation bar - ability to navigate to any website page
+    -- header image
+    -- main content - 3 rows of the most popular products, each row is for one specific region and has 3 most popular products
+        -- region name
+        -- product frame - image, dropdown menu to select the size of bag (1 kg, 2kg or 3kg), the name of country, where the product come
+                            from, price information, which is changes accordingly to bag sizes and their quantity, more info button,
+                            which will open a new page about this particular product, quantity option to select number of bags from 1 to 5,
+                            add to basket button, which add the product to basket with chosen specifications -> will show an alert that the
+                            item was added to basket successfully.
+    -- footer - links to social media (facebook, twitter, instagram),
+                contact us form (first name *, last name *, email, message (min 10 letter, max 100 including spaces) and
+                submit button) -> submit button will show an alert the message was sent successfully.
+
+- Catalog Page - page, where the customer can see all the products and filter the search results
+    -- navigation bar
+    -- product search and filter interface
+        -- filter by country, price, quantity in stock, (rating, calories - optional)
+        -- search input - give the results at the place without reloading the page
+    -- product list - product image, product name, country name, price, bag chooser, quantity chooser, rating, calories,
+                      more info button, add to basket button
+    -- footer - same as home page at the moment
+
+- Product Page - as a new website page or pop-up window without reloading the website
+    -- navigation bar - if as separate website page
+    -- product image
+    -- product full description
+    -- country
+    -- calories
+    -- rating
+    -- possible recipes - optional
+    -- footer - if as separate website page
+
+- About Us Page
+    -- navigation bar
+    -- website history
+    -- contact us form
+    -- footer - only with media links
+
+- Basket Page
+    -- navigation bar
+    -- list of products - small image, name, quantity, price and total price, remove product button
+    -- checkout button -> confirm payment page
+
+- Confirm Payment Page
+    -- add/view/edit/ or choose delivery address (see create account page)
+    -- add/view/edit/ or choose payment details (see create account page)
+    -- pay button -> show alert that order was placed successfully, ok button -> update last orders,
+                      transfer customer to last orders option in account page
+
+----------------------
+||| BackEnd Design |||
+----------------------
+- create use case, main class diagrams, (sequence diagrams for checkout use case)
+
+- Customer object
+    -- customer id PK
+    -- username
+    -- password
+    -- first name
+    -- last name
+    -- email
+    -- telephone
+    -- address (1st and 2nd lines)
+    -- town
+    -- postcode
+
+- Payment details object
+    -- payment id PK
+    -- customer id FK
+    -- card type - debit / credit
+    -- card number
+    -- name on card
+    -- end date
+    -- cvv number
+
+- Product object
+    -- product no PK composite
+    -- bag size no (1 or 2 or 3) PK composite
+    -- product name
+    -- country name
+    -- price
+    -- quantity in stock
+    -- calories
+    -- rating
+
+- Order object
+    -- order no PK
+    -- product no FK
+    -- customer id FK
+    -- total quantity
+    -- total price
+    -- status
+    -- delivery date
+
+- Controller classes
+  -- get information from frontend, check and save it to database
+  -- get information from database and display it in frontend
+
+----------------
+||| Database |||
+----------------
+- 1. create database using object relational mapping using java persistence and JDBC / MySQL
+- 2. MySQL database implementation
+    -- create ERD diagram
+    -- Tables (see BackEnd list of objects)
