@@ -1,0 +1,96 @@
+/* Design of main page */
+html {
+  height: 100%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+header {
+    height: 500px;
+    width: 100%;
+    max-width: 1920px;
+    min-height: 400px;
+}
+
+header .titles {
+  color: #fff;
+  text-transform: uppercase;
+  text-align: left;
+  padding-top: 40px;
+}
+
+.wrapper {
+  min-height: 100%;
+  position: relative;
+}
+
+/* do not count padding */
+div {
+  box-sizing: border-box;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.wrapper section:last-of-type {
+  padding-bottom: 150px;
+}
+
+/* Footer Design */
+footer {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 150px;
+}
+
+footer .col-md-12 {
+  text-align: center;
+}
+
+/* social links title */
+footer p {
+  font-size: 20px;
+  color: white;
+  margin-bottom: 10px;
+  padding-top: 15px;
+}
+
+.social_links {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.social_links li {
+  display: block;
+  float: left;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+/* hover animation */
+.social_links li:hover {
+  opacity: 0.6;
+}
+
+.social_links li:last-child {
+  margin-right: 0;
+}

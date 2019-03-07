@@ -1,0 +1,266 @@
+@media screen and (max-width: 575px) {
+  footer form {
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+}
+
+/* Header */
+header {
+  background: url(../img/headers/heroHome.jpg) no-repeat center top / cover;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.container h2 {
+  text-align: center;
+}
+
+/* Fix of clearfix - clear the floats */
+.clearfix:after {
+  content: '';
+  display: table;
+  width: 100%;
+  clear: both;
+}
+
+/* Design of the titles */
+.top_title {
+  font-size: 40px;
+}
+
+.second_title {
+  font-family: Lobster;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 20;
+  margin-top: 20px;
+}
+
+/* Name of the region (Europe, Asia, SA) */
+h2 {
+  margin: 20px 0 20px 0;
+  text-transform: uppercase;
+}
+
+.col-lg-4 {
+  text-align: center;
+  padding: 0;
+}
+
+.col-lg-12 {
+  padding-bottom: 30px;
+}
+
+/* Contains the main information about product */
+.frame {
+  width: inherit;
+  border: 3px solid green;
+}
+
+/* adds hover animation */
+.frame:hover, footer input[type=submit]:hover,
+.frame .btn_add_item:hover, .frame .more_info:hover {
+  box-shadow: 0 0 50px green;
+}
+
+.frame a {
+  color: black;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.frame img {
+  width: inherit;
+  height: 350px;
+  min-height: 350px;
+  border-bottom: 3px solid green;
+  object-fit: cover;
+}
+
+/* product name style */
+.product_name {
+  font-family: Lobster;
+  font-size: 35px;
+  color: blacks;
+  position: relative;
+  width: 100;
+  background-color: rgba(0,255, 0, 0.4);
+}
+
+/* frame menu block with all available controls */
+.frame_menu {
+  width: inherit;
+  padding: 7px;
+}
+
+/* Dropdown menu style */
+/* should be improved */
+.package_options {
+  width: 100%;
+  margin: 10px 20px 10px 20px;
+}
+
+/* product country and fruit price information */
+.frame_menu .country_price ul {
+  padding: 10px 0 0 0;
+  margin: 0;
+  display: block;
+  list-style-type: none;
+  justify-content: center;
+  width: inherit;
+}
+
+.frame_menu .country_price li {
+  display: block;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+.country_name {
+  padding: 10px 0 10px 0;
+}
+
+/* product more button and quantity input */
+.frame_menu .more_qnty ul {
+  padding: 0;
+  margin: 0;
+  display: block;
+  list-style-type: none;
+  padding-inline-start:0px;
+}
+
+.frame_menu .more_qnty li {
+  display: block;
+}
+
+.qnty_number li{
+  float: left;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.qnty_number li:first-child {
+  margin-left: 30px;
+}
+
+.qnty_number li p {
+  text-transform: uppercase;
+}
+
+.frame_menu .more_info {
+  background-color: green;
+  padding: 10px 0 10px 0;
+  margin: 10px 20px 10px 20px;
+}
+
+.more_info a {
+  padding: 10px 15px 10px 15px;
+  color: white;
+}
+
+/* add product to basket button style */
+.frame_menu .btn_add_item {
+  width: 100%;
+  margin: 15px 20px 15px 20px;
+  padding: 10px 0 10px 0;
+  border: 1px solid green;
+}
+
+.btn_add_item a {
+  padding: 10px 60px 10px 60px;
+}
+
+.qnty {
+  text-transform: uppercase;
+}
+
+/* footer style */
+footer {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+}
+
+footer .col-lg-4 {
+  text-align: center;
+}
+
+/* footer title */
+footer h2 {
+  font-size: 25px;
+  text-align: center;
+  color: white;
+  margin: 0;
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* social links title */
+footer p {
+  font-size: 20px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.social_links {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.social_links li {
+  display: block;
+  float: left;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+/* hover animation */
+.social_links li:hover {
+  opacity: 0.6;
+}
+
+.social_links li:last-child {
+  margin-right: 0;
+}
+
+footer .col-md-4, .col-md-6, .col-md-2 {
+  text-align: center;
+}
+
+/* style for text fields */
+footer input[type=text], input[type=email],
+textarea, input[type=submit] {
+  margin: 0;
+  padding: 15px;
+  border: none;
+  background: #f1f1f1;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+footer textarea {
+  resize: none;
+}
+
+/* style for submit button */
+footer input[type=submit] {
+  color: white;
+  background-color: green;
+  border: 1px solid green;
+  padding: 5px;
+}
+
+@media screen and (max-width: 535px) {
+  .top_title {
+    font-size: 30px;
+  }
+  .second_title {
+    font-size: 20px;
+  }
+}

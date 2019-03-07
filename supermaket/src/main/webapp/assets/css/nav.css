@@ -1,0 +1,208 @@
+/* Side navigation */
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(27, 40, 0);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a, #mobSignIn {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: green;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover, #mobSignIn:hover {
+  color: #f1f1f1;
+}
+
+.sidenav #mobSignIn {
+  background-color: inherit;
+  border: 0;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.sidenav_button {
+  font-size: 30px;
+  cursor: pointer;
+  color: green;
+  padding-top: 25px;
+}
+
+/* Popup login box design */
+#background-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(90, 90, 90, 0.5);
+  z-index: 9999;
+}
+
+/* The popup form - hidden by default */
+.login_form_popup {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  margin-left: -200px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 400px;
+  padding: 10px;
+  background-color: white;
+}
+
+.form-container a {
+  text-decoration: none;
+  display: block;
+}
+
+.form-container li {
+  float: left;
+}
+
+.form-container li:last-child {
+  float: right;
+}
+
+/* Full-width input fields */
+.form-container input[type=email], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+.form-container .login {
+  margin-top: 15px;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover {
+  opacity: 1;
+}
+
+/* set the background color of navigation */
+.navigation {
+  background-color: rgb(27, 40, 0);
+  width: 100%;
+}
+
+/* Design of navigation bar */
+/* must be the same on each page */
+nav ul {
+  overflow: hidden;
+  width: 100%;
+}
+
+.menu li {
+  float: left;
+}
+
+.menu a, #signin {
+  text-align: center;
+  display: block;
+  color: green;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin: 20px 50px 20px 0;
+  padding: 10px 15px 10px 15px;
+  font-size: 17px;
+  z-index: auto;
+}
+
+.menu #signin {
+  background-color: inherit;
+  border: 0;
+}
+
+.menu .nav_right {
+  float: right;
+}
+
+.menu li a:hover, #signin:hover {
+  background-color: green;
+  color: white;
+}
+
+.menu .active {
+  background-color: green;
+  color: white;
+}
+
+/* Media Screen Rules Queries */
+@media screen and (max-width: 991px) {
+  ul.menu {
+    display: none;
+  }
+
+  header {
+    margin-top: -70px;
+  }
+
+  header .titles {
+    padding-top: 100px;
+  }
+
+  #loginForm {
+    position: absolute;
+    top: 10%;
+    margin-left: -150px;
+  }
+
+  #loginForm .form-container {
+    max-width: 300px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .sidenav_button, .sidenav {
+    display: none;
+  }
+}
