@@ -1,5 +1,5 @@
 $(function() {
-
+	
 });
 
 // function to open the side navigation

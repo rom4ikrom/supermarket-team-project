@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="${css}/main_page.css">
 <header>
 	<div class="container">
 

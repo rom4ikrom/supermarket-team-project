@@ -27,12 +27,16 @@
 	crossorigin="anonymous">
 
 <link rel="stylesheet" href="${css}/main.css">
-<link rel="stylesheet" href="${css}/main_page.css">
 <link rel="stylesheet" href="${css}/nav.css">
 
 <script type="text/javascript">
 	window.menu = '${title}';
 	window.contextRoot = '${contextRoot}';
+</script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+			crossorigin="anonymous">
 </script>
 
 <title>Fresh Fruits</title>
@@ -52,17 +56,17 @@
 				<%@include file="home.jsp"%>
 			</c:if>
 			
+			<!-- Loading the about us content -->
+			<c:if test="${userClickAbout == true}">
+				<%@include file="about.jsp"%>
+			</c:if>
+			
 		</div>
 
 
 
 		<%@include file="./shared/footer.jsp" %>
 	</div>
-
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
-			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
-			crossorigin="anonymous">
-	</script>
 
 	<script src="${js}/main.js"></script>
 
