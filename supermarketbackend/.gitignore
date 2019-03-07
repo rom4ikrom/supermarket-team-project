@@ -1,1 +1,6 @@
 /target/
+
+/supermarket/target/
+/supermarketbackend/target/
+
+.DS_Store
