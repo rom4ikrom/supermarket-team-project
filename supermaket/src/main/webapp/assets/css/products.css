@@ -1,0 +1,14 @@
+/* Header */
+header {
+	background: url(../img/headers/heroHome.jpg) no-repeat center top/cover;
+}
+
+.titles {
+	font-size: 40px;
+	color: #fff;
+	text-transform: uppercase;
+	text-align: left;
+	padding-top: 40px;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px
+		0 #000;
+}

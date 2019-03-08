@@ -26,6 +26,11 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
 	crossorigin="anonymous">
 
+<!-- Link Datables jQuery Plugin Style -->	
+<link rel="stylesheet" 
+		type="text/css" 
+		href="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css"/>
+
 <link rel="stylesheet" href="${css}/main.css">
 <link rel="stylesheet" href="${css}/nav.css">
 
@@ -61,13 +66,35 @@
 				<%@include file="about.jsp"%>
 			</c:if>
 			
+			<!-- Loading the login content -->
+			<c:if test="${userClickLogin == true}">
+				<%@include file="customerLogin.jsp"%>
+			</c:if>
+			
+			<!-- Loading the view products content -->
+			<c:if test="${userClickCatalog == true}">
+				<%@include file="products.jsp"%>
+			</c:if>
+			
 		</div>
 
 
 
 		<%@include file="./shared/footer.jsp" %>
 	</div>
-
+	
+	<!-- Link Bootstrap Core JS -->
+	<link rel="stylesheet" 
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+		crossorigin="anonymous">
+	
+	<!-- Link Datables jQuery Plugin JS -->
+	<script type="text/javascript" 
+			src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js">
+	</script>
+	
+	<!-- Loading Custom JS -->
 	<script src="${js}/main.js"></script>
 
 </body>

@@ -18,7 +18,7 @@ public class PageController {
 		
 	}
 	
-	@RequestMapping(value = {"/catalog"})
+	@RequestMapping(value = {"/show/all/products"})
 	public ModelAndView catalog() {
 		
 		ModelAndView mv = new ModelAndView("page");
@@ -44,9 +44,9 @@ public class PageController {
 	public ModelAndView login() {
 		
 		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("title", "About Us");
+		mv.addObject("title", "Login");
 		
-		mv.addObject("userClickAboutUs", true);
+		mv.addObject("userClickLogin", true);
 		return mv;
 		
 	}

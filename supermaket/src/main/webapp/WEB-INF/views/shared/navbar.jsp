@@ -7,7 +7,7 @@
           <a href="${contextRoot}/home">Home</a>
         </li>
         <li>
-          <a href="${contextRoot}/catalog">Catalog</a>
+          <a href="${contextRoot}/show/all/products">View Products</a>
         </li>
         <li>
           <a href="${contextRoot}/about">About Us</a>
@@ -28,7 +28,7 @@ is less then 771px -->
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="${contextRoot}/home">Home</a>
-  <a href="${contextRoot}/catalog">Catalog</a>
+  <a href="${contextRoot}/show/all/products">View Products</a>
   <a href="${contextRoot}/about">About Us</a>
   <a href="${contextRoot}/login">Sign In</a>
   <a href="${contextRoot}/basket">Basket</a>

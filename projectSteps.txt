@@ -1,7 +1,7 @@
 Part 1
-1. Uncheck Dynamin Web Module in Maven properties - frontend project.
+1. Uncheck Dynamic Web Module in Maven properties - frontend project.
 
 Part 2
 
 1. Add spring dependency in pom.xml
-2.Configure the FrontController that will intercept all the incoming request first in web.xml 
+2.Configure the FrontController that will intercept all the incoming request first in web.xml
