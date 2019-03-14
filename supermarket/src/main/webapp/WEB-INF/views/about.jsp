@@ -164,27 +164,3 @@
 </section>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR-KEY"></script>
-<script>
-	
-	$(function() {
-		//script for map on about us page
-		var myCenter = new google.maps.LatLng(51.5074, 0.1278);
-	    function initialize(){
-	      var mapProp = {
-	        center:myCenter,
-	        zoom:12,
-	        mapTypeId:google.maps.MapTypeId.ROADMAP
-	      };
-
-	      var map = new google.maps.Map(document.getElementById("map"),mapProp);
-
-	      var marker = new google.maps.Marker({
-	        position:myCenter,
-	      });
-
-	      marker.setMap(map);
-	    }
-	    google.maps.event.addDomListener(window, 'load', initialize);
-	});
-
-</script>

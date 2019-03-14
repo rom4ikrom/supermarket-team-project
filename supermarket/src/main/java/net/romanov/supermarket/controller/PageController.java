@@ -40,13 +40,35 @@ public class PageController {
 		
 	}
 	
-	@RequestMapping(value = {"/login"})
+	@RequestMapping(value = {"/user/login"})
 	public ModelAndView login() {
 		
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title", "Login");
 		
 		mv.addObject("userClickLogin", true);
+		return mv;
+		
+	}
+	
+	@RequestMapping(value = {"/admin/login"})
+	public ModelAndView adminLogin() {
+		
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "Admin Login");
+		
+		mv.addObject("userClickAdminLogin", true);
+		return mv;
+		
+	}
+	
+	@RequestMapping(value = {"/create/account"})
+	public ModelAndView createAccount() {
+		
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "Register");
+		
+		mv.addObject("userClickRegister", true);
 		return mv;
 		
 	}

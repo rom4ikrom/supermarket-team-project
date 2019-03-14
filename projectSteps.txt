@@ -4,4 +4,4 @@ Part 1
 Part 2
 
 1. Add spring dependency in pom.xml
-2.Configure the FrontController that will intercept all the incoming request first in web.xml
+2. Configure the FrontController that will intercept all the incoming request first in web.xml

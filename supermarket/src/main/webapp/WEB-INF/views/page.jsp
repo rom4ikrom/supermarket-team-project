@@ -61,9 +61,19 @@
 				<%@include file="about.jsp"%>
 			</c:if>
 			
-			<!-- Loading the login content -->
+			<!-- Loading the user login content -->
 			<c:if test="${userClickLogin == true}">
 				<%@include file="customerLogin.jsp"%>
+			</c:if>
+			
+			<!-- Loading the admin login content -->
+			<c:if test="${userClickAdminLogin == true}">
+				<%@include file="staffLogin.jsp"%>
+			</c:if>
+			
+			<!-- Loading the create account content -->
+			<c:if test="${userClickRegister == true}">
+				<%@include file="createAccount.jsp"%>
 			</c:if>
 			
 			<!-- Loading the view products content -->

@@ -1,0 +1,91 @@
+/* Header */
+header {
+  background: url(../img/headers/createAccHero.jpg) no-repeat center top / cover;
+}
+
+.top_title {
+  font-size: 40px;
+}
+
+.second_title {
+  font-family: Lobster;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 20;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin: 20px 0 20px 0;
+}
+
+h4 {
+  margin-bottom: 15px;
+}
+
+.create_acc_form_container input[type=email], .create_acc_form_container input[type=password],
+.create_acc_form_container input[type=text], .create_acc_form_container input[type=tel]{
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.create_acc_form_container input[type=email]:focus, .create_acc_form_container input[type=password]:focus,
+.create_acc_form_container input[type=text]:focus, .create_acc_form_container input[type=tel]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.create_acc_form_container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 40%;
+  margin: 0;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+.create_acc_form_container .col-md-12 {
+  text-align: center;
+}
+
+/* Add a red background color to the cancel button */
+.create_acc_form_container .clear {
+  background-color: red;
+  margin-left: 30px;
+}
+
+/* Add some hover effects to buttons */
+.create_acc_form_container .btn:hover {
+  opacity: 1;
+}
+
+.create_acc_form_container .obligatory_field {
+  color: red;
+}
+
+@media screen and (max-width: 410px) {
+  .create_acc_form_container .btn {
+    width: 100%
+  }
+  .create_acc_form_container .clear {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 535px) {
+  .top_title {
+    font-size: 30px;
+  }
+  .second_title {
+    font-size: 20px;
+  }
+}

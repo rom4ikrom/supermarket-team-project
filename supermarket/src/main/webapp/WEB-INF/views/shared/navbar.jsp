@@ -16,7 +16,7 @@
           <a style="margin-right: 0;" href="${contextRoot}/basket">Basket</a>
         </li>
         <li class="nav_right">
-          <a href="${contextRoot}/login">Sign In</a>
+          <a href="${contextRoot}/user/login">Sign In</a>
         </li>
       </ul>
     </nav>
@@ -30,7 +30,7 @@ is less then 771px -->
   <a href="${contextRoot}/home">Home</a>
   <a href="${contextRoot}/show/all/products">View Products</a>
   <a href="${contextRoot}/about">About Us</a>
-  <a href="${contextRoot}/login">Sign In</a>
+  <a href="${contextRoot}/user/login">Sign In</a>
   <a href="${contextRoot}/basket">Basket</a>
 </div>
 

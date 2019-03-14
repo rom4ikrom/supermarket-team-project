@@ -47,7 +47,7 @@ p {
 }
 
 .wrapper section:last-of-type {
-  padding-bottom: 150px;
+  padding-bottom: 300px;
 }
 
 /* Footer Design */
@@ -58,11 +58,7 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 150px;
-}
-
-footer .col-md-12 {
-  text-align: center;
+  height: 300px;
 }
 
 /* social links title */
@@ -71,27 +67,107 @@ footer p {
   color: white;
   margin-bottom: 10px;
   padding-top: 15px;
+  text-align: center;
 }
 
-.social_links {
+footer .social_links {
   display: flex;
   list-style-type: none;
   justify-content: center;
   margin-bottom: 30px;
 }
 
-.social_links li {
+footer .social_links li {
   display: block;
   float: left;
   text-decoration: none;
   margin-right: 20px;
 }
 
+footer .nav_bottom {
+	height: 100%;
+	text-align: left;
+	margin-bottom: 0;
+	display: inline-block;
+}
+
+footer .nav_bottom li a {
+	display: inline-block;
+	text-decoration: none;
+	font-size: 17px;
+	text-transform: uppercase;
+	color: #fff;
+}
+
+footer .copyright {
+	text-align: left;
+	color: #fff;
+	font-size: 12px;
+	bottom: 10px;
+}
+
 /* hover animation */
-.social_links li:hover {
+footer .social_links li:hover {
   opacity: 0.6;
 }
 
-.social_links li:last-child {
+footer .social_links li:last-child {
   margin-right: 0;
+}
+
+footer .nav_bottom li a:hover {
+	color: green;
+}
+
+/* login page */
+
+.form-container h3 {
+	text-align: center;
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+.form-container .register {
+	background-color: #3a80f2;
+}
+
+.form-container .admin-login {
+	text-align: right;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover {
+  opacity: 1;
 }
