@@ -35,7 +35,9 @@
 <link rel="stylesheet" href="${css}/nav.css">
 
 <script type="text/javascript">
-	window.menu = '${title}';
+	var menu = '${title}';
+	menu = menu.replace(/\s/g, "");
+	window.menu = menu;
 	window.contextRoot = '${contextRoot}';
 </script>
 
@@ -77,7 +79,7 @@
 			</c:if>
 			
 			<!-- Loading the view products content -->
-			<c:if test="${userClickCatalog == true}">
+			<c:if test="${userClickAllProducts == true || userClickRegionProducts}">
 				<%@include file="products.jsp"%>
 			</c:if>
 			

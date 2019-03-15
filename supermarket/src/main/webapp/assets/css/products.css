@@ -12,3 +12,9 @@ header {
 	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px
 		0 #000;
 }
+
+.data-table-img {
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
+}

@@ -21,10 +21,32 @@
 				<!-- Added a breadcrumb component -->
 				<div class="row">
 					<div class="col-md-12">
+					
+					<c:if test="${userClickAllProducts == true}">
+					
+						<script>
+							window.regionId = '';
+						</script>
+					
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="${contextRoot}/home">Home</a></li>
 							<li class="breadcrumb-item active">All Products</li>
 						</ol>
+					</c:if>
+					
+					<c:if test="${userClickRegionProducts == true}">
+					
+						<script>
+							window.regionId = '${region.id}';
+						</script>
+					
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="${contextRoot}/home">Home</a></li>
+							<li class="breadcrumb-item active">Region</li>
+							<li class="breadcrumb-item active">${region.name}</li>
+						</ol>
+					</c:if>
+					
 					</div>
 
 				</div>

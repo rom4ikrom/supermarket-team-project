@@ -47,12 +47,12 @@ p {
 }
 
 .wrapper section:last-of-type {
-  padding-bottom: 300px;
+  padding-bottom: 310px;
 }
 
 /* Footer Design */
 footer {
-  background-color: black;
+  background-color: #242622;
   margin: 0;
   padding: 0;
   position: absolute;
@@ -170,4 +170,18 @@ footer .nav_bottom li a:hover {
 /* Add some hover effects to buttons */
 .form-container .btn:hover {
   opacity: 1;
+}
+
+/* breadcrumb */
+.breadcrumb {
+	margin-top: 5px;
+}
+
+@media screen and (max-width: 535px) {
+  .top_title {
+    font-size: 30px;
+  }
+  .second_title {
+    font-size: 20px;
+  }
 }

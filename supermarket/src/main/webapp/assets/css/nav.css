@@ -12,7 +12,7 @@
   padding-top: 60px;
 }
 
-.sidenav a, #mobSignIn {
+.sidenav a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
@@ -21,7 +21,7 @@
   transition: 0.3s;
 }
 
-.sidenav a:hover, #mobSignIn:hover {
+.sidenav a:hover {
   color: #f1f1f1;
   text-decoration: none;
 }
@@ -64,7 +64,7 @@ nav ul {
   float: left;
 }
 
-.menu a, #signin {
+.menu a {
   text-align: center;
   display: block;
   color: green;
@@ -76,7 +76,7 @@ nav ul {
   z-index: auto;
 }
 
-.menu #signin {
+.menu {
   background-color: inherit;
   border: 0;
 }
@@ -94,6 +94,10 @@ nav ul {
 .menu .active {
   background-color: green;
   color: white;
+}
+
+.sidenav .mob-active {
+  color: #f1f1f1;
 }
 
 /* Media Screen Rules Queries */

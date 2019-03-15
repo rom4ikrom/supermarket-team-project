@@ -10,6 +10,42 @@ function closeNav() {
 
 $(function() {
 	
+	//active menu
+	switch (menu) {
+		case 'About Us':
+			$('#aboutUs').addClass('active');
+			$('#mobAboutUs').addClass('mob-active');
+			break;
+		case 'Catalog':
+			$('#a_all').addClass('active');
+			
+			$('#allProducts').addClass('active');
+			$('#mobAllProducts').addClass('mob-active');
+			break;
+		case 'Basket':
+			$('#basket').addClass('active');
+			$('#mobBasket').addClass('mob-active');
+			break;
+		case 'Login':
+			$('#signIn').addClass('active');
+			$('#mobSignIn').addClass('mob-active');
+			break;
+		case 'Admin Login':
+			$('#signIn').addClass('active');
+			$('#mobSignIn').addClass('mob-active');
+			break;
+		case 'Home':
+			$('#home').addClass('active');
+			$('#mobHome').addClass('mob-active');
+			break;
+		default:
+			if(menu == "Home")
+				break;
+			$('#allProducts').addClass('active');
+			$('#mobAllProducts').addClass('mob-active');
+			$('#a_'+ menu).addClass('active');
+	}
+	
 	//script for map on about us page
 	var $googleMap = $('#map');
 	
@@ -45,8 +81,13 @@ $(function() {
 		
 		var jsonUrl = '';
 		
-		jsonUrl = window.contextRoot + '/json/data/all/products';
-		
+		if(window.regionId == '') {
+			jsonUrl = window.contextRoot + '/json/data/all/products';
+		} else {
+			jsonUrl = window.contextRoot + '/json/data/region/'
+						+ window.regionId + '/products';
+		}
+
 		$table.DataTable({
 			
 			lengthMenu: [
@@ -62,6 +103,11 @@ $(function() {
 			columns: [
 				{
 					data: 'code',
+					bSortable: false,
+					mRender: function(data, type, row) {
+						return '<img src="' + window.contextRoot + 
+						'/resources/img/products/' + data + '.jpg" class="data-table-img"/>';
+					}
 				},
 				{
 					data: 'name',
@@ -73,7 +119,7 @@ $(function() {
 					data: 'country',
 				},
 				{
-					data: 'unitPrice',
+					data: 'price',
 					mRender: function(data, type, row) {
 						return '&#xA3;' + data
 					}

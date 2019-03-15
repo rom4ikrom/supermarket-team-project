@@ -95,4 +95,15 @@ public class ProductDAOImpl implements ProductDAO {
 				.getResultList();
 	}
 
+	@Override
+	public List<Product> listActiveProductsByRegionId(int id) {
+		String selectActiveProducts = "FROM Product WHERE is_active = :active AND region_id = :id";
+
+		return sessionFactory.getCurrentSession()
+				.createQuery(selectActiveProducts, Product.class)
+				.setParameter("active", true)
+				.setParameter("id", id)
+				.getResultList();
+	}
+
 }

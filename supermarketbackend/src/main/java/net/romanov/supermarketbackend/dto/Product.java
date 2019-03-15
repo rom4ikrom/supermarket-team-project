@@ -9,55 +9,58 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+@Component
 @Entity
 public class Product {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	private String code;
-	
+
 	private String name;
 	private String variety;
-	
+
 	@JsonIgnore
 	private String description;
-	
-	@Column(name="unit_price")
-	private int unitPrice;
-	
+
+	private int price;
+
 	private int quantity;
-	
+
 	@Column(name="is_active")
 	private boolean isActive;
-	
+
 	private String country;
 	
+	@Column(name="region_id")
+	private int regionId;
+
 	private int purchases;
 	private int views;
-	
+
+	private String code;
+
 	@Transient
 	private MultipartFile file;
-	
+
 	public MultipartFile getFile() {
 		return file;
 	}
 
-
 	public void setFile(MultipartFile file) {
 		this.file = file;
 	}
-	
+
 	//default constructor
-		public Product() {
-			this.code = "PRD_" + this.name + "_" + this.variety+ "_" + UUID.randomUUID().toString().substring(30).toUpperCase();
-		}
-	
+	public Product() {
+		this.code = "PRD_" + UUID.randomUUID().toString().substring(30).toUpperCase();
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -88,11 +91,11 @@ public class Product {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getUnitPrice() {
-		return unitPrice;
+	public int getPrice() {
+		return price;
 	}
-	public void setUnitPrice(int unitPrice) {
-		this.unitPrice = unitPrice;
+	public void setPrice(int price) {
+		this.price = price;
 	}
 	public int getQuantity() {
 		return quantity;
@@ -112,6 +115,12 @@ public class Product {
 	public void setCountry(String country) {
 		this.country = country;
 	}
+	public int getRegionId() {
+		return regionId;
+	}
+	public void setRegionId(int regionId) {
+		this.regionId = regionId;
+	}
 	public int getPurchases() {
 		return purchases;
 	}
@@ -124,15 +133,12 @@ public class Product {
 	public void setViews(int views) {
 		this.views = views;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", code=" + code + ", name=" + name + ", variety=" + variety + ", description="
-				+ description + ", unitPrice=" + unitPrice + ", quantity=" + quantity + ", isActive=" + isActive
-				+ ", country=" + country + ", purchases=" + purchases + ", views=" + views + "]";
+				+ description + ", quantity=" + quantity + ", isActive=" + isActive
+				+ ", country=" + country + ", regionId=" + regionId + ", purchases=" + purchases + ", views=" + views + "]";
 	}
-	
-	
-	
 
 }

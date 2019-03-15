@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -21,6 +22,12 @@ public class JsonDataController {
 	@ResponseBody
 	public List<Product> getAllProducts() {
 		return productDAO.listActiveProducts();
+	}
+	
+	@RequestMapping("/region/{id}/products")
+	@ResponseBody
+	public List<Product> getProductByRegion(@PathVariable int id) {
+		return productDAO.listActiveProductsByRegionId(id);
 	}
 
 }
