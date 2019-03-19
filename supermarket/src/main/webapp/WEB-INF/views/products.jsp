@@ -1,5 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link rel="stylesheet" href="${css}/products.css">
+<link rel="stylesheet" href="${cssCustom}/products.css">
 <section>
 
 	<!-- Table with all products -->
@@ -67,8 +67,8 @@
 										<th>Name</th>
 										<th>Variety</th>
 										<th>Country</th>
-										<th>Price</th>
-										<th>Qty. Available</th>
+										<th>Price 1kg</th>
+										<th>Qty</th>
 										<th><!-- Control Buttons --></th>
 
 									</tr>
@@ -82,8 +82,8 @@
 										<th>Name</th>
 										<th>Variety</th>
 										<th>Country</th>
-										<th>Price</th>
-										<th>Qty. Available</th>
+										<th>Price 1kg</th>
+										<th>Qty</th>
 										<th><!-- Control Buttons --></th>
 
 									</tr>

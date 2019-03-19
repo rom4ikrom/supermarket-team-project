@@ -3,8 +3,12 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<spring:url var="css" value="/resources/css" />
-<spring:url var="js" value="/resources/js" />
+<spring:url var="cssCustom" value="/resources/css/custom" />
+<spring:url var="cssLinked" value="/resources/css/linked" />
+
+<spring:url var="jsCustom" value="/resources/js" />
+<spring:url var="jsLinked" value="/resources/js/linked" />
+
 <spring:url var="imgHeaders" value="/resources/img/headers" />
 <spring:url var="imgIcons" value="/resources/img/icons" />
 <spring:url var="imgProducts" value="/resources/img/products" />
@@ -21,90 +25,125 @@
 <!-- add csrf tokens later -->
 
 <!-- Link Bootstrap Core CSS -->
-<link rel="stylesheet" 
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
-	crossorigin="anonymous">
+<!-- <link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous"> -->
+	
+<link rel="stylesheet" type="text/css"
+	href="${cssLinked}/bootstrap.css">
 
-<!-- Link Datables jQuery Plugin Style -->	
-<link rel="stylesheet" 
-		type="text/css" 
-		href="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css"/>
+<!-- Link DataTables jQuery Plugin Style -->
+<!-- <link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css" /> -->
+<link rel="stylesheet" href="${cssLinked}/dataTables.bootstrap4.css">	
 
-<link rel="stylesheet" href="${css}/main.css">
-<link rel="stylesheet" href="${css}/nav.css">
+<!-- Link Font Awesome Style -->
+<link
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet">
+
+<!-- Link Custom Style -->
+<link rel="stylesheet" href="${cssCustom}/main.css">
+<link rel="stylesheet" href="${cssCustom}/nav.css">
 
 <script type="text/javascript">
+
 	var menu = '${title}';
 	menu = menu.replace(/\s/g, "");
+	
 	window.menu = menu;
 	window.contextRoot = '${contextRoot}';
 </script>
 
-<title>Fresh Fruits</title>
+<title>Fresh Fruits - ${title}</title>
 </head>
 
 <body>
 
 	<div class="wrapper">
-	
+
 		<!-- Navigation -->
 		<%@include file="./shared/navbar.jsp"%>
 
 		<div class="content">
-			
+
 			<!-- Loading the home content -->
 			<c:if test="${userClickHome == true}">
 				<%@include file="home.jsp"%>
 			</c:if>
-			
+
 			<!-- Loading the about us content -->
 			<c:if test="${userClickAbout == true}">
 				<%@include file="about.jsp"%>
 			</c:if>
-			
+
 			<!-- Loading the user login content -->
 			<c:if test="${userClickLogin == true}">
 				<%@include file="customerLogin.jsp"%>
 			</c:if>
-			
+
 			<!-- Loading the admin login content -->
 			<c:if test="${userClickAdminLogin == true}">
 				<%@include file="staffLogin.jsp"%>
 			</c:if>
-			
+
 			<!-- Loading the create account content -->
 			<c:if test="${userClickRegister == true}">
 				<%@include file="createAccount.jsp"%>
 			</c:if>
-			
+
 			<!-- Loading the view products content -->
-			<c:if test="${userClickAllProducts == true || userClickRegionProducts}">
+			<c:if
+				test="${userClickAllProducts == true || userClickRegionProducts == true}">
 				<%@include file="products.jsp"%>
 			</c:if>
+
+			<!-- Loading the view single product content -->
+			<c:if test="${userClickShowProduct == true}">
+				<%@include file="singleProduct.jsp"%>
+			</c:if>
 			
+			<!-- Loading the view manage product content -->
+			<c:if test="${userClickManageProducts == true}">
+				<%@include file="manageProducts.jsp"%>
+			</c:if>
+
 		</div>
 
 
 
-		<%@include file="./shared/footer.jsp" %>
+		<%@include file="./shared/footer.jsp"%>
 	</div>
 	
+	<!-- jQuery core JavaScript -->
+	<script src="${jsLinked}/jquery.js"></script>
+
 	<!-- Link Bootstrap Core JS -->
-	<link rel="stylesheet" 
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
-		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
-		crossorigin="anonymous">
+	
+	<!-- <link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+		crossorigin="anonymous"> -->
 		
-	<script src="${js}/jquery.js"></script>
+	<script src="${jsLinked}/bootstrap.bundle.js"></script>
+
 	
+
 	<!-- Link Datables jQuery Plugin JS -->
-	<script type="text/javascript" 
-			src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js">
-	</script>
 	
+	<!-- <script type="text/javascript"
+		src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js">
+	</script> -->
+	
+	<script src="${jsLinked}/jquery.dataTables.js"></script>
+	<script src="${jsLinked}/dataTables.bootstrap4.js"></script>
+	
+	<!-- Bootbox js -->
+	<script src="${jsLinked}/bootbox.min.js"></script>
+
 	<!-- Loading Custom JS -->
-	<script src="${js}/main.js"></script>
+	<script src="${jsCustom}/main.js"></script>
 
 </body>
 </html>

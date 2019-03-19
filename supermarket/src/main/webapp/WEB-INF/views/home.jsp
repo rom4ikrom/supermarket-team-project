@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="${css}/main_page.css">
+<link rel="stylesheet" href="${cssCustom}/main_page.css">
 <header>
 	<div class="container">
 

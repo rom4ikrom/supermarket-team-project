@@ -172,9 +172,154 @@ footer .nav_bottom li a:hover {
   opacity: 1;
 }
 
+/* Style for admin form */
+.form-manage-products h3 {
+	text-align: center;
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
+
+.form-manage-products .form-input {
+	width: 100%;
+  	padding: 15px;
+  	margin: 5px 0 22px 0;
+  	border: none;
+  	background: #f1f1f1;
+}
+
+.form-manage-products .form-input:focus {
+	background-color: #ddd;
+  	outline: none;
+}
+
+.form-manage-products .btn {
+	background-color: #4CAF50;
+  	color: white;
+  	padding: 16px 20px;
+  	border: none;
+  	cursor: pointer;
+  	width: 70%;
+  	margin-bottom: 10px;
+  	opacity: 0.8;
+}
+
+.form-manage-products .cancel {
+	background-color: #ff0000;
+}
+
+.form-manage-products .btn:hover {
+	opacity: 1;
+	color: white;
+}
+
+.form-manage-products .select-style {
+    border: 1px solid #ccc;
+    width: 100%;
+    border: none;
+    padding: 5px;
+    margin: 5px 0 22px 0;
+    overflow: hidden;
+    background: #f1f1f1;
+}
+
+.form-manage-products .select-style select {
+    padding: 5px 8px;
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+}
+
+.form-manage-products .select-style select:focus {
+    outline: none;
+}
+
+.form-manage-products label {
+	margin: 5px 20px 5px 0px;
+}
+
+.help-block {
+	color: #ff0000;
+	width: 100%;
+}
+
+/*Toggle Switch code*/
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+/* Fix bootbox compatibility with Bootstrap 4 */
+.bootbox .modal-header h4, .modal .modal-header .modal-title {
+    order: 0;
+}
+.bootbox .modal-header button, .modal .modal-header button {
+    order: 1;
+}
+
+.data-table-img {
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
+}
+
 /* breadcrumb */
 .breadcrumb {
 	margin-top: 5px;
+}
+/* style for alert */
+.valid-failed {
+	background-color: #ed3b3b;
+	color: #fff;
 }
 
 @media screen and (max-width: 535px) {

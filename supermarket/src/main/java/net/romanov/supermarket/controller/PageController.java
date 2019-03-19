@@ -1,20 +1,30 @@
 package net.romanov.supermarket.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import net.romanov.supermarketbackend.dao.ProductDAO;
 import net.romanov.supermarketbackend.dao.RegionDAO;
+import net.romanov.supermarketbackend.dto.Product;
 import net.romanov.supermarketbackend.dto.Region;
 
 @Controller
 public class PageController {
+	
+	private static Logger logger = LoggerFactory.getLogger(PageController.class);
 
 	@Autowired
 	private RegionDAO regionDAO;
-
+	
+	@Autowired
+	private ProductDAO productDAO;
+	
+	//view home page
 	@RequestMapping(value = {"/", "/home" , "/index"})
 	public ModelAndView index() {
 
@@ -25,9 +35,13 @@ public class PageController {
 		return mv;
 
 	}
-
+	
+	//view about us page
 	@RequestMapping(value = {"/about"})
 	public ModelAndView about() {
+		
+		logger.info("Inside PageController about method - INFO");
+		logger.debug("Inside PageController about method - DEBUG");
 
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title", "About Us");
@@ -36,7 +50,8 @@ public class PageController {
 		return mv;
 
 	}
-
+	
+	//view all products on product page
 	@RequestMapping(value = {"/show/all/products"})
 	public ModelAndView showAllProducts() {
 
@@ -50,7 +65,8 @@ public class PageController {
 		return mv;
 
 	}
-
+	
+	//view products for one specific region
 	@RequestMapping(value = {"/show/region/{id}/products"})
 	public ModelAndView showRegionProduct(@PathVariable("id") int id) {
 
@@ -72,7 +88,28 @@ public class PageController {
 		return mv;
 
 	}
-
+	
+	//view single product page
+	@RequestMapping(value = {"/show/{id}/product"})
+	public ModelAndView showSingleProduct(@PathVariable("id") int id) {
+		
+		ModelAndView mv = new ModelAndView("page");
+		
+		Product product = productDAO.get(id);
+		
+		product.setViews(product.getViews() + 1);
+		productDAO.update(product);
+		
+		mv.addObject("title", product.getName() + " " + product.getVariety());
+		mv.addObject("product", product);
+		
+		mv.addObject("userClickShowProduct", true);
+		
+		return mv;
+		
+	}
+	
+	//view user login page
 	@RequestMapping(value = {"/user/login"})
 	public ModelAndView login() {
 
@@ -83,7 +120,8 @@ public class PageController {
 		return mv;
 
 	}
-
+	
+	//view staff login page
 	@RequestMapping(value = {"/admin/login"})
 	public ModelAndView adminLogin() {
 
@@ -94,7 +132,8 @@ public class PageController {
 		return mv;
 
 	}
-
+	
+	//view create account page
 	@RequestMapping(value = {"/create/account"})
 	public ModelAndView createAccount() {
 
@@ -105,7 +144,8 @@ public class PageController {
 		return mv;
 
 	}
-
+	
+	//view basket page
 	@RequestMapping(value = {"/basket"})
 	public ModelAndView basket() {
 

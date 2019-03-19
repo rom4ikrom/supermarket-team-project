@@ -12,6 +12,9 @@
         <li>
           <a id="aboutUs" href="${contextRoot}/about">About Us</a>
         </li>
+        <li>
+          <a id="manageProducts" href="${contextRoot}/manage/products">Manage Products</a>
+        </li>
         <li class="nav_right">
           <a id="basket" style="margin-right: 0;" href="${contextRoot}/basket">Basket</a>
         </li>
@@ -30,6 +33,7 @@ is less then 771px -->
   <a id="mobHome" href="${contextRoot}/home">Home</a>
   <a id="mobAllProducts" href="${contextRoot}/show/all/products">View Products</a>
   <a id="mobAboutUs" href="${contextRoot}/about">About Us</a>
+  <a id="mobManageProducts" href="${contextRoot}/manage/products">Manage Products</a>
   <a id="mobSignIn" href="${contextRoot}/user/login">Sign In</a>
   <a id="mobBasket" href="${contextRoot}/basket">Basket</a>
 </div>

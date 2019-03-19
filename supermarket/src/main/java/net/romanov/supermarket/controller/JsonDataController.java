@@ -29,5 +29,11 @@ public class JsonDataController {
 	public List<Product> getProductByRegion(@PathVariable int id) {
 		return productDAO.listActiveProductsByRegionId(id);
 	}
+	
+	@RequestMapping("/admin/all/products")
+	@ResponseBody
+	public List<Product> getAllProductsForAdmin() {
+		return productDAO.list();
+	}
 
 }

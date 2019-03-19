@@ -8,7 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
+import javax.validation.constraints.Min;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,22 +23,30 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
+	
+	@NotBlank(message = "Enter the Fruit Name!")
 	private String name;
+	
+	@NotBlank(message = "Enter the Fruit Variety!")
 	private String variety;
-
+	
 	@JsonIgnore
+	@NotBlank(message = "Enter the Fruit Description!")
 	private String description;
-
-	private int price;
-
+	
+	@Min(value=1, message="The price cannot be less than 1!")
+	private double price;
+	
+	@Min(value=1, message="The quantity cannot be less than 1!")
 	private int quantity;
 
 	@Column(name="is_active")
 	private boolean isActive;
-
+	
+	@NotBlank(message = "Enter the Fruit Country!")
 	private String country;
 	
+	@JsonIgnore
 	@Column(name="region_id")
 	private int regionId;
 
@@ -91,10 +101,10 @@ public class Product {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	public int getQuantity() {
