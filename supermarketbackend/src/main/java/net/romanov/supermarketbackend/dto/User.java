@@ -2,11 +2,13 @@ package net.romanov.supermarketbackend.dto;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -52,11 +54,20 @@ public class User implements Serializable{
 	@Transient
 	@NotBlank(message = "Please enter Confirm Password!")
 	private String confirmPassword;
+	
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+	private Cart cart;
+	
+	public Cart getCart() {
+		return cart;
+	}
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
 
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -132,11 +143,11 @@ public class User implements Serializable{
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
-
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", tel="
-				+ tel + ", password=" + password + ", hint=" + hint + ", confirmPassword=" + confirmPassword + "]";
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", role=" + role + ", email="
+				+ email + ", tel=" + tel + ", password=" + password + ", hint=" + hint + ", enabled=" + enabled
+				+ ", confirmPassword=" + confirmPassword + ", cart=" + cart + "]";
 	}
 	
 }

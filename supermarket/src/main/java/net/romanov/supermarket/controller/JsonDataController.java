@@ -35,5 +35,23 @@ public class JsonDataController {
 	public List<Product> getAllProductsForAdmin() {
 		return productDAO.list();
 	}
+	
+	@RequestMapping("/europe/mv/products")
+	@ResponseBody
+	public List<Product> getEuropeMostViewedProducts() {
+		return productDAO.getProductsByRegion(4, 3);
+	}
+	
+	@RequestMapping("/asia/mv/products")
+	@ResponseBody
+	public List<Product> getAsiaMostViewedProducts() {
+		return productDAO.getProductsByRegion(3, 3);
+	}
+	
+	@RequestMapping("/sa/mv/products")
+	@ResponseBody
+	public List<Product> getSAMostViewedProducts() {
+		return productDAO.getProductsByRegion(7, 3);
+	}
 
 }

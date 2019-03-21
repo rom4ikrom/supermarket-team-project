@@ -95,6 +95,16 @@
 			<c:if test="${userClickManageProducts == true}">
 				<%@include file="manageProducts.jsp"%>
 			</c:if>
+			
+			<!-- Loading the view basket content -->
+			<c:if test="${userClickShowCart == true}">
+				<%@include file="cart.jsp"%>
+			</c:if>
+			
+			<!-- Loading the view basket content -->
+			<c:if test="${userClickAccPersonal == true}">
+				<%@include file="account.jsp"%>
+			</c:if>
 
 		</div>
 

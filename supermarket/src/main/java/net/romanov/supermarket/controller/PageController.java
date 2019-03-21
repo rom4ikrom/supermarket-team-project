@@ -191,18 +191,5 @@ public class PageController {
 		return mv;
 
 	}
-	
-	
-	//view basket page
-	@RequestMapping(value = {"/basket"})
-	public ModelAndView basket() {
-
-		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("title", "Basket");
-
-		mv.addObject("userClickBasket", true);
-		return mv;
-
-	}
 
 }

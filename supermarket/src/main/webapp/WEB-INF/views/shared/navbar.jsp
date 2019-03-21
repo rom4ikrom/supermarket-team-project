@@ -22,7 +22,7 @@
         
         <security:authorize access="hasAuthority('USER')">
         <li class="nav_right">
-          <a id="basket" style="margin-right: 0;" href="${contextRoot}/basket">Basket</a>
+          <a id="basket" style="margin-right: 0;" href="${contextRoot}/cart/show">Cart</a>
         </li>
         </security:authorize>
         
@@ -38,7 +38,7 @@
         			<a href="javascript:void(0)" class="dropbtn">${userModel.fullName}</a>
         			
         			<div class="dropdown-content">
-        				<a id="account" href="${contextRoot}/account">Account</a>
+        				<a id="account" href="${contextRoot}/account/personal">Account</a>
         				<a id="logout" href="${contextRoot}/perform-logout">Logout</a>
         			</div>
         			</div>
@@ -68,7 +68,7 @@ is less then 771px -->
   </security:authorize>
   
   <security:authorize access="hasAuthority('USER')">
-  	<a id="mobBasket" href="${contextRoot}/basket">Basket</a>
+  	<a id="mobBasket" href="${contextRoot}/cart/show">Cart</a>
   </security:authorize>
 
 	<security:authorize access="isAuthenticated()">

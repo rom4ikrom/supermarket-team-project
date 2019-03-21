@@ -22,7 +22,7 @@ $(function() {
 			$('#allProducts').addClass('active');
 			$('#mobAllProducts').addClass('mob-active');
 			break;
-		case 'Basket':
+		case 'UserCart':
 			$('#basket').addClass('active');
 			$('#mobBasket').addClass('mob-active');
 			break;
@@ -380,6 +380,49 @@ $(function() {
 	
 	//------------------------------------------------------------
 	
+	//handling the clikc event of refresh cart button
+$('button[name="refreshCart"').click(function() {
+		
+		//fetch the cart line id
+		var cartLineId = $(this).attr('value');
+		
+		var countElement = $('#count_' + cartLineId);
+		
+		var originalCount = countElement.attr('value');
+		var currentCount = countElement.val();
+		
+		//work only when the count has changed
+		if(currentCount !== originalCount) {
+			
+			if(currentCount < 1 || currentCount > 3) {
+				//reverting back to the original count
+				//user has given value below 1 and above 3
+				countElement.val(originalCount);
+				
+				bootbox.alert({
+					
+					size: 'medium',
+					title: 'Error',
+					message: 'Product count should be min 1 and max 3!'
+					
+				});
+				
+			} else {
+				
+				var updateUrl = window.contextRoot + '/cart/' + cartLineId + '/update?count=' + currentCount;
+				
+				//forward it to the controller
+				
+				window.location.href = updateUrl;
+				
+				
+			}
+			
+		}
+		
+	});
+
+	//------------------------------------------------------
 	
 	
 	

@@ -45,6 +45,7 @@ public class GlobalController {
 				if(userModel.getRole().equals("USER")) {
 					
 					//set the cart only if the user is a customer
+					userModel.setCart(user.getCart());
 					
 				}
 				

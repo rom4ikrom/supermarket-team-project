@@ -2,6 +2,8 @@ package net.romanov.supermarket.model;
 
 import java.io.Serializable;
 
+import net.romanov.supermarketbackend.dto.Cart;
+
 public class UserModel implements Serializable{
 
 	/**
@@ -13,7 +15,7 @@ public class UserModel implements Serializable{
 	private String fullName;
 	private String email;
 	private String role;
-	//private Cart cart;
+	private Cart cart;
 	
 	public int getId() {
 		return id;
@@ -40,9 +42,17 @@ public class UserModel implements Serializable{
 		this.role = role;
 	}
 	
+	public Cart getCart() {
+		return cart;
+	}
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+	
 	@Override
 	public String toString() {
-		return "UserModel [id=" + id + ", fullName=" + fullName + ", email=" + email + ", role=" + role + "]";
+		return "UserModel [id=" + id + ", fullName=" + fullName + ", email=" + email + ", role=" + role + ", cart="
+				+ cart + "]";
 	}
 
 }

@@ -1,9 +1,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
-<h1 class="my-4">Shop Name</h1>
 
 
-
-<div class="list-group">
+<div class="list-group" style="margin-top: 120px;">
 
 	<a href="${contextRoot}/show/all/products" class="list-group-item" id="a_all">All</a>
 	

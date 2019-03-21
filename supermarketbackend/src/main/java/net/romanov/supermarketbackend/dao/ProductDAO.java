@@ -15,5 +15,6 @@ public interface ProductDAO {
 	List<Product> listActiveProducts();
 	List<Product> getLatestActiveProducts(int count);
 	List<Product> listActiveProductsByRegionId(int id);
+	List<Product> getProductsByRegion(int id, int count);
 
 }

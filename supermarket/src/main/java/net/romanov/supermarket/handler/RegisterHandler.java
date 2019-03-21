@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import net.romanov.supermarket.model.RegisterModel;
 import net.romanov.supermarketbackend.dao.UserDAO;
 import net.romanov.supermarketbackend.dto.Address;
+import net.romanov.supermarketbackend.dto.Cart;
 import net.romanov.supermarketbackend.dto.User;
 
 @Component
@@ -77,9 +78,9 @@ public class RegisterHandler {
 		if(user.getRole().equals("USER")) {
 			
 			//add cart
-			//Cart cart = new Cart();
-			//cart.setUser(user);
-			//user.setCart(cart);
+			Cart cart = new Cart();
+			cart.setUser(user);
+			user.setCart(cart);
 			
 		}
 		
