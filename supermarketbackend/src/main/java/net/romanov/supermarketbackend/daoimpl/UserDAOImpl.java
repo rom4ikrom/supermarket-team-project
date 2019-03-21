@@ -20,32 +20,82 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User getByEmail(String email) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String selectQuery = "FROM User WHERE email = :email";
+		try {
+			return sessionFactory
+					.getCurrentSession()
+					.createQuery(selectQuery, User.class)
+					.setParameter("email", email)
+					.getSingleResult();
+		} catch(Exception ex) {
+			return null;
+		}
+		
 	}
 
 	@Override
-	public User get(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public User getUser(int id) {
+		try {
+			return sessionFactory.getCurrentSession().get(User.class, id);
+		} catch (Exception ex) {
+			return null;
+		}
 	}
 
 	@Override
-	public boolean add(User user) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean addUser(User user) {
+		try {
+			sessionFactory.getCurrentSession().persist(user);
+			return true;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
+	
+	@Override
+	public boolean addAddress(Address address) {
+		try {
+			sessionFactory.getCurrentSession().persist(address);
+			return true; 
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
 	}
 
 	@Override
 	public Address getBilling(int userId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String selectQuery = "FROM Address WHERE userId = :userId AND billing = :billing";
+		
+		try {
+			return sessionFactory.getCurrentSession()
+					.createQuery(selectQuery, Address.class)
+					.setParameter("userId", userId)
+					.setParameter("billing", true)
+					.getSingleResult();
+		} catch (Exception ex) {
+			return null;
+		}
 	}
 
 	@Override
 	public List<Address> listShippingAddresses(int userId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String selectQuery = "FROM Address WHERE userid = :userId AND shipping = :shipping";
+		
+		try {
+			return sessionFactory.getCurrentSession()
+					.createQuery(selectQuery, Address.class)
+					.setParameter("userId", userId)
+					.setParameter("shipping", true)
+					.getResultList();
+		} catch (Exception ex) {
+			return null;
+		}
+		
 	}
 
 }

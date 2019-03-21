@@ -25,6 +25,41 @@ CREATE TABLE product (
 	CONSTRAINT fk_product_region_id FOREIGN KEY (region_id) REFERENCES region (id),
 );
 
+CREATE TABLE user_detail (
+	id IDENTITY,
+	first_name VARCHAR(50),
+	last_name VARCHAR(50),
+	role VARCHAR(10),
+	email VARCHAR(255),
+	tel VARCHAR(20),
+	password VARCHAR(60),
+	hint VARCHAR (100),
+	enabled BOOLEAN,
+	CONSTRAINT pk_user_id PRIMARY KEY(id)
+);
+
+CREATE TABLE address (
+	id IDENTITY,
+	user_id int,
+	address_line_one VARCHAR(255),
+	address_line_two VARCHAR(255),
+	town VARCHAR(100),
+	county VARCHAR(100),
+	postcode VARCHAR(20),
+	country VARCHAR(50),
+	is_billing BOOLEAN,
+	is_shipping BOOLEAN,
+	CONSTRAINT fk_address_user_id FOREIGN KEY (user_id ) REFERENCES user_detail (id),
+	CONSTRAINT pk_address_id PRIMARY KEY(id)
+);
+	
+
+-- adding user details
+INSERT INTO user_detail (first_name, last_name, role, email, tel, password, hint, enabled)
+VALUES ('Roman', 'Romanov', 'ADMIN', 'roman@gmail.com', '1234567890', '$2a$10$wwmTKnYUjuck0vFsJznRa.NxJ9MbIuB0fYYtq9vfr.ogkSTmaxrQK', '12345', true);
+INSERT INTO user_detail (first_name, last_name, role, email, tel, password, hint, enabled)
+VALUES ('Roman', 'Romanov', 'USER', 'romanov@gmail.com', '1234567890', '$2a$10$LmQjCzngF8bzQa0lwqGgNOL2D.j5uWeaRZLujSX04redMpN0P7Pe6', '12345', true);
+
 -- adding all regions
 INSERT INTO region (name, is_active) VALUES ('Africa', true);
 INSERT INTO region (name, is_active) VALUES ('Australia', true);

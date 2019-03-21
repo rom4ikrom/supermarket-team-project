@@ -3,12 +3,14 @@ package net.romanov.supermarketbackend.dto;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+@Entity
 public class Address implements Serializable{
 
 	/**
@@ -35,6 +37,9 @@ public class Address implements Serializable{
 	
 	@NotBlank(message = "Please enter postcode!")
 	private String postcode;
+	
+	@NotBlank(message = "Please enter counrty name!")
+	private String country;
 	
 	@Column(name = "user_id")
 	private int userId;
@@ -91,6 +96,14 @@ public class Address implements Serializable{
 
 	public void setPostcode(String postcode) {
 		this.postcode = postcode;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
 	}
 
 	public int getUserId() {

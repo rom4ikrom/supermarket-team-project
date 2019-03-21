@@ -8,9 +8,11 @@ import net.romanov.supermarketbackend.dto.User;
 public interface UserDAO {
 	
 	User getByEmail(String email);
-	User get(int id);
+	User getUser(int id);
 	
-	boolean add(User user);
+	boolean addUser(User user);
+	
+	boolean addAddress(Address address);
 	
 	Address getBilling(int userId);
 	List<Address> listShippingAddresses(int userId);

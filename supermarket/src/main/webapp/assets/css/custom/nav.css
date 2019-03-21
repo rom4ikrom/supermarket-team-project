@@ -100,6 +100,58 @@ nav ul {
   color: #f1f1f1;
 }
 
+/* DROPDOWN MENU STYLE */
+.menu .dropbtn  {
+  text-align: center;
+  display: block;
+  color: green;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin: 20px 0px 20px 0;
+  padding: 10px 15px 10px 15px;
+  font-size: 17px;
+  z-index: auto; 
+}
+
+.menu .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.menu .dropdown-content {
+  display: none;
+  position: fixed;
+  background-color: rgb(27, 40, 0);`;
+  min-width: 170px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.menu .dropdown-content a {
+  color: green;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  margin: 0;
+}
+
+.menu .dropdown-content a:hover {
+	background-color: green;
+	color: white;
+}
+
+.menu .dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.menu .dropbtn a:hover {
+  background-color: green;
+}
+
+#basket {
+	margin-left: 70px;
+}
+
 /* Media Screen Rules Queries */
 @media screen and (max-width: 991px) {
   ul.menu {

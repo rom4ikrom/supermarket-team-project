@@ -50,6 +50,24 @@ $(function() {
 			$('#a_'+ menu).addClass('active');
 	}
 	
+	if (!(window.menu == "Login")) {
+		//to tackle the csrf token
+		
+		var token = $('meta[name="_csrf"]').attr('content');
+		var header = $('meta[name="_csrf_header"]').attr('content');
+		
+		if(token.length > 0 && header.length > 0) {
+			
+			//set the token header for the ajax request
+			$(document).ajaxSend(function(e, xhr, options) {
+				
+				xhr.setRequestHeader(header, token);
+				
+			});
+			
+		}
+	}
+	
 	//dismissing the alert after 3 seconds
 	var $alert = $('.alert');
 
@@ -57,6 +75,50 @@ $(function() {
 		setTimeout(function() {
 			$alert.fadeOut('slow');
 		}, 3000)
+	}
+	
+	//validating the login form
+	var $loginForm = $('#loginForm');
+
+	if($loginForm.length) {
+
+		$loginForm.validate( {
+
+			rules : {
+				username : {
+					required: true,
+					email: true
+				}, 
+
+				password : {
+					required: true
+				}
+			},
+
+			messages : {
+
+				username : {
+					required: 'Please enter the username!',
+					email: 'Please enter valid email address!'
+				},
+
+				password : { 
+
+					required: 'Please enter the password!'
+
+				}
+
+			},
+			errorElement: 'em',
+			errorPlacement: function(error, element) {
+				//add the class of help-block
+				error.addClass('help-block');
+				//add the error element after the input element
+				error.insertAfter(element);
+			}
+
+		});
+
 	}
 	
 	//script for map on about us page
@@ -149,14 +211,24 @@ $(function() {
 									+ '/show/'
 									+ data
 									+ '/product" class="btn btn-primary">'
-									+ '<span class="fa fa-eye"></span></a>&nbsp;';
+									+ '<span class="fa fa-eye"></span></a>&#160;';
 						
-						str += '<a href="'
+						if(userRole == 'ADMIN') {
+							str += '<a href="'+window.contextRoot+'/manage/'+data+'/product" class="btn btn-warning">'+
+							'<span class="fa fa-pencil"></span></a>';
+						} else {
+							if(row.quantity < 1) {
+								str += '<a href="javascritp:void(0)" class="btn btn-success disabled">'+
+								'<span class="fa fa-shopping-cart"></span></a>';
+							} else {
+								str += '<a href="'
 									+ window.contextRoot
 									+ '/cart/add/'
 									+ data
 									+ '/product" class="btn btn-success">'
 									+ '<span class="fa fa-shopping-cart"></span></a>';
+							}
+						}
 						
 						return str;
 						

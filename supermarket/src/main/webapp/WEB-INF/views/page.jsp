@@ -23,6 +23,8 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 <!-- add csrf tokens later -->
+<meta name="_csrf" content="${_csrf.token}">
+<meta name="_csrf_header" content="${_csrf.headerName}">
 
 <!-- Link Bootstrap Core CSS -->
 <!-- <link rel="stylesheet"
@@ -76,21 +78,6 @@
 			<!-- Loading the about us content -->
 			<c:if test="${userClickAbout == true}">
 				<%@include file="about.jsp"%>
-			</c:if>
-
-			<!-- Loading the user login content -->
-			<c:if test="${userClickLogin == true}">
-				<%@include file="customerLogin.jsp"%>
-			</c:if>
-
-			<!-- Loading the admin login content -->
-			<c:if test="${userClickAdminLogin == true}">
-				<%@include file="staffLogin.jsp"%>
-			</c:if>
-
-			<!-- Loading the create account content -->
-			<c:if test="${userClickRegister == true}">
-				<%@include file="createAccount.jsp"%>
 			</c:if>
 
 			<!-- Loading the view products content -->
