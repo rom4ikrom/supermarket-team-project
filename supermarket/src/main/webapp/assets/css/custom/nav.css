@@ -1,0 +1,174 @@
+/* Side navigation */
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  background-color: rgb(27, 40, 0);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: green;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+  text-decoration: none;
+}
+
+.sidenav #mobSignIn {
+  background-color: inherit;
+  border: 0;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.sidenav_button {
+  font-size: 30px;
+  cursor: pointer;
+  color: green;
+  padding-top: 25px;
+}
+
+/* set the background color of navigation */
+.navigation {
+  background-color: rgb(27, 40, 0);
+  width: 100%;
+}
+
+/* Design of navigation bar */
+/* must be the same on each page */
+nav ul {
+  overflow: hidden;
+  width: 100%;
+  margin: 0;
+}
+
+.menu li {
+  float: left;
+}
+
+.menu a {
+  text-align: center;
+  display: block;
+  color: green;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin: 20px 50px 20px 0;
+  padding: 10px 15px 10px 15px;
+  font-size: 17px;
+  z-index: auto;
+}
+
+.menu {
+  background-color: inherit;
+  border: 0;
+}
+
+.menu .nav_right {
+  float: right;
+}
+
+.menu li a:hover, #signin:hover {
+  background-color: green;
+  color: white;
+  text-decoration: none;
+}
+
+.menu .active {
+  background-color: green;
+  color: white;
+}
+
+.sidenav .mob-active {
+  color: #f1f1f1;
+}
+
+/* DROPDOWN MENU STYLE */
+.menu .dropbtn  {
+  text-align: center;
+  display: block;
+  color: green;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin: 20px 0px 20px 0;
+  padding: 10px 15px 10px 15px;
+  font-size: 17px;
+  z-index: auto; 
+}
+
+.menu .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.menu .dropdown-content {
+  display: none;
+  position: fixed;
+  background-color: rgb(27, 40, 0);`;
+  min-width: 170px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.menu .dropdown-content a {
+  color: green;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  margin: 0;
+}
+
+.menu .dropdown-content a:hover {
+	background-color: green;
+	color: white;
+}
+
+.menu .dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.menu .dropbtn a:hover {
+  background-color: green;
+}
+
+#basket {
+	margin-left: 70px;
+}
+
+/* Media Screen Rules Queries */
+@media screen and (max-width: 991px) {
+  ul.menu {
+    display: none;
+  }
+
+  header {
+    margin-top: -70px;
+  }
+
+  header .titles {
+    padding-top: 100px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .sidenav_button, .sidenav {
+    display: none;
+  }
+}

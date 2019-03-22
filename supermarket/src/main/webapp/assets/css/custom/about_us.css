@@ -1,0 +1,134 @@
+/* Header */
+header {
+	background: url(../../img/headers/aboutUsHero.jpg) no-repeat center top/cover;
+}
+
+.titles {
+	font-size: 40px;
+	color: #fff;
+	text-transform: uppercase;
+	text-align: left;
+	padding-top: 40px;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px
+		0 #000;
+}
+
+h2 {
+	margin: 20px 0 20px 0;
+}
+
+.history {
+	font-size: 20px;
+	line-height: 30px;
+	letter-spacing: 1px;
+}
+
+.col-md-3 {
+	text-align: center;
+}
+
+.member img {
+	height: 80px;
+	width: 80px;
+	margin-right: 30px;
+}
+
+.member {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.member p {
+	font-size: 17px;
+}
+
+.container h2 {
+	text-align: center;
+}
+
+.contact_us_form_container input[type=email], .contact_us_form_container input[type=text],
+	.contact_us_form_container textarea {
+	width: 100%;
+	padding: 15px;
+	margin: 5px 0 22px 0;
+	border: none;
+	background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.contact_us_form_container input[type=email]:focus,
+	.contact_us_form_container input[type=text]:focus,
+	.contact_us_form_container textarea:focus {
+	background-color: #ddd;
+	outline: none;
+}
+
+.contact_us_form_container textarea {
+	resize: none;
+}
+
+.contact_us_form_container .obligatory_field {
+	color: red;
+}
+
+.contact_us_form_container .buttons {
+	text-align: center;
+}
+
+/* Set a style for the submit/login button */
+.contact_us_form_container .btn {
+	background-color: #4CAF50;
+	color: white;
+	padding: 16px 20px;
+	border: none;
+	cursor: pointer;
+	width: 40%;
+	margin: 0;
+	margin-bottom: 20px;
+	opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.contact_us_form_container .clear {
+	background-color: red;
+	margin-left: 30px;
+}
+
+/* Add some hover effects to buttons */
+.contact_us_form_container .btn:hover {
+	opacity: 1;
+}
+
+.address h3, .contacts h3 {
+	margin: 10px 0 10px 0;
+}
+
+.contacts table td {
+	padding-right: 10px;
+}
+
+.contacts {
+	margin-bottom: 20px;
+}
+
+#map {
+	height: 400px; /* The height is 400 pixels */
+	width: 100%; /* The width is the width of the web page */
+}
+
+@media screen and (max-width: 410px) {
+	.contact_us_form_container .btn {
+		width: 100%
+	}
+	.contact_us_form_container .clear {
+		margin-left: 0;
+	}
+}
+
+@media screen and (max-width: 535px) {
+	.title {
+		font-size: 30px;
+	}
+}
