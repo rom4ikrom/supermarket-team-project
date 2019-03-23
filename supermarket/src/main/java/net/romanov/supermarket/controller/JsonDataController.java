@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import net.romanov.supermarketbackend.dao.ProductDAO;
+import net.romanov.supermarketbackend.dao.UserDAO;
 import net.romanov.supermarketbackend.dto.Product;
+import net.romanov.supermarketbackend.dto.User;
 
 @Controller
 @RequestMapping("/json/data")
@@ -17,6 +19,9 @@ public class JsonDataController {
 	
 	@Autowired
 	private ProductDAO productDAO;
+	
+	@Autowired
+	private UserDAO userDAO;
 	
 	@RequestMapping("/all/products")
 	@ResponseBody
@@ -53,5 +58,12 @@ public class JsonDataController {
 	public List<Product> getSAMostViewedProducts() {
 		return productDAO.getProductsByRegion(7, 3);
 	}
+	
+//	@RequestMapping("/user/personal")
+//	@ResponseBody
+//	public User getUserPersonalDetails() {
+//		return userDAO.getUserInfo();
+//	}
+	
 
 }

@@ -25,7 +25,6 @@
 		<h2>Europe Most Popular</h2>
 
 		<div class="row" ng-init="contr.fetchEuropeProducts()">
-			<!-- First Product Frame-->
 			<div class="col-lg-4" ng-repeat="product in contr.europeProducts">
 			
 				<div class="col-lg-12">
