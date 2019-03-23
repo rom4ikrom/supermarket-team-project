@@ -7,9 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 
+import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,7 +23,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Product {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
+	@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
 	private int id;
 	
 	@NotBlank(message = "Enter the Fruit Name!")
@@ -39,7 +44,8 @@ public class Product {
 	
 	@Min(value=1, message="The quantity cannot be less than 1!")
 	private int quantity;
-
+	
+	@Type(type="boolean")
 	@Column(name="is_active")
 	private boolean isActive;
 	

@@ -68,6 +68,13 @@
 			<artifactId>h2</artifactId>
 			<version>1.4.197</version>
 		</dependency>
+		
+		<!-- ORACLE JDBC -->
+		<dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc7</artifactId>
+            <version>12.1.0</version>
+        </dependency>
 
 		<!-- HIBERNATE -->
 		<dependency>

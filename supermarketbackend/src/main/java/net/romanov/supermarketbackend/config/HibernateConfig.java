@@ -19,11 +19,17 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class HibernateConfig {
 
 	//change the below based on the DBMS you use
-	private final static String DATABASE_URL = "jdbc:h2:tcp://localhost/~/supermarket";
-	private final static String DATABASE_DRIVER = "org.h2.Driver";
-	private final static String DATABASE_DIALECT = "org.hibernate.dialect.H2Dialect";
-	private final static String DATABASE_USERNAME = "roman";
-	private final static String DATABASE_PASSWORD = "12345";
+//	private final static String DATABASE_URL = "jdbc:h2:tcp://localhost/~/supermarket";
+//	private final static String DATABASE_DRIVER = "org.h2.Driver";
+//	private final static String DATABASE_DIALECT = "org.hibernate.dialect.H2Dialect";
+//	private final static String DATABASE_USERNAME = "roman";
+//	private final static String DATABASE_PASSWORD = "12345";
+	
+	private final static String DATABASE_URL = "jdbc:oracle:thin:@soc.uwl.ac.uk:1521:itcent";
+	private final static String DATABASE_DRIVER = "oracle.jdbc.driver.OracleDriver";
+	//private final static String DATABASE_DIALECT = "org.hibernate.dialect.Oracle10gDialect";
+	private final static String DATABASE_USERNAME = "";
+	private final static String DATABASE_PASSWORD = "";
 
 	//dataSource bean will be available
 	@Bean("dataSource")
@@ -59,7 +65,7 @@ public class HibernateConfig {
 
 		Properties properties = new Properties();
 
-		properties.put("hibernate.dialect", DATABASE_DIALECT);
+		//properties.put("hibernate.dialect", DATABASE_DIALECT);
 
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.format_sql", "true");

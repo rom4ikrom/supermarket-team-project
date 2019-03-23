@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import net.romanov.supermarket.exception.ProductNotFoundException;
 import net.romanov.supermarketbackend.dao.ProductDAO;
 import net.romanov.supermarketbackend.dao.RegionDAO;
 import net.romanov.supermarketbackend.dto.Product;
@@ -98,11 +99,13 @@ public class PageController {
 	
 	//view single product page
 	@RequestMapping(value = {"/show/{id}/product"})
-	public ModelAndView showSingleProduct(@PathVariable("id") int id) {
+	public ModelAndView showSingleProduct(@PathVariable("id") int id) throws ProductNotFoundException {
 		
 		ModelAndView mv = new ModelAndView("page");
 		
 		Product product = productDAO.get(id);
+		
+		if(product == null) throw new ProductNotFoundException();
 		
 		product.setViews(product.getViews() + 1);
 		productDAO.update(product);
@@ -136,6 +139,17 @@ public class PageController {
 		mv.addObject("userClickLogin", true);
 		return mv;
 
+	}
+	
+	//mapping to flow
+	@RequestMapping(value="/register")
+	public ModelAndView register() {
+		
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "Create Account");
+		
+		return mv;
+		
 	}
 	
 	// access denied
@@ -178,18 +192,5 @@ public class PageController {
 
 	}
 	*/
-	
-	
-	//view create account page
-	@RequestMapping(value = {"/create/account"})
-	public ModelAndView createAccount() {
-
-		ModelAndView mv = new ModelAndView("page");
-		//mv.addObject("title", "Register");
-
-		//mv.addObject("userClickRegister", true);
-		return mv;
-
-	}
 
 }
