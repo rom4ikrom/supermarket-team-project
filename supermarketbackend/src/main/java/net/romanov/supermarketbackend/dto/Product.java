@@ -1,5 +1,6 @@
 package net.romanov.supermarketbackend.dto;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -7,9 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 
+import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,10 +21,18 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Component
 @Entity
-public class Product {
+public class Product implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY) // h2 database
+	@Column(name = "ID") //ojdbc
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence") //ojdbc
+	@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ") //ojdbc
 	private int id;
 	
 	@NotBlank(message = "Enter the Fruit Name!")
@@ -39,7 +50,8 @@ public class Product {
 	
 	@Min(value=1, message="The quantity cannot be less than 1!")
 	private int quantity;
-
+	
+	@Type(type="boolean") //ojdbc
 	@Column(name="is_active")
 	private boolean isActive;
 	

@@ -7,15 +7,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Type;
-
 @Entity
-@Table(name = "cart_line")
-public class CartLine implements Serializable{
+@Table(name = "order_item")
+public class OrderItem implements Serializable {
 
 	/**
 	 * 
@@ -32,20 +32,17 @@ public class CartLine implements Serializable{
 	@OneToOne
 	private Product product;
 	
-	@Column(name = "cart_id")
-	private int cartId;
+	@Column(name = "buying_price")
+	private double buyingPrice;
 	
 	@Column(name = "product_count")
 	private int productCount;
 	
+	@ManyToOne
+	@JoinColumn(name = "order_id")
+	private OrderDetail orderDetail;
+	
 	private double total;
-	
-	@Column(name = "buying_price")
-	private double buyingPrice;
-	
-	@Type(type = "boolean") //ojdbc
-	@Column(name = "is_available")
-	private boolean available = true;
 
 	public int getId() {
 		return id;
@@ -63,12 +60,12 @@ public class CartLine implements Serializable{
 		this.product = product;
 	}
 
-	public int getCartId() {
-		return cartId;
+	public double getBuyingPrice() {
+		return buyingPrice;
 	}
 
-	public void setCartId(int cartId) {
-		this.cartId = cartId;
+	public void setBuyingPrice(double buyingPrice) {
+		this.buyingPrice = buyingPrice;
 	}
 
 	public int getProductCount() {
@@ -79,6 +76,14 @@ public class CartLine implements Serializable{
 		this.productCount = productCount;
 	}
 
+	public OrderDetail getOrderDetail() {
+		return orderDetail;
+	}
+
+	public void setOrderDetail(OrderDetail orderDetail) {
+		this.orderDetail = orderDetail;
+	}
+
 	public double getTotal() {
 		return total;
 	}
@@ -87,26 +92,10 @@ public class CartLine implements Serializable{
 		this.total = total;
 	}
 
-	public double getBuyingPrice() {
-		return buyingPrice;
-	}
-
-	public void setBuyingPrice(double buyingPrice) {
-		this.buyingPrice = buyingPrice;
-	}
-
-	public boolean isAvailable() {
-		return available;
-	}
-
-	public void setAvailable(boolean available) {
-		this.available = available;
-	}
-
 	@Override
 	public String toString() {
-		return "CartLine [id=" + id + ", product=" + product + ", cartId=" + cartId + ", productCount=" + productCount
-				+ ", total=" + total + ", buyingPrice=" + buyingPrice + ", available=" + available + "]";
+		return "OrderItem [id=" + id + ", product=" + product + ", buyingPrice=" + buyingPrice + ", productCount="
+				+ productCount + ", orderDetail=" + orderDetail + ", total=" + total + "]";
 	}
 
 }

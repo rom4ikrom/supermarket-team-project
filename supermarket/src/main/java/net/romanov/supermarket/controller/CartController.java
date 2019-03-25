@@ -83,5 +83,21 @@ public class CartController {
 		
 		return "redirect:/cart/show?" + response;
 	}
+	
+	/*
+	 * after validating it redirect to checkout
+	 * if result received is success proceed to checkout
+	 * else display the message to the user about the changes in the cart page 
+	 */
+	
+	@RequestMapping("/validate")
+	public String validateCart() {
+		String response = cartService.validateCartLine();
+		if(!response.equals("result=success")) {
+			return "redirect:/cart/show?" + response;
+		} else {
+			return "redirect:/cart/checkout";
+		}
+	}
  
 }

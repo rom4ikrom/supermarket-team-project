@@ -27,17 +27,10 @@
 <meta name="_csrf_header" content="${_csrf.headerName}">
 
 <!-- Link Bootstrap Core CSS -->
-<!-- <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous"> -->
-	
 <link rel="stylesheet" type="text/css"
 	href="${cssLinked}/bootstrap.css">
 
 <!-- Link DataTables jQuery Plugin Style -->
-<!-- <link rel="stylesheet" type="text/css"
-	href="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css" /> -->
 <link rel="stylesheet" href="${cssLinked}/dataTables.bootstrap4.css">	
 
 <!-- Link Font Awesome Style -->
@@ -50,10 +43,11 @@
 <link rel="stylesheet" href="${cssCustom}/nav.css">
 
 <script type="text/javascript">
-
-	var menu = '${title}';
-	menu = menu.replace(/\s/g, "");
 	
+	var menu = '${title}';
+
+	menu = menu.replace(/\s/g, "");
+
 	window.menu = menu;
 	window.contextRoot = '${contextRoot}';
 </script>
@@ -101,11 +95,21 @@
 				<%@include file="cart.jsp"%>
 			</c:if>
 			
-			<!-- Loading the view basket content -->
-			<c:if test="${userClickAccPersonal == true}">
-				<%@include file="account.jsp"%>
+			<!-- Loading the view account personal content -->
+			<c:if test="${userClickAccountPersonal == true}">
+				<%@include file="account/accPersonal.jsp"%>
 			</c:if>
-
+			
+			<!-- Loading the view account address content -->
+			<c:if test="${userClickAccountAddress == true}">
+				<%@include file="account/accAddress.jsp"%>
+			</c:if>
+			
+			<!-- Loading the view account orders content -->
+			<c:if test="${userClickAccountOrders == true}">
+				<%@include file="account/accOrders.jsp"%>
+			</c:if>
+			
 		</div>
 
 
@@ -117,22 +121,9 @@
 	<script src="${jsLinked}/jquery.js"></script>
 
 	<!-- Link Bootstrap Core JS -->
-	
-	<!-- <link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-		crossorigin="anonymous"> -->
-		
 	<script src="${jsLinked}/bootstrap.bundle.js"></script>
 
-	
-
 	<!-- Link Datables jQuery Plugin JS -->
-	
-	<!-- <script type="text/javascript"
-		src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js">
-	</script> -->
-	
 	<script src="${jsLinked}/jquery.dataTables.js"></script>
 	<script src="${jsLinked}/dataTables.bootstrap4.js"></script>
 	

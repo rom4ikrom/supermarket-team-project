@@ -1,0 +1,22 @@
+//configure java_home on mac 
+echo export "JAVA_HOME=\$(/usr/libexec/java_home)" >> ~/.bash_profile
+
+//configure java_home for windows
+https://www.mkyong.com/java/how-to-set-java_home-on-windows-10/
+
+//to check run
+javac -version
+
+//install maven on your pc
+https://www.mkyong.com/maven/how-to-install-maven-in-windows/
+
+//install maven on mac - first install homebrew
+//then run
+brew update
+brew install maven
+
+//download ojdbc7
+https://www.oracle.com/technetwork/database/features/jdbc/jdbc-drivers-12c-download-1958347.html
+
+//install maven oracle jdbc dependepncy
+mvn install:install-file -Dfile={pathToFile}ojdbc7.jar -DgroupId=com.oracle -DartifactId=ojdbc7 -Dversion=12.1.0 -Dpackaging=jar -DgeneratePom=true

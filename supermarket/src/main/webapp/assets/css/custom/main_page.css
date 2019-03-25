@@ -59,6 +59,7 @@ h2 {
 .frame {
   width: inherit;
   border: 3px solid green;
+  min-height: 620px;
 }
 
 /* adds hover animation */

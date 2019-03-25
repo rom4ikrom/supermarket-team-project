@@ -4,6 +4,8 @@ import java.util.List;
 
 import net.romanov.supermarketbackend.dto.Cart;
 import net.romanov.supermarketbackend.dto.CartLine;
+import net.romanov.supermarketbackend.dto.OrderDetail;
+import net.romanov.supermarketbackend.dto.OrderItem;
 
 public interface CartLineDAO {
 	
@@ -18,5 +20,9 @@ public interface CartLineDAO {
 	
 	//update a cart
 	boolean updateCart(Cart cart);
+	
+	boolean addOrderDetail (OrderDetail orderDetail);
+	
+	List<OrderDetail> listOrderDetailsByUserId (int userId);
 
 }

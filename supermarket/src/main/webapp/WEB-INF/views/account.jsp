@@ -3,7 +3,7 @@
 	<div class="container">
 		<div class="row">
 		
-			<div class="col-lg-2">
+			<div class="col-md-2">
 				<div class="list-group">
 					<a class="list-group-item" href="${contextRoot}/account/personal">Personal</a>
 					<a class="list-group-item" href="${contextRoot}/account/address">Address</a>

@@ -172,6 +172,14 @@ footer .nav_bottom li a:hover {
   opacity: 1;
 }
 
+.required-red {
+	color: red;
+}
+
+.form-container .btn-width-50 {
+	width: 50%;
+}
+
 /* Style for admin form */
 .form-manage-products h3 {
 	text-align: center;
@@ -350,6 +358,31 @@ input:checked + .slider:before {
 
 .confirm-control #confirm {
 	background-color: #4CAF50;
+}
+
+/* PRODUCT CHECKOUT TABLE */
+.product-payment-table {
+	border-collapse: collapse;
+	width: 100%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.product-payment-table th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+.product-payment-table thead {
+	background-color: #f2f2f2;
+}
+
+.checkout-total {
+	width: 100%;
+	background-color: #3a80f2;
+  	color: white;
+  	padding: 10px 20px;
+  	margin: 10px 0px;
 }
 
 /* breadcrumb */

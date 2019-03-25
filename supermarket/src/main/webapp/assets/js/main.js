@@ -1,12 +1,11 @@
-// function to open the side navigation
+//function to open the side navigation
 function openNav() {
-  document.getElementById("mySidenav").style.width = "200px";
+	document.getElementById("mySidenav").style.width = "200px";
 }
 //function to close side navigation
 function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
+	document.getElementById("mySidenav").style.width = "0";
 }
-
 
 $(function() {
 	
@@ -41,6 +40,21 @@ $(function() {
 		case 'ProductManagement':
 			$('#manageProducts').addClass('active');
 			$('#mobManageProducts').addClass('mob-active');
+			break;
+		case 'AccountPersonal':
+			$('#userName').addClass('active');
+			$('#accPersonal').addClass('active');
+			$('#mobAccount').addClass('mob-active');
+			break;
+		case 'AccountAddress':
+			$('#userName').addClass('active');
+			$('#accAddress').addClass('active');
+			$('#mobAccount').addClass('mob-active');
+			break;
+		case 'AccountOrders':
+			$('#userName').addClass('active');
+			$('#accOrders').addClass('active');
+			$('#mobAccount').addClass('mob-active');
 			break;
 		default:
 			if(menu == "Home")
