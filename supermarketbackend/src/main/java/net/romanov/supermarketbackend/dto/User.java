@@ -59,7 +59,6 @@ public class User implements Serializable{
 	*/
 	
 	//for ojdbc where tel is a number
-	@NotBlank(message = "Please enter Contact Number!")
 	private int tel;
 	
 	public int getTel() {
