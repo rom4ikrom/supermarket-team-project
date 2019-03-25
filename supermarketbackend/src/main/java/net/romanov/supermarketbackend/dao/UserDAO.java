@@ -14,6 +14,7 @@ public interface UserDAO {
 	
 	boolean addAddress(Address address);
 	
+	Address getAddress(int addressId);
 	Address getBilling(int userId);
 	List<Address> listShippingAddresses(int userId);
 

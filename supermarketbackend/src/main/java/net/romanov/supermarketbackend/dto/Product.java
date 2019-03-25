@@ -1,5 +1,6 @@
 package net.romanov.supermarketbackend.dto;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -20,13 +21,18 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Component
 @Entity
-public class Product {
+public class Product implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
-	@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
+	//@GeneratedValue(strategy = GenerationType.IDENTITY) // h2 database
+	@Column(name = "ID") //ojdbc
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence") //ojdbc
+	@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ") //ojdbc
 	private int id;
 	
 	@NotBlank(message = "Enter the Fruit Name!")
@@ -45,7 +51,7 @@ public class Product {
 	@Min(value=1, message="The quantity cannot be less than 1!")
 	private int quantity;
 	
-	@Type(type="boolean")
+	@Type(type="boolean") //ojdbc
 	@Column(name="is_active")
 	private boolean isActive;
 	

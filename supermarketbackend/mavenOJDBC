@@ -5,7 +5,7 @@ echo export "JAVA_HOME=\$(/usr/libexec/java_home)" >> ~/.bash_profile
 https://www.mkyong.com/java/how-to-set-java_home-on-windows-10/
 
 //to check run
-//javac -version
+javac -version
 
 //install maven on your pc
 https://www.mkyong.com/maven/how-to-install-maven-in-windows/

@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import net.romanov.supermarketbackend.dao.CartLineDAO;
 import net.romanov.supermarketbackend.dto.Cart;
 import net.romanov.supermarketbackend.dto.CartLine;
+import net.romanov.supermarketbackend.dto.OrderDetail;
+import net.romanov.supermarketbackend.dto.OrderItem;
 
 @Repository("cartLineDAO")
 @Transactional
@@ -71,7 +73,7 @@ public class CartLineDAOImpl implements CartLineDAO {
 
 	@Override
 	public List<CartLine> listAvailable(int cartId) {
-		String query = "FROM CartLine WHERE cartId = :cartId AND available =: available";
+		String query = "FROM CartLine WHERE cartId = :cartId AND available = :available";
 		return sessionFactory.getCurrentSession()
 				.createQuery(query, CartLine.class)
 				.setParameter("cartId", cartId)
@@ -103,6 +105,28 @@ public class CartLineDAOImpl implements CartLineDAO {
 			ex.printStackTrace();
 			return false;
 		}
+	}
+
+	@Override
+	public boolean addOrderDetail(OrderDetail orderDetail) {
+		try {
+			sessionFactory.getCurrentSession().persist(orderDetail);
+			return true;
+		} catch (Exception ex) {
+			return false;
+		}
+	}
+
+	@Override
+	public List<OrderDetail> listOrderDetailsByUserId(int userId) {
+		
+		String query = "FROM OrderDetail od WHERE od.user.id = :userId";
+
+		return sessionFactory.getCurrentSession()
+			.createQuery(query, OrderDetail.class)
+			.setParameter("userId", userId)
+			.getResultList();
+		
 	}
 
 }

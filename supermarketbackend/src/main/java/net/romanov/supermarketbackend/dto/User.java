@@ -13,6 +13,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
@@ -25,10 +26,10 @@ public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
-	@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
+	//@GeneratedValue(strategy = GenerationType.IDENTITY) //h2 database
+	@Column(name = "ID") //ojdbc
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence") //ojdbc
+	@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ") //ojdbc
 	private int id;
 	
 	@NotBlank(message = "Please enter First Name")
@@ -44,8 +45,29 @@ public class User implements Serializable{
 	@NotBlank(message = "Please enter Email address!")
 	private String email;
 	
+//	@NotBlank(message = "Please enter Contact Number!")
+//	private String tel; //h2 database
+	
+	/* h2 database tel field is a string 
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+	*/
+	
+	//for ojdbc where tel is a number
 	@NotBlank(message = "Please enter Contact Number!")
-	private String tel;
+	private int tel;
+	
+	public int getTel() {
+		return tel;
+	}
+	public void setTel(int tel) {
+		this.tel = tel;
+	}
 	
 	@NotBlank(message = "Please enter Password!")
 	private String password;
@@ -53,6 +75,7 @@ public class User implements Serializable{
 	@NotBlank(message = "Please enter Password Hint!")
 	private String hint;
 	
+	@Type(type = "boolean") //ojdbc
 	private boolean enabled;
 	
 	@Transient
@@ -106,14 +129,6 @@ public class User implements Serializable{
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getTel() {
-		return tel;
-	}
-
-	public void setTel(String tel) {
-		this.tel = tel;
 	}
 
 	public String getPassword() {

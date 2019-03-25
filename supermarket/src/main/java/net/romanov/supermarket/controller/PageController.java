@@ -1,5 +1,8 @@
 package net.romanov.supermarket.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,10 +19,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.romanov.supermarket.exception.ProductNotFoundException;
+import net.romanov.supermarketbackend.dao.CartLineDAO;
 import net.romanov.supermarketbackend.dao.ProductDAO;
 import net.romanov.supermarketbackend.dao.RegionDAO;
+import net.romanov.supermarketbackend.dao.UserDAO;
+import net.romanov.supermarketbackend.dto.Address;
+import net.romanov.supermarketbackend.dto.OrderDetail;
 import net.romanov.supermarketbackend.dto.Product;
 import net.romanov.supermarketbackend.dto.Region;
+import net.romanov.supermarketbackend.dto.User;
 
 @Controller
 public class PageController {
@@ -31,6 +39,12 @@ public class PageController {
 	
 	@Autowired
 	private ProductDAO productDAO;
+	
+	@Autowired
+	private UserDAO userDAO;
+	
+	@Autowired
+	private CartLineDAO cartLineDAO;
 	
 	//view home page
 	@RequestMapping(value = {"/", "/home" , "/index"})
@@ -141,17 +155,6 @@ public class PageController {
 
 	}
 	
-	//mapping to flow
-	@RequestMapping(value="/register")
-	public ModelAndView register() {
-		
-		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("title", "Create Account");
-		
-		return mv;
-		
-	}
-	
 	// access denied
 	@RequestMapping(value = "/access-denied")
 	public ModelAndView accessDenied() {
@@ -176,6 +179,81 @@ public class PageController {
 		}
 
 		return "redirect:/login?logout";
+	}
+	
+	//account pages
+	
+	private static String getUserByEmail() {
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		
+		String email = auth.getName();
+		
+		return email;
+		
+	}
+	
+	//account personal
+	@RequestMapping(value="account/personal")
+	public ModelAndView showAccountPersonal() {
+		
+		ModelAndView mv = new ModelAndView("page");
+		
+		String email = getUserByEmail();
+		
+		User user = userDAO.getByEmail(email);
+		
+		mv.addObject("user", user);
+		mv.addObject("title", "Account Personal");
+		mv.addObject("userClickAccountPersonal", true);
+		
+		return mv;
+		
+	}
+	
+	//account address
+	@RequestMapping(value="account/address")
+	public ModelAndView showAccountAddress() {
+		
+		ModelAndView mv = new ModelAndView("page");
+		
+		String email = getUserByEmail();
+		
+		int userId = userDAO.getByEmail(email).getId();
+		
+		Address billing = userDAO.getBilling(userId);
+		
+		List<Address> shipping = userDAO.listShippingAddresses(userId);
+		
+		mv.addObject("billing", billing);
+		mv.addObject("listShipping", shipping);
+		mv.addObject("title", "Account Address");
+		mv.addObject("userClickAccountAddress", true);
+		
+		return mv;
+		
+	}
+	
+	//account orders
+	@RequestMapping(value="account/orders")
+	public ModelAndView showAccountOrders() {
+		
+		ModelAndView mv = new ModelAndView("page");
+		
+		String email = getUserByEmail();
+		
+		int userId = userDAO.getByEmail(email).getId();
+		
+		List<OrderDetail> orderDetails = cartLineDAO.listOrderDetailsByUserId(userId);
+		
+		mv.addObject("orderDetails", orderDetails);
+		//mv.addObject("orderItems", orderItems);
+		
+		mv.addObject("title", "Account Orders");
+		mv.addObject("userClickAccountOrders", true);
+		
+		return mv;
+		
 	}
 	
 	/*

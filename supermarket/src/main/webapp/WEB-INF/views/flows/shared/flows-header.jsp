@@ -46,7 +46,14 @@
 <script type="text/javascript">
 
 	var menu = '${title}';
-	menu = menu.replace(/\s/g, "");
+
+	if(window.location.pathname == '/supermarket/register') {
+		menu = 'Register';
+	} else if(window.location.pathname == '/supermarket/cart/checkout') {
+		menu = 'Checkout';
+	}
+	
+	document.title = 'Fresh Fruits - ' + menu;
 	
 	window.menu = menu;
 	window.contextRoot = '${contextRoot}';

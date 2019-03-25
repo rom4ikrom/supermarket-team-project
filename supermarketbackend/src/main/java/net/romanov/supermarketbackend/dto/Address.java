@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
+import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
@@ -20,10 +21,10 @@ public class Address implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
-	@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
+	//@GeneratedValue(strategy = GenerationType.IDENTITY) //h2 database
+	@Column(name = "ID") //ojdbc
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence") //ojdbc
+	@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ") //ojdbc
 	private int id;
 	
 	@NotBlank(message = "Please enter the first address line!")
@@ -48,9 +49,11 @@ public class Address implements Serializable{
 	@Column(name = "user_id")
 	private int userId;
 	
+	@Type(type = "boolean") //ojdbc
 	@Column(name = "is_shipping")
 	private boolean shipping;
 	
+	@Type(type = "boolean") //ojdbc
 	@Column(name = "is_billing")
 	private boolean billing;
 

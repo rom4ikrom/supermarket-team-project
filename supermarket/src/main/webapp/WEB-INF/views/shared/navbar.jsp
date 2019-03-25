@@ -35,7 +35,7 @@
         <security:authorize access="isAuthenticated()">
         	<li class="nav_right">
         	<div class="dropdown">
-        			<a href="javascript:void(0)" class="dropbtn">${userModel.fullName}</a>
+        			<a id="userName" href="javascript:void(0)" class="dropbtn">${userModel.fullName}</a>
         			
         			<div class="dropdown-content">
         				<a id="account" href="${contextRoot}/account/personal">Account</a>
