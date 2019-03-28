@@ -26,10 +26,10 @@ public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY) //h2 database
-	@Column(name = "ID") //ojdbc
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence") //ojdbc
-	@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ") //ojdbc
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //h2 database
+//	@Column(name = "ID") //ojdbc
+//	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence") //ojdbc
+//	@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ") //ojdbc
 	private int id;
 	
 	@NotBlank(message = "Please enter First Name")
@@ -45,10 +45,10 @@ public class User implements Serializable{
 	@NotBlank(message = "Please enter Email address!")
 	private String email;
 	
-//	@NotBlank(message = "Please enter Contact Number!")
-//	private String tel; //h2 database
+	@NotBlank(message = "Please enter Contact Number!")
+	private String tel; //h2 database
 	
-	/* h2 database tel field is a string 
+	//h2 database tel field is a string 
 	public String getTel() {
 		return tel;
 	}
@@ -56,8 +56,9 @@ public class User implements Serializable{
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	*/
 	
+	
+	/*
 	//for ojdbc where tel is a number
 	private int tel;
 	
@@ -68,13 +69,15 @@ public class User implements Serializable{
 		this.tel = tel;
 	}
 	
+	*/
+	
 	@NotBlank(message = "Please enter Password!")
 	private String password;
 	
 	@NotBlank(message = "Please enter Password Hint!")
 	private String hint;
 	
-	@Type(type = "boolean") //ojdbc
+//	@Type(type = "boolean") //ojdbc
 	private boolean enabled;
 	
 	@Transient

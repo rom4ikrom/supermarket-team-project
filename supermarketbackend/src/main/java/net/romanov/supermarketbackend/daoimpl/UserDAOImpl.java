@@ -1,14 +1,22 @@
 package net.romanov.supermarketbackend.daoimpl;
 
 import java.util.List;
+import java.util.Set;
+
+import javax.persistence.EntityManager;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.ValidatorFactory;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.Validator;
 
 import net.romanov.supermarketbackend.dao.UserDAO;
 import net.romanov.supermarketbackend.dto.Address;
+import net.romanov.supermarketbackend.dto.PaymentDetails;
 import net.romanov.supermarketbackend.dto.User;
 
 @Repository("userDAO")
@@ -103,6 +111,83 @@ public class UserDAOImpl implements UserDAO {
 		try {
 			return sessionFactory.getCurrentSession().get(Address.class, addressId);
 		} catch (Exception ex) {
+			return null;
+		}
+	}
+
+	@Override
+	public List<PaymentDetails> listPaymentDetails(int userId) {
+		
+		String query = "FROM PaymentDetails WHERE user_id = :userId AND is_active = :active";
+		
+		try {
+			return sessionFactory.getCurrentSession()
+					.createQuery(query, PaymentDetails.class)
+					.setParameter("userId", userId)
+					.setParameter("active", true)
+					.getResultList();
+		} catch (Exception ex) {
+			return null;
+		}
+		
+	}
+
+	@Override
+	public PaymentDetails getPaymentDetails(int paymentId) {
+		
+		String query = "FROM PaymentDetails WHERE id = :id";
+		
+		try {
+			return sessionFactory.getCurrentSession()
+					.createQuery(query, PaymentDetails.class)
+					.setParameter("id", paymentId)
+					.getSingleResult();
+		} catch (Exception ex) {
+			return null;
+		}
+		
+	}
+
+	@Override
+	public boolean addPaymentDetails(PaymentDetails paymentDetails) {
+		try {
+			
+//			EntityManager em = sessionFactory.createEntityManager();
+//			
+//			em.getTransaction().begin();
+//			ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+//			Validator validator = (Validator) factory.getValidator();
+//
+//			Set<ConstraintViolation<PaymentDetails>> constraintViolations = validator.validate(paymentDetails, null);
+//
+//			if (constraintViolations.size() > 0 ) {
+//			System.out.println("Constraint Violations occurred..");
+//			for (ConstraintViolation<PaymentDetails> contraints : constraintViolations) {
+//			System.out.println(contraints.getRootBeanClass().getSimpleName()+
+//			"." + contraints.getPropertyPath() + " " + contraints.getMessage());
+//			  }
+//			}
+//			
+//			em.persist(paymentDetails);
+			sessionFactory.getCurrentSession().persist(paymentDetails);
+			return true;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public PaymentDetails getPaymentByCardNumber(String cardNumber) {
+		
+		String selectQuery = "FROM PaymentDetails WHERE card_number = :cardNumber";
+		try {
+			return sessionFactory
+					.getCurrentSession()
+					.createQuery(selectQuery, PaymentDetails.class)
+					.setParameter("cardNumber", cardNumber)
+					.getSingleResult();
+		} catch(Exception ex) {
 			return null;
 		}
 	}

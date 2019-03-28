@@ -3,6 +3,7 @@ package net.romanov.supermarketbackend.dao;
 import java.util.List;
 
 import net.romanov.supermarketbackend.dto.Address;
+import net.romanov.supermarketbackend.dto.PaymentDetails;
 import net.romanov.supermarketbackend.dto.User;
 
 public interface UserDAO {
@@ -17,5 +18,14 @@ public interface UserDAO {
 	Address getAddress(int addressId);
 	Address getBilling(int userId);
 	List<Address> listShippingAddresses(int userId);
+	
+	//get user payment details
+	List<PaymentDetails> listPaymentDetails(int userId);
+	PaymentDetails getPaymentDetails(int paymentId);
+	
+	//save payment details
+	boolean addPaymentDetails(PaymentDetails paymentDetails);
+	
+	PaymentDetails getPaymentByCardNumber(String cardNumber);
 
 }

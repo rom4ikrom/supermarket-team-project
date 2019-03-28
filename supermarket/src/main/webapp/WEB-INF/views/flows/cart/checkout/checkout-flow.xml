@@ -5,6 +5,7 @@
                           http://www.springframework.org/schema/webflow/spring-webflow.xsd">
                           
 	<var name="shipping" class="net.romanov.supermarketbackend.dto.Address"></var>
+	<var name="paymentDetails" class="net.romanov.supermarketbackend.dto.PaymentDetails"></var>
 	
 	<on-start>
 		<evaluate expression="checkoutHandler.init(currentUser.name)" result="flowScope.checkoutModel"></evaluate>
@@ -34,8 +35,28 @@
 	
 	<!-- view the payment mode page -->
 	<view-state id="payment" view="flows/cart/checkout/order-payment" model="flowScope.checkoutModel">
-		<transition on="pay" to="saveOrder"></transition>
+	<on-entry>
+		<evaluate expression="checkoutHandler.getPaymentDetails(flowScope.checkoutModel)"
+				result="viewScope.listPaymentDetails">
+		</evaluate>
+	</on-entry>
+		<transition on="payChosen" to="saveOrder"></transition>
+		<transition on="pay" to="validatePaymentDetails"></transition>
 	</view-state>
+	
+	<!-- validate payment details -->
+	<action-state id="validatePaymentDetails">
+		<evaluate expression="checkoutHandler.validatePaymentDetails(paymentDetails, messageContext)"></evaluate>
+		<transition on="success" to="savePaymentDetails"></transition>
+		<transition on="failure" to="payment"></transition>
+	</action-state>
+	
+	<!-- save payment details -->
+	<action-state id="savePaymentDetails">
+		<evaluate expression="checkoutHandler.savePaymentDetails(flowScope.checkoutModel, paymentDetails)"></evaluate>
+		<transition on="success" to="saveOrder"></transition>
+		<transition on="failure" to="payment"></transition>
+	</action-state>
 	
 	<!-- action state to save the order -->
 	<action-state id="saveOrder">

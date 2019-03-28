@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <section>
 	<div class="container">
 	
@@ -29,20 +30,48 @@
 			<div class="col-md-8">
 				<h3>${product.name} ${product.variety}</h3>
 				
-				<p>${product.description}</p>
+				<div class="description">
+					<h4>Product Description</h4>
+					<p>${product.description}</p>
+				</div>
 				
-				<p>Price: &#163; ${product.price}</p>
+				<h4>Price: &#163;${product.price}</h4>
 				
 				<c:choose>
 					<c:when test="${product.quantity < 1}">
-						<p>Qnty: <span style="color:red">Out of Stock</span>
+						<h5>Qnty: <span style="color:red">Out of Stock</span></h5>
 					</c:when>
 					<c:otherwise>
-						<p>Qnty: ${product.quantity}</p>
+						<h5>Qnty in kg: ${product.quantity}</h5>
 					</c:otherwise>
 				</c:choose>
 				
 				<!-- Add control buttons -->
+				<security:authorize access="hasAuthority('USER')">
+					<c:choose>
+						<c:when test="${product.quantity < 1 }">
+	
+							<a href="javascript:void(0)" class="btn btn-success disabled">
+								<span class="fa fa-shopping-cart">Add to Cart</span>
+							</a>
+	
+						</c:when>
+						
+						<c:otherwise>
+							<a href="${contextRoot}/cart/add/${product.id}/product" class="btn btn-success">
+								<span class="fa fa-shopping-cart"></span>Add to Cart
+							</a>
+						</c:otherwise>
+					</c:choose>
+				</security:authorize>
+				
+				<security:authorize access="hasAuthority('ADMIN')">
+					<a href="${contextRoot}/manage/${product.id}/product" class="btn btn-warning">
+						<span class="fa fa-pencil"></span>Edit
+					</a>
+				</security:authorize>
+				
+				<a class="btn btn-warning" href="${contextRoot}/show/all/products">Back</a>
 				
 			</div>
 			

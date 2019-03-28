@@ -1,5 +1,7 @@
 <%@include file="../../shared/flows-header.jsp" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix = "fn" uri = "http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <section>
 	<div class="container" style="margin-top: 10px;">
 		<div class="row">
@@ -41,17 +43,45 @@
 			
 			<div class="col-md-6">
 			
-			<div class="text-center">
-				<h3>Payment</h3>
-			</div>
+				<div class="text-center">
+					<h3>Payment</h3>
+				</div>
 				
-				<form class="form-container">
+				<h5>Choose Payment Method</h5>
+				
+				<c:forEach items="${listPaymentDetails}" var="paymentDetail">
+					<div class="payment-details">
+						<div class="row">
+							<div class="col-md-5 my-auto text-center">
+								<p>${paymentDetail.cardNumber}</p>
+							</div>
+							<div class="col-md-4 my-auto text-center">
+								<p>${paymentDetail.cardName}</p>
+							</div>
+							<div class="col-md-3 my-auto text-center">
+								<!-- Action Button -->
+								<a href="${flowExecutionUrl}&_eventId_payChosen" class="btn btn-primary">Choose</a>
+							</div>
+						</div>
+						
+						
+					</div>
+				</c:forEach>
+				
+				<h5>Add New Payment Details</h5>
+				
+				<sf:form class="form-container"
+							method="POST"
+							id="addPaymentDetails"
+							modelAttribute="paymentDetails">
 				
 					<label for="cardNumber">Card Number <span class="required-red">*</span></label>
-              		<input type="text" placeholder="Valid Card Number" id="cardNumber" />
+					<sf:errors path="cardNumber" cssClass="help-block" element="em"></sf:errors>
+              		<sf:input type="text" path="cardNumber" placeholder="Valid Card Number" id="cardNumber" />
               		
               		<label for="cardName">Name On Card <span class="required-red">*</span></label>
-              		<input type="text" placeholder="Name On Card" id="cardName" />
+              		<sf:errors path="cardName" cssClass="help-block" element="em"></sf:errors>
+              		<sf:input type="text" path="cardName" placeholder="Name On Card" id="cardName" />
               		
               		<div class="row">
               			<div class="col-md-7">
@@ -65,7 +95,7 @@
               			</div>
               			<div class="col-md-5">
               				<label for="cvv">CVV <span class="required-red">*</span></label>
-              				<input type="text" placeholder="CVV" id="cvv" />
+              				<sf:input type="text" path="cvv" placeholder="CVV" id="cvv" />
               			</div>
               		</div>
               		
@@ -75,7 +105,7 @@
               		
               		<a class="btn btn-register" href="${flowExecutionUrl}&_eventId_pay">Pay</a>
               		
-				</form>
+				</sf:form>
 				
 			</div>
 			

@@ -58,7 +58,7 @@
 
           <div class="row">
             <div class="col-md-12">
-              <button class="register btn "type="submit" name="_eventId_billing">Next - Billing
+              <button class="register btn" type="submit" name="_eventId_billing">Next - Billing
               	<span class="fa fa-chevron-right"></span>
               </button>
               <button class="clear btn" type="reset" name="clear">Clear</button>

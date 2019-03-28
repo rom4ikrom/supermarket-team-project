@@ -360,6 +360,15 @@ input:checked + .slider:before {
 	background-color: #4CAF50;
 }
 
+/* ORDER-PAYMENT FLOW DESIGN */
+
+.payment-details {
+	border: 1px solid black;
+	border-radius: 10px;
+	margin: 15px 0px;
+	padding: 5px; 
+}
+
 /* PRODUCT CHECKOUT TABLE */
 .product-payment-table {
 	border-collapse: collapse;
@@ -385,10 +394,17 @@ input:checked + .slider:before {
   	margin: 10px 0px;
 }
 
+/* SINGLE PRODUCT PAGE */
+.description {
+	margin: 20px 0px;
+}
+
+
 /* breadcrumb */
 .breadcrumb {
 	margin-top: 5px;
 }
+
 /* style for alert */
 .valid-failed {
 	background-color: #ed3b3b;

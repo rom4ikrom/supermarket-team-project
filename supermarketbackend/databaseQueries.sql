@@ -104,7 +104,24 @@ CREATE TABLE order_item (
 	CONSTRAINT fk_order_item_order_id FOREIGN KEY (order_id) REFERENCES order_detail (id),
 	CONSTRAINT pk_order_item_id PRIMARY KEY (id)
 );
-	
+
+CREATE TABLE payment_details (
+	id IDENTITY,
+	user_id int,
+	card_number VARCHAR(25),
+	card_name VARCHAR(255),
+	expiry_date date,
+	cvv int,
+	is_active boolean,
+	CONSTRAINT fk_payment_details_user_id FOREIGN KEY (user_id) REFERENCES user_detail (id),
+	CONSTRAINT pk_payment_details_id PRIMARY KEY (id)
+);
+
+INSERT INTO payment_details (user_id, card_number, card_name, cvv, is_active) 
+VALUES  (13, '0000111122223333', 'Mr R Romanov', 123, true);
+
+INSERT INTO payment_details (user_id, card_number, card_name, cvv, is_active) 
+VALUES  (13, '0000111122224444', 'Mr R Romanov', 123, true);
 
 -- adding user details
 INSERT INTO user_detail (first_name, last_name, role, email, tel, password, hint, enabled)

@@ -124,7 +124,7 @@
 
 										<label for="username">Email</label> <input type="text"
 											name="username" placeholder="Email" /> <label for="password">Password</label>
-										<input type="text" name="password" placeholder="Password" />
+										<input type="password" name="password" placeholder="Password" />
 										
 										
 										<%-- <p class="admin-login">

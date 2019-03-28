@@ -7,6 +7,7 @@ import net.romanov.supermarketbackend.dto.Address;
 import net.romanov.supermarketbackend.dto.Cart;
 import net.romanov.supermarketbackend.dto.CartLine;
 import net.romanov.supermarketbackend.dto.OrderDetail;
+import net.romanov.supermarketbackend.dto.PaymentDetails;
 import net.romanov.supermarketbackend.dto.User;
 
 public class CheckoutModel implements Serializable{
@@ -22,6 +23,9 @@ public class CheckoutModel implements Serializable{
 	private List<CartLine> cartLines;
 	private OrderDetail orderDetail;
 	private double checkoutTotal;
+	
+	//private List<PaymentDetails> paymentDetails;
+	
 	public User getUser() {
 		return user;
 	}
@@ -59,6 +63,12 @@ public class CheckoutModel implements Serializable{
 		this.checkoutTotal = checkoutTotal;
 	}
 	
+//	public List<PaymentDetails> getPaymentDetails() {
+//		return paymentDetails;
+//	}
+//	public void setPaymentDetails(List<PaymentDetails> paymentDetails) {
+//		this.paymentDetails = paymentDetails;
+//	}
 	@Override
 	public String toString() {
 		return "CheckoutModel [user=" + user + ", shipping=" + shipping + ", cart=" + cart + ", cartLines=" + cartLines
