@@ -52,14 +52,14 @@
 						<c:when test="${product.quantity < 1 }">
 	
 							<a href="javascript:void(0)" class="btn btn-success disabled">
-								<span class="fa fa-shopping-cart">Add to Cart</span>
+								<span class="fa fa-shopping-cart"> Add to Cart</span>
 							</a>
 	
 						</c:when>
 						
 						<c:otherwise>
 							<a href="${contextRoot}/cart/add/${product.id}/product" class="btn btn-success">
-								<span class="fa fa-shopping-cart"></span>Add to Cart
+								<span class="fa fa-shopping-cart"></span> Add to Cart
 							</a>
 						</c:otherwise>
 					</c:choose>

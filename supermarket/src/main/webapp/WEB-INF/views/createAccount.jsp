@@ -33,16 +33,16 @@
             <div class="col-md-6">
               <h4>Personal Information</h4>
 
-              <label for="fname">First Name <span class="obligatory_field">*</span></label>
+              <label for="fname">First Name <span class="required-red">*</span></label>
               <input type="text" placeholder="First Name" name="fname" required>
 
               <label for="mname">Middle Name</label>
               <input type="text" placeholder="Middle Name" name="mname">
 
-              <label for="lname">Last Name <span class="obligatory_field">*</span></label>
+              <label for="lname">Last Name <span class="required-red">*</span></label>
               <input type="text" placeholder="Last Name" name="lname" required>
 
-              <label for="email">Email <span class="obligatory_field">*</span></label>
+              <label for="email">Email <span class="required-red">*</span></label>
               <input type="email" placeholder="Email" name="email" required>
 
               <label for="telephone">Telephone</label>
@@ -50,13 +50,13 @@
 
               <h4>Security</h4>
 
-              <label for="pass">Password <span class="obligatory_field">*</span></label>
+              <label for="pass">Password <span class="required-red">*</span></label>
               <input type="password" placeholder="Password" name="pass" required>
 
-              <label for="pass_check">Re-type Password <span class="obligatory_field">*</span></label>
+              <label for="pass_check">Re-type Password <span class="required-red">*</span></label>
               <input type="password" placeholder="Password" name="pass_check" required>
 
-              <label for="hint">Enter Password Hint <span class="obligatory_field">*</span></label>
+              <label for="hint">Enter Password Hint <span class="required-red">*</span></label>
               <input type="text" placeholder="Password Hint" name="hint" required>
 
             </div>
@@ -64,19 +64,19 @@
 
               <h4>Main Address</h4>
 
-              <label for="street">Street <span class="obligatory_field">*</span></label>
+              <label for="street">Street <span class="required-red">*</span></label>
               <input type="text" placeholder="Street" name="street" required>
 
-              <label for="houseNo">House No <span class="obligatory_field">*</span></label>
+              <label for="houseNo">House No <span class="required-red">*</span></label>
               <input type="text" placeholder="House No" name="houseNo" required>
 
               <label for="flatNo">Flat No</label>
               <input type="text" placeholder="Flat No" name="flatNo">
 
-              <label for="town">Town <span class="obligatory_field">*</span></label>
+              <label for="town">Town <span class="required-red">*</span></label>
               <input type="text" placeholder="Town" name="town" required>
 
-              <label for="postcode">Postcode <span class="obligatory_field">*</span></label>
+              <label for="postcode">Postcode <span class="required-red">*</span></label>
               <input type="text" placeholder="Postcode" name="postcode" required>
 
             </div>
@@ -85,7 +85,7 @@
           <div class="row">
             <div class="col-md-12">
               <button class="register btn "type="submit" name="register">Create Account</button>
-              <button class="clear btn" type="clear" name="clear">Clear</button>
+              <button class="clear btn" type="reset" name="clear">Clear</button>
             </div>
           </div>
 

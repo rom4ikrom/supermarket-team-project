@@ -24,7 +24,7 @@ public class CheckoutModel implements Serializable{
 	private OrderDetail orderDetail;
 	private double checkoutTotal;
 	
-	//private List<PaymentDetails> paymentDetails;
+	private PaymentDetails currentPD;
 	
 	public User getUser() {
 		return user;
@@ -63,12 +63,13 @@ public class CheckoutModel implements Serializable{
 		this.checkoutTotal = checkoutTotal;
 	}
 	
-//	public List<PaymentDetails> getPaymentDetails() {
-//		return paymentDetails;
-//	}
-//	public void setPaymentDetails(List<PaymentDetails> paymentDetails) {
-//		this.paymentDetails = paymentDetails;
-//	}
+	public PaymentDetails getCurrentPD() {
+		return currentPD;
+	}
+	public void setCurrentPD(PaymentDetails currentPD) {
+		this.currentPD = currentPD;
+	}
+	
 	@Override
 	public String toString() {
 		return "CheckoutModel [user=" + user + ", shipping=" + shipping + ", cart=" + cart + ", cartLines=" + cartLines

@@ -12,6 +12,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -34,7 +36,7 @@ public class PaymentDetails implements Serializable {
 	@Column(name = "user_id")
 	private int userId;
 	
-	@NotBlank(message = "Please enter the card number!")
+	@Size(min = 16, max = 16, message = "Card Number must have 16 digits!")
 	@Column(name = "card_number")
 	private String cardNumber;
 	
@@ -46,17 +48,18 @@ public class PaymentDetails implements Serializable {
 	@Column(name = "expiry_date", nullable = false)
 	private Date expiryDate;
 	
-	private int cvv;
+	@NotBlank(message = "Please enter CVV!")
+	private String cvv;
 	
 	@Column(name = "is_active")
 //	@Type(type = "boolean") //ojdbc
 	private boolean active;
 	
-//	@Transient
-//	private String month;
-//	
-//	@Transient
-//	private String year;
+	@Transient
+	private String month;
+	
+	@Transient
+	private String year;
 
 	public int getId() {
 		return id;
@@ -98,11 +101,11 @@ public class PaymentDetails implements Serializable {
 		this.expiryDate = expiryDate;
 	}
 
-	public int getCvv() {
+	public String getCvv() {
 		return cvv;
 	}
 
-	public void setCvv(int cvv) {
+	public void setCvv(String cvv) {
 		this.cvv = cvv;
 	}
 
@@ -114,21 +117,21 @@ public class PaymentDetails implements Serializable {
 		this.active = active;
 	}
 
-//	public String getMonth() {
-//		return month;
-//	}
-//
-//	public void setMonth(String month) {
-//		this.month = month;
-//	}
-//
-//	public String getYear() {
-//		return year;
-//	}
-//
-//	public void setYear(String year) {
-//		this.year = year;
-//	}
+	public String getMonth() {
+		return month;
+	}
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
+
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
 
 	@Override
 	public String toString() {

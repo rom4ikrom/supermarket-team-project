@@ -49,6 +49,10 @@ public class OrderDetail implements Serializable {
 	@ManyToOne
 	private Address billing;
 	
+	@ManyToOne
+	@JoinColumn(name = "payment_details_id")
+	private PaymentDetails paymentDetails;
+	
 	@OneToMany(mappedBy="orderDetail", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<OrderItem> orderItems = new ArrayList<>();
 	
@@ -73,6 +77,14 @@ public class OrderDetail implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public PaymentDetails getPaymentDetails() {
+		return paymentDetails;
+	}
+
+	public void setPaymentDetails(PaymentDetails paymentDetails) {
+		this.paymentDetails = paymentDetails;
 	}
 
 	public double getOrderTotal() {

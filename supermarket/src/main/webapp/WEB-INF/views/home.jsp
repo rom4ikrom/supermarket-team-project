@@ -37,13 +37,13 @@
 							<div class="row">
 								
 								<!-- Information about fruit country and fruit price -->
-								<div class="col-6">
+								<div class="col-md-6">
 									<ul class="country_price">
 										<li class="country_name">{{product.variety}}</li>
 										<li>{{product.country}}</li>
 									</ul>
 								</div>
-								<div class="col-6">
+								<div class="col-md-6">
 									<!-- Link to page about one fruit and quantity chooser -->
 									<ul class="more_qnty">
 										<li>
@@ -91,13 +91,13 @@
 							<div class="row">
 								
 								<!-- Information about fruit country and fruit price -->
-								<div class="col-6">
+								<div class="col-md-6">
 									<ul class="country_price">
 										<li class="country_name">{{product.variety}}</li>
 										<li>{{product.country}}</li>
 									</ul>
 								</div>
-								<div class="col-6">
+								<div class="col-md-6">
 									<!-- Link to page about one fruit and quantity chooser -->
 									<ul class="more_qnty">
 										<li>
@@ -145,13 +145,13 @@
 							<div class="row">
 								
 								<!-- Information about fruit country and fruit price -->
-								<div class="col-6">
+								<div class="col-md-6">
 									<ul class="country_price">
 										<li class="country_name">{{product.variety}}</li>
 										<li>{{product.country}}</li>
 									</ul>
 								</div>
-								<div class="col-6">
+								<div class="col-md-6">
 									<!-- Link to page about one fruit and quantity chooser -->
 									<ul class="more_qnty">
 										<li>

@@ -79,10 +79,6 @@ h4 {
   opacity: 1;
 }
 
-.create-acc-form .obligatory_field {
-  color: red;
-}
-
 @media screen and (max-width: 410px) {
   .create-acc-form .btn {
     width: 100%

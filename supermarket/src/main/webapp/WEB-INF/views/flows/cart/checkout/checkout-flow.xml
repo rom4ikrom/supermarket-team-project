@@ -34,15 +34,24 @@
 	</action-state>
 	
 	<!-- view the payment mode page -->
-	<view-state id="payment" view="flows/cart/checkout/order-payment" model="flowScope.checkoutModel">
+	<view-state id="payment" view="flows/cart/checkout/order-payment" model="paymentDetails">
 	<on-entry>
+		<evaluate expression="checkoutHandler.getCartLines(flowScope.checkoutModel)"
+				result="viewScope.listCartLines">
+		</evaluate>
 		<evaluate expression="checkoutHandler.getPaymentDetails(flowScope.checkoutModel)"
 				result="viewScope.listPaymentDetails">
 		</evaluate>
 	</on-entry>
-		<transition on="payChosen" to="saveOrder"></transition>
+		<transition on="payChosen" to="savePaymentSelection" validate="false"></transition>
 		<transition on="pay" to="validatePaymentDetails"></transition>
 	</view-state>
+	
+	<!-- save payment details selection to checkout model -->
+	<action-state id="savePaymentSelection">
+		<evaluate expression="checkoutHandler.savePaymentSelection(flowScope.checkoutModel, requestParameters.paymentDetailsId)"/>
+		<transition on="success" to="saveOrder"></transition>
+	</action-state>
 	
 	<!-- validate payment details -->
 	<action-state id="validatePaymentDetails">

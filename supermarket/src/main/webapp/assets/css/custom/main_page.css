@@ -98,13 +98,6 @@ h2 {
   padding: 7px;
 }
 
-/* Dropdown menu style */
-/* should be improved */
-.package_options {
-  width: 100%;
-  margin: 10px 20px 10px 20px;
-}
-
 /* product country and fruit price information */
 .frame_menu .country_price ul {
   padding: 10px 0 0 0;

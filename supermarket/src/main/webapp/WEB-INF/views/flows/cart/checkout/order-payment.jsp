@@ -12,7 +12,7 @@
 				</div>
 				<div class="row">
 
-					<c:forEach items="${checkoutModel.cartLines}" var="cartLine">
+					<c:forEach items="${listCartLines}" var="cartLine">
 					
 						<div class="col-md-12">
 							<table class="product-payment-table">
@@ -47,26 +47,30 @@
 					<h3>Payment</h3>
 				</div>
 				
+				<c:if test="${not empty listPaymentDetails}">
 				<h5>Choose Payment Method</h5>
 				
 				<c:forEach items="${listPaymentDetails}" var="paymentDetail">
 					<div class="payment-details">
 						<div class="row">
-							<div class="col-md-5 my-auto text-center">
+							<div class="col-md-3 my-auto text-center">
 								<p>${paymentDetail.cardNumber}</p>
 							</div>
-							<div class="col-md-4 my-auto text-center">
+							<div class="col-md-3 my-auto text-center">
+								<p>${paymentDetail.expiryDate}</p>
+							</div>
+							<div class="col-md-3 my-auto text-center">
 								<p>${paymentDetail.cardName}</p>
 							</div>
 							<div class="col-md-3 my-auto text-center">
 								<!-- Action Button -->
-								<a href="${flowExecutionUrl}&_eventId_payChosen" class="btn btn-primary">Choose</a>
+								<a href="${flowExecutionUrl}&_eventId_payChosen&paymentDetailsId=${paymentDetail.id}" class="btn btn-primary">Choose</a>
 							</div>
 						</div>
 						
-						
 					</div>
 				</c:forEach>
+				</c:if>
 				
 				<h5>Add New Payment Details</h5>
 				
@@ -86,15 +90,47 @@
               		<div class="row">
               			<div class="col-md-7">
               				
-              				<label for="expMonth" style="width:100%;">Expiry Date <span class="required-red">*</span></label>
+              				<label for="expMonth">Expiry Date <span class="required-red">*</span></label>
+              				<sf:errors path="month" cssClass="help-block" element="em"></sf:errors>
+              				
+              				<div class="row">
+								<div class="col-md-6">
+									<div class="select-style">
+										<sf:select path="month">
+											<option>01</option>
+											<option>02</option>
+											<option>03</option>
+											<option>04</option>
+											<option>05</option>
+											<option>06</option>
+											<option>07</option>
+											<option>08</option>
+											<option>09</option>
+											<option>10</option>
+											<option>11</option>
+											<option>12</option>
+										</sf:select>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="select-style">
+										<sf:select path="year">
+											<option>2019</option>
+											<option>2020</option>
+											<option>2021</option>
+											<option>2022</option>
+											<option>2023</option>
+											<option>2024</option>
+											<option>2025</option>
+										</sf:select>
+									</div>
+								</div>
+							</div>
               					
-              				<input type="text" placeholder="MM" id="expMonth" style="width:40%; margin-right:20px;"/>
-              						
-              				<input type="text" placeholder="YY" id="expYear" style="width:40%;"/>
-              						
               			</div>
               			<div class="col-md-5">
               				<label for="cvv">CVV <span class="required-red">*</span></label>
+              				<sf:errors path="cvv" cssClass="help-block" element="em"></sf:errors>
               				<sf:input type="text" path="cvv" placeholder="CVV" id="cvv" />
               			</div>
               		</div>
@@ -103,7 +139,7 @@
               			<div class="checkout-total">Checkout Total &#163; ${checkoutModel.checkoutTotal}</div>
               		</div>
               		
-              		<a class="btn btn-register" href="${flowExecutionUrl}&_eventId_pay">Pay</a>
+              		<button class="btn btn-register" type="submit" name="_eventId_pay">Pay</button>
               		
 				</sf:form>
 				

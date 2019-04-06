@@ -122,8 +122,20 @@ public class CheckoutHandler {
 		return transitionValue;
 
 	}
+	
+	public List<CartLine> getCartLines(CheckoutModel model) {
+		
+		List<CartLine> listCartLines = cartLineDAO.list(model.getCart().getId());
+		
+		if(listCartLines.size() == 0) {
+			listCartLines = new ArrayList<>();
+		}
+		
+		return listCartLines;
+		
+	}
 
-	public List<PaymentDetails> getPaymentDetails(CheckoutModel model) {
+	public List<PaymentDetails> getPaymentDetails(CheckoutModel model) throws ParseException {
 
 		List<PaymentDetails> listPaymentDetails = userDAO.listPaymentDetails(model.getUser().getId());
 
@@ -136,7 +148,8 @@ public class CheckoutHandler {
 				String cardNumber = pd.getCardNumber();
 
 				cardNumber = cardNumber.substring(12, 16);
-				pd.setCardNumber("**** **** **** " + cardNumber);
+				pd.setCardNumber("**** " + cardNumber);
+				
 			}
 		}
 
@@ -144,32 +157,48 @@ public class CheckoutHandler {
 
 	}
 	
-	/*
 	public String savePaymentSelection(CheckoutModel checkoutModel, int paymentId) {
 		
 		String transitionValue = "success";
 
 		PaymentDetails paymentDetails = userDAO.getPaymentDetails(paymentId);
 
-		checkoutModel.setPaymentDetails(paymentDetails.ge);
+		checkoutModel.setCurrentPD(paymentDetails);
+		
+		System.out.println(paymentDetails.getCardNumber());
 
 		return transitionValue;
 		
 	}
-	*/
 	
-	public String validatePaymentDetails(PaymentDetails paymentDetails, MessageContext error) {
+	
+	public String validatePaymentDetails(PaymentDetails paymentDetails, MessageContext error) throws ParseException {
 		
 		String transitionValue = "success";
 		
-		if(userDAO.getPaymentByCardNumber(paymentDetails.getCardNumber()) != null) {
+		String cardNumber = paymentDetails.getCardNumber();
+		
+		if(userDAO.getPaymentByCardNumber(cardNumber) != null) {
 			error.addMessage(new MessageBuilder().error().source("cardNumber")
 					.defaultText("This card is already registered!").build());
 				
 				transitionValue = "failure";
 		}
 		
-		System.out.println("HERREEEE" + userDAO.getPaymentByCardNumber(paymentDetails.getCardNumber()));
+		String month = paymentDetails.getMonth();
+		String year = paymentDetails.getYear();
+		
+		SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+		String expiryDateStr = "01-" + month + "-" + year;
+		
+		Date expiryDate = format.parse(expiryDateStr);
+		
+		if(expiryDate.before(new Date())) {
+			error.addMessage(new MessageBuilder().error().source("month")
+					.defaultText("Card is not valid!").build());
+				
+				transitionValue = "failure";
+		}
 		
 		return transitionValue;
 		
@@ -181,29 +210,27 @@ public class CheckoutHandler {
 		//set the user id
 		paymentDetails.setUserId(model.getUser().getId());
 		
-		//String month = paymentDetails.getMonth();
-		//String year = paymentDetails.getYear();
+		String month = paymentDetails.getMonth();
+		String year = paymentDetails.getYear();
 		
-		SimpleDateFormat format = new SimpleDateFormat("MM-yy");
-		//String expiryDateStr = month + "-" + year;
+		SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+		String expiryDateStr = "01-" + month + "-" + year;
 		
-		Date expiryDate = new Date();
+		Date expiryDate;
 		
-		/*
+		
 		try {
 			expiryDate = format.parse(expiryDateStr);
+			paymentDetails.setExpiryDate(expiryDate);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		*/
 		
 		paymentDetails.setActive(true);
-		paymentDetails.setExpiryDate(expiryDate);
 		
 		userDAO.addPaymentDetails(paymentDetails);
 		
-		//model.setPaymentDetails(paymentDetails);
+		model.setCurrentPD(paymentDetails);
 		
 		return transitionValue;
 		
@@ -270,6 +297,7 @@ public class CheckoutHandler {
 		//String strDate = dateFormat.format(date); 
 
 		orderDetail.setOrderDate(date);
+		orderDetail.setPaymentDetails(cModel.getCurrentPD());
 
 		//save the order
 		cartLineDAO.addOrderDetail(orderDetail);
