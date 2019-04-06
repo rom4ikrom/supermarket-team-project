@@ -16,6 +16,7 @@ header {
     max-width: 1920px;
     min-height: 400px;
     margin-bottom: 30px;
+    margin: 0 auto;
 }
 
 header .titles {
