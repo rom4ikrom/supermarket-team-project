@@ -26,10 +26,10 @@ public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY) //h2 database
-	@Column(name = "ID") //ojdbc
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence") //ojdbc
-	@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ") //ojdbc
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //h2 database
+//	@Column(name = "ID") //ojdbc
+//	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence") //ojdbc
+//	@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ") //ojdbc
 	private int id;
 	
 	@NotBlank(message = "Please enter First Name")
@@ -45,7 +45,7 @@ public class User implements Serializable{
 	@NotBlank(message = "Please enter Email address!")
 	private String email;
 	
-	/*
+	
 	@NotBlank(message = "Please enter Contact Number!")
 	private String tel; //h2 database
 	
@@ -58,9 +58,9 @@ public class User implements Serializable{
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	*/
 	
 	
+	/*
 	//for ojdbc where tel is a number
 	@NotNull(message = "Please enter Contact Number!")
 	private int tel;
@@ -71,7 +71,7 @@ public class User implements Serializable{
 	public void setTel(int tel) {
 		this.tel = tel;
 	}
-	
+	*/
 	@NotBlank(message = "Please enter Password!")
 	private String password;
 	
