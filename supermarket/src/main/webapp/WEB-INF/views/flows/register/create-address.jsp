@@ -18,15 +18,15 @@
             
             <div class="col-md-6">
 
-              <label for="addLineOne">Address Line One <span class="obligatory_field">*</span></label>
+              <label for="addLineOne">Address Line One <span class="required-red">*</span></label>
               <sf:errors path="addressLineOne" cssClass="help-block" element="em"></sf:errors>
               <sf:input type="text" path="addressLineOne" placeholder="Address Line One" name="addLineOne" />
 
-              <label for="addLineTwo">Address Line Two <span class="obligatory_field">*</span></label>
+              <label for="addLineTwo">Address Line Two <span class="required-red">*</span></label>
               <sf:errors path="addressLineTwo" cssClass="help-block" element="em"></sf:errors>
               <sf:input type="text" path="addressLineTwo" placeholder="Address Line Two" name="addLineTwo" />
               
-              <label for="town">Town <span class="obligatory_field">*</span></label>
+              <label for="town">Town <span class="required-red">*</span></label>
               <sf:errors path="town" cssClass="help-block" element="em"></sf:errors>
               <sf:input type="text" path="town" placeholder="Town" name="town" />
                          
@@ -37,11 +37,11 @@
               <label for="county">County / State</label>
               <sf:input type="text" path="county" placeholder="County" name="county" />
 
-              <label for="postcode">Postcode <span class="obligatory_field">*</span></label>
+              <label for="postcode">Postcode <span class="required-red">*</span></label>
               <sf:errors path="postcode" cssClass="help-block" element="em"></sf:errors>
               <sf:input type="text" path="postcode" placeholder="Postcode" name="postcode" />
               
-              <label for="country">Country <span class="obligatory_field">*</span></label>
+              <label for="country">Country <span class="required-red">*</span></label>
               <sf:errors path="country" cssClass="help-block" element="em"></sf:errors>
               <sf:input type="text" path="country" placeholder="Country" name="country" />
               

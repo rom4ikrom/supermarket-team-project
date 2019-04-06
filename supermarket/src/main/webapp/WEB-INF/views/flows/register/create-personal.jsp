@@ -18,19 +18,19 @@
             <div class="col-md-6">
               <h4>Personal Information</h4>
 
-              <label for="fname">First Name <span class="obligatory_field">*</span></label>
+              <label for="fname">First Name <span class="required-red">*</span></label>
               <sf:errors path="firstName" cssClass="help-block" element="em"></sf:errors>
               <sf:input type="text" path="firstName" placeholder="First Name" name="fname"/>
 
-              <label for="lname">Last Name <span class="obligatory_field">*</span></label>
+              <label for="lname">Last Name <span class="required-red">*</span></label>
               <sf:errors path="lastName" cssClass="help-block" element="em"></sf:errors>
               <sf:input type="text" path="lastName" placeholder="Last Name" name="lname" />
 
-              <label for="email">Email <span class="obligatory_field">*</span></label>
+              <label for="email">Email <span class="required-red">*</span></label>
               <sf:errors path="email" cssClass="help-block" element="em"></sf:errors>
               <sf:input type="email" path="email" placeholder="Email" name="email" />
 
-              <label for="telephone">Telephone <span class="obligatory_field">*</span></label>
+              <label for="telephone">Telephone <span class="required-red">*</span></label>
               <sf:errors path="tel" cssClass="help-block" element="em"></sf:errors>
               <sf:input type="text" path="tel" placeholder="Telephone" name="telephone" />
               
@@ -40,15 +40,15 @@
             
               <h4>Security</h4>
 
-              <label for="pass">Password <span class="obligatory_field">*</span></label>
+              <label for="pass">Password <span class="required-red">*</span></label>
               <sf:errors path="password" cssClass="help-block" element="em"></sf:errors>
               <sf:input type="password" path="password" placeholder="Password" />
               
-              <label for="pass_check">Re-type Password <span class="obligatory_field">*</span></label>
+              <label for="pass_check">Re-type Password <span class="required-red">*</span></label>
               <sf:errors path="confirmPassword" cssClass="help-block" element="em"></sf:errors>
               <sf:input type="password" path="confirmPassword" placeholder="Password" />
               
-              <label for="hint">Enter Password Hint <span class="obligatory_field">*</span></label>
+              <label for="hint">Enter Password Hint <span class="required-red">*</span></label>
               <sf:errors path="hint" cssClass="help-block" element="em"></sf:errors>
               <sf:input type="text" path="hint" placeholder="Password Hint" />
               

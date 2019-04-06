@@ -8,13 +8,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
@@ -27,10 +28,10 @@ public class PaymentDetails implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	@Column(name = "ID") //ojdbc
-//	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence") //ojdbc
-//	@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ") //ojdbc
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID") //ojdbc
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence") //ojdbc
+	@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ") //ojdbc
 	private int id;
 	
 	@Column(name = "user_id")
@@ -52,7 +53,7 @@ public class PaymentDetails implements Serializable {
 	private String cvv;
 	
 	@Column(name = "is_active")
-//	@Type(type = "boolean") //ojdbc
+	@Type(type = "boolean") //ojdbc
 	private boolean active;
 	
 	@Transient

@@ -63,8 +63,7 @@ h2 {
 }
 
 /* adds hover animation */
-.frame:hover, footer input[type=submit]:hover,
-.frame .btn_add_item:hover, .frame .more_info:hover {
+.frame:hover {
   box-shadow: 0 0 50px green;
 }
 
@@ -83,7 +82,7 @@ h2 {
 }
 
 /* product name style */
-.product_name {
+.product-name {
   font-family: Lobster;
   font-size: 35px;
   color: blacks;
@@ -93,81 +92,39 @@ h2 {
 }
 
 /* frame menu block with all available controls */
-.frame_menu {
+.frame-menu {
   width: inherit;
   padding: 7px;
+  position: relative;
+  height: 220px;
 }
 
-/* product country and fruit price information */
-.frame_menu .country_price ul {
-  padding: 10px 0 0 0;
-  margin: 0;
-  display: block;
-  list-style-type: none;
-  justify-content: center;
-  width: inherit;
+.frame-menu table {
+	width: 100%;
+	text-align: center;
 }
 
-.frame_menu .country_price li {
-  display: block;
-  text-transform: uppercase;
-  margin-top: 10px;
+.frame-menu .btn-success {
+	color: white;
 }
 
-.country_name {
-  padding: 10px 0 10px 0;
+.frame-menu table td {
+	text-align: center;
+	text-transform: uppercase;
 }
 
-/* product more button and quantity input */
-.frame_menu .more_qnty ul {
-  padding: 0;
-  margin: 0;
-  display: block;
-  list-style-type: none;
-  padding-inline-start:0px;
+.frame-menu .btn-more {
+	width: 80px;
 }
 
-.frame_menu .more_qnty li {
-  display: block;
+.frame-menu .add-product {
+	position: absolute;
+	bottom: 20px;
+	left: 0;
+	right: 0;
+	margin: auto;
 }
 
-.qnty_number li{
-  float: left;
-  display: inline-block;
-  margin-right: 5px;
-}
-
-.qnty_number li:first-child {
-  margin-left: 30px;
-}
-
-.qnty_number li p {
-  text-transform: uppercase;
-}
-
-.frame_menu .more_info {
-  background-color: green;
-  padding: 10px 0 10px 0;
-  margin: 10px 20px 10px 20px;
-}
-
-.more_info a {
-  padding: 10px 15px 10px 15px;
-  color: white;
-}
-
-/* add product to basket button style */
-.frame_menu .btn_add_item {
-  width: 100%;
-  margin: 15px 20px 15px 20px;
-  padding: 10px 0 10px 0;
-  border: 1px solid green;
-}
-
-.btn_add_item a {
-  padding: 10px 60px 10px 60px;
-}
-
-.qnty {
-  text-transform: uppercase;
+.frame-menu .btn-add {
+	width: 100%;
 }
