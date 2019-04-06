@@ -181,6 +181,28 @@ footer .nav_bottom li a:hover {
 	width: 50%;
 }
 
+.form-container .select-style {
+    width: 100%;
+    border: none;
+    margin: 5px 0 0 0;
+    overflow: hidden;
+    background: #f1f1f1;
+}
+
+.form-container .select-style select {
+    padding: 15px;
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+}
+
+.form-container .select-style select:focus {
+    outline: none;
+}
+
 /* Style for admin form */
 .form-manage-products h3 {
 	text-align: center;
@@ -361,6 +383,15 @@ input:checked + .slider:before {
 	background-color: #4CAF50;
 }
 
+/* ORDER-PAYMENT FLOW DESIGN */
+
+.payment-details {
+	border: 1px solid black;
+	border-radius: 10px;
+	margin: 15px 0px;
+	padding: 5px; 
+}
+
 /* PRODUCT CHECKOUT TABLE */
 .product-payment-table {
 	border-collapse: collapse;
@@ -386,10 +417,17 @@ input:checked + .slider:before {
   	margin: 10px 0px;
 }
 
+/* SINGLE PRODUCT PAGE */
+.description {
+	margin: 20px 0px;
+}
+
+
 /* breadcrumb */
 .breadcrumb {
 	margin-top: 5px;
 }
+
 /* style for alert */
 .valid-failed {
 	background-color: #ed3b3b;

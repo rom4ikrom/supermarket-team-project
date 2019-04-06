@@ -30,7 +30,7 @@ public class OrderDetail implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY) //h2 database
+//	@GeneratedValue(strategy = GenerationType.IDENTITY) //h2 database
 	@Column(name = "ID") //ojdbc
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence") //ojdbc
 	@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ") //ojdbc
@@ -48,6 +48,10 @@ public class OrderDetail implements Serializable {
 	
 	@ManyToOne
 	private Address billing;
+	
+	@ManyToOne
+	@JoinColumn(name = "payment_details_id")
+	private PaymentDetails paymentDetails;
 	
 	@OneToMany(mappedBy="orderDetail", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<OrderItem> orderItems = new ArrayList<>();
@@ -73,6 +77,14 @@ public class OrderDetail implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public PaymentDetails getPaymentDetails() {
+		return paymentDetails;
+	}
+
+	public void setPaymentDetails(PaymentDetails paymentDetails) {
+		this.paymentDetails = paymentDetails;
 	}
 
 	public double getOrderTotal() {

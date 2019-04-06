@@ -61,14 +61,35 @@ public class PageController {
 	//view about us page
 	@RequestMapping(value = {"/about"})
 	public ModelAndView about() {
-		
-		logger.info("Inside PageController about method - INFO");
-		logger.debug("Inside PageController about method - DEBUG");
 
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title", "About Us");
 
 		mv.addObject("userClickAbout", true);
+		return mv;
+
+	}
+	
+	//view about us page
+	@RequestMapping(value = {"/contact"})
+	public ModelAndView contact() {
+
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "About Us");
+
+		mv.addObject("userClickContact", true);
+		return mv;
+
+	}
+
+	//view about us page
+	@RequestMapping(value = {"/help"})
+	public ModelAndView help() {
+
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "About Us");
+
+		mv.addObject("userClickHelp", true);
 		return mv;
 
 	}

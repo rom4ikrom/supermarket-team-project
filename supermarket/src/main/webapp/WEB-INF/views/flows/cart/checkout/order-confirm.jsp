@@ -1,3 +1,5 @@
+<%@taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix = "fn" uri = "http://java.sun.com/jsp/jstl/functions"%>
 <%@include file="../../shared/flows-header.jsp" %>
 <section>
 	<div class="container">
@@ -42,7 +44,9 @@
 
 			<div class="col-md-6">
 				<p>Payment Method:</p>
-				<span>Card Payment</span> <br>
+				<c:set var = "cardNumber" value = "${orderDetail.paymentDetails.cardNumber}"></c:set>
+				<c:set var = "cardNo" value = "${fn:substring(cardNumber, 12, 16)}" />
+				<p>Card Payment: **** ${cardNo}</p>
 				<p>${orderDetail.user.email}</p>
 			</div>
 

@@ -23,7 +23,7 @@ public class CartLine implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY) //h2 database
+//	@GeneratedValue(strategy = GenerationType.IDENTITY) //h2 database
 	@Column(name = "ID") //ojdbc
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence") //ojdbc
 	@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ") //ojdbc

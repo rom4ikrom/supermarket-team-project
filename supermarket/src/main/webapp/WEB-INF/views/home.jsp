@@ -28,42 +28,44 @@
 			<div class="col-lg-4" ng-repeat="product in contr.europeProducts">
 			
 				<div class="col-lg-12">
-				
-					<div class="frame">
-						<img src="${imgProducts}/{{product.code}}.jpg" alt="{{product.name}}">
-						<p class="product_name">{{product.name}}</p>
-						<div class="frame_menu">
-						
-							<div class="row">
-								
-								<!-- Information about fruit country and fruit price -->
-								<div class="col-6">
-									<ul class="country_price">
-										<li class="country_name">{{product.variety}}</li>
-										<li>{{product.country}}</li>
-									</ul>
-								</div>
-								<div class="col-6">
-									<!-- Link to page about one fruit and quantity chooser -->
-									<ul class="more_qnty">
-										<li>
-											<div class="more_info">
-												<a ng-href="${contextRoot}/show/{{product.id}}/product">More</a>
-											</div>
-										</li>
-										<li>Price: &#163;{{product.price}}</li>
-									</ul>
-									<!-- Add item to the basket -->
-								</div>
-								<div class="button btn_add_item">
-									<a ng-href="${contextRoot}/cart/add/{{product.id}}/product">Add to Basket</a>
-								</div>
-							</div>
 
-						</div>
-					</div><!-- End of frame -->
-					
-				</div>
+						<div class="frame">
+							<img src="${imgProducts}/{{product.code}}.jpg"
+								alt="{{product.name}}">
+							<p class="product-name">{{product.name}}</p>
+							<div class="frame-menu">
+
+								<div class="row">
+
+									<div class="col-md-12 text-center">
+										<table>
+											<tr>
+												<td>{{product.variety}}</td>
+												<td><a class="btn btn-success btn-more"
+													ng-href="${contextRoot}/show/{{product.id}}/product">More</a></td>
+											</tr>
+											<tr>
+												<td>{{product.country}}</td>
+												<td>Price: &#163;{{product.price}}</td>
+											</tr>
+										</table>
+									</div>
+
+								</div>
+								<!-- End of row -->
+
+								<div class="row add-product">
+									<div class="col-md-12">
+										<a class="btn btn-success btn-add"
+											ng-href="${contextRoot}/cart/add/{{product.id}}/product">Add
+											to Basket</a>
+									</div>
+								</div>
+
+							</div>
+						</div><!-- End of frame -->
+
+					</div>
 				
 			</div><!-- End Col-4 -->
 			
@@ -85,36 +87,37 @@
 				
 					<div class="frame">
 						<img src="${imgProducts}/{{product.code}}.jpg" alt="{{product.name}}">
-						<p class="product_name">{{product.name}}</p>
-						<div class="frame_menu">
-						
-							<div class="row">
-								
-								<!-- Information about fruit country and fruit price -->
-								<div class="col-6">
-									<ul class="country_price">
-										<li class="country_name">{{product.variety}}</li>
-										<li>{{product.country}}</li>
-									</ul>
-								</div>
-								<div class="col-6">
-									<!-- Link to page about one fruit and quantity chooser -->
-									<ul class="more_qnty">
-										<li>
-											<div class="more_info">
-												<a ng-href="${contextRoot}/show/{{product.id}}/product">More</a>
-											</div>
-										</li>
-										<li>Price: &#163;{{product.price}}</li>
-									</ul>
-									<!-- Add item to the basket -->
-								</div>
-								<div class="button btn_add_item">
-									<a ng-href="${contextRoot}/cart/add/{{product.id}}/product">Add to Basket</a>
-								</div>
-							</div>
+						<p class="product-name">{{product.name}}</p>
+						<div class="frame-menu">
 
-						</div>
+								<div class="row">
+
+									<div class="col-md-12 text-center">
+										<table>
+											<tr>
+												<td>{{product.variety}}</td>
+												<td><a class="btn btn-success btn-more"
+													ng-href="${contextRoot}/show/{{product.id}}/product">More</a></td>
+											</tr>
+											<tr>
+												<td>{{product.country}}</td>
+												<td>Price: &#163;{{product.price}}</td>
+											</tr>
+										</table>
+									</div>
+
+								</div>
+								<!-- End of row -->
+
+								<div class="row add-product">
+									<div class="col-md-12">
+										<a class="btn btn-success btn-add"
+											ng-href="${contextRoot}/cart/add/{{product.id}}/product">Add
+											to Basket</a>
+									</div>
+								</div>
+
+							</div>
 					</div><!-- End of frame -->
 					
 				</div>
@@ -136,42 +139,45 @@
 			<div class="col-lg-4" ng-repeat="product in contr.saProducts">
 			
 				<div class="col-lg-12">
-				
-					<div class="frame">
-						<img src="${imgProducts}/{{product.code}}.jpg" alt="{{product.name}}">
-						<p class="product_name">{{product.name}}</p>
-						<div class="frame_menu">
-						
-							<div class="row">
-								
-								<!-- Information about fruit country and fruit price -->
-								<div class="col-6">
-									<ul class="country_price">
-										<li class="country_name">{{product.variety}}</li>
-										<li>{{product.country}}</li>
-									</ul>
-								</div>
-								<div class="col-6">
-									<!-- Link to page about one fruit and quantity chooser -->
-									<ul class="more_qnty">
-										<li>
-											<div class="more_info">
-												<a ng-href="${contextRoot}/show/{{product.id}}/product">More</a>
-											</div>
-										</li>
-										<li>Price: &#163;{{product.price}}</li>
-									</ul>
-									<!-- Add item to the basket -->
-								</div>
-								<div class="button btn_add_item">
-									<a ng-href="${contextRoot}/cart/add/{{product.id}}/product">Add to Basket</a>
-								</div>
-							</div>
 
+						<div class="frame">
+							<img src="${imgProducts}/{{product.code}}.jpg"
+								alt="{{product.name}}">
+							<p class="product-name">{{product.name}}</p>
+							<div class="frame-menu">
+
+								<div class="row">
+
+									<div class="col-md-12 text-center">
+										<table>
+											<tr>
+												<td>{{product.variety}}</td>
+												<td><a class="btn btn-success btn-more"
+													ng-href="${contextRoot}/show/{{product.id}}/product">More</a></td>
+											</tr>
+											<tr>
+												<td>{{product.country}}</td>
+												<td>Price: &#163;{{product.price}}</td>
+											</tr>
+										</table>
+									</div>
+
+								</div>
+								<!-- End of row -->
+
+								<div class="row add-product">
+									<div class="col-md-12">
+										<a class="btn btn-success btn-add"
+											ng-href="${contextRoot}/cart/add/{{product.id}}/product">Add
+											to Basket</a>
+									</div>
+								</div>
+
+							</div>
 						</div>
-					</div><!-- End of frame -->
-					
-				</div>
+						<!-- End of frame -->
+
+					</div>
 				
 			</div><!-- End Col-4 -->
 			

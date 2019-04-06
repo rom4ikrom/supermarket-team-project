@@ -16,8 +16,8 @@
 		<div class="row">
 			<div class="col-md-12">
 				<ul class="nav_bottom">
-					<li><a href="#">Contact Us</a></li>
-					<li><a href="#">Help</a></li>
+					<li><a href="${contextRoot}/contact">Contact Us</a></li>
+					<li><a href="${contextRoot}/help">Help</a></li>
 				</ul>
 				<div class="copyright">&#xa9; Fresh Fruits Company, 2019. All Rights Reserved.</div>
 			</div>

@@ -73,6 +73,16 @@
 			<c:if test="${userClickAbout == true}">
 				<%@include file="about.jsp"%>
 			</c:if>
+			
+			<!-- Loading the view contact content -->
+			<c:if test="${userClickContact == true}">
+				<%@include file="contactUs.jsp"%>
+			</c:if>
+			
+			<!-- Loading the view help content -->
+			<c:if test="${userClickHelp == true}">
+				<%@include file="help.jsp"%>
+			</c:if>
 
 			<!-- Loading the view products content -->
 			<c:if

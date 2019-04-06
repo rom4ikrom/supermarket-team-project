@@ -7,6 +7,7 @@ import net.romanov.supermarketbackend.dto.Address;
 import net.romanov.supermarketbackend.dto.Cart;
 import net.romanov.supermarketbackend.dto.CartLine;
 import net.romanov.supermarketbackend.dto.OrderDetail;
+import net.romanov.supermarketbackend.dto.PaymentDetails;
 import net.romanov.supermarketbackend.dto.User;
 
 public class CheckoutModel implements Serializable{
@@ -22,6 +23,9 @@ public class CheckoutModel implements Serializable{
 	private List<CartLine> cartLines;
 	private OrderDetail orderDetail;
 	private double checkoutTotal;
+	
+	private PaymentDetails currentPD;
+	
 	public User getUser() {
 		return user;
 	}
@@ -57,6 +61,13 @@ public class CheckoutModel implements Serializable{
 	}
 	public void setCheckoutTotal(double checkoutTotal) {
 		this.checkoutTotal = checkoutTotal;
+	}
+	
+	public PaymentDetails getCurrentPD() {
+		return currentPD;
+	}
+	public void setCurrentPD(PaymentDetails currentPD) {
+		this.currentPD = currentPD;
 	}
 	
 	@Override
