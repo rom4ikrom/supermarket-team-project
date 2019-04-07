@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import net.romanov.supermarket.model.UserModel;
+import net.romanov.supermarketbackend.dao.SupplierDAO;
 import net.romanov.supermarketbackend.dao.UserDAO;
+import net.romanov.supermarketbackend.dto.Supplier;
 import net.romanov.supermarketbackend.dto.User;
 
 @ControllerAdvice
@@ -20,6 +22,9 @@ public class GlobalController {
 	
 	@Autowired
 	private UserDAO userDAO;
+	
+	@Autowired
+	private SupplierDAO supplierDAO;
 	
 	private UserModel userModel;
 	
@@ -32,6 +37,7 @@ public class GlobalController {
 			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 			
 			User user = userDAO.getByEmail(authentication.getName());
+			
 			if(user != null) {
 				
 				//create a new UserModel to pass the user details
@@ -48,6 +54,25 @@ public class GlobalController {
 					userModel.setCart(user.getCart());
 					
 				}
+				
+				//set the userModel in the session
+				session.setAttribute("userModel", userModel);
+				
+				return userModel;
+				
+			}
+			
+			//get the supplier
+			Supplier supplier = supplierDAO.getByEmail(authentication.getName());
+			
+			if(supplier != null) {
+				
+				userModel = new UserModel();
+				
+				userModel.setId(supplier.getId());
+				userModel.setEmail(supplier.getEmail());
+				userModel.setRole(supplier.getRole());
+				userModel.setFullName(supplier.getFirstName() + " " + supplier.getLastName());
 				
 				//set the userModel in the session
 				session.setAttribute("userModel", userModel);

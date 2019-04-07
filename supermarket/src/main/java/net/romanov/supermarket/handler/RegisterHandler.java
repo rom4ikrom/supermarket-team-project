@@ -7,6 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import net.romanov.supermarket.model.RegisterModel;
+import net.romanov.supermarketbackend.dao.SupplierDAO;
 import net.romanov.supermarketbackend.dao.UserDAO;
 import net.romanov.supermarketbackend.dto.Address;
 import net.romanov.supermarketbackend.dto.Cart;
@@ -17,6 +18,9 @@ public class RegisterHandler {
 	
 	@Autowired
 	private UserDAO userDAO;
+	
+	@Autowired
+	private SupplierDAO supplierDAO;
 	
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
@@ -52,13 +56,12 @@ public class RegisterHandler {
 		
 		//check uniqueness of email id
 		
-		if(userDAO.getByEmail(user.getEmail()) != null) {
+		if(userDAO.getByEmail(user.getEmail()) != null || supplierDAO.getByEmail(user.getEmail()) != null) {
 			
 			error.addMessage(new MessageBuilder().error().source("email")
 					.defaultText("Email address is already used!").build());
 			
 			transitionValue = "failure";
-			
 		}
 		
 		return transitionValue;

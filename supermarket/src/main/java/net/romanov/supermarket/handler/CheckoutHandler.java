@@ -27,6 +27,8 @@ import net.romanov.supermarketbackend.dto.OrderDetail;
 import net.romanov.supermarketbackend.dto.OrderItem;
 import net.romanov.supermarketbackend.dto.PaymentDetails;
 import net.romanov.supermarketbackend.dto.Product;
+import net.romanov.supermarketbackend.dto.Supplier;
+import net.romanov.supermarketbackend.dto.SupplierOrderItem;
 import net.romanov.supermarketbackend.dto.User;
 
 @Component
@@ -279,6 +281,28 @@ public class CheckoutHandler {
 			//reduce the quantity of product
 			product = cartLine.getProduct();
 			product.setQuantity(product.getQuantity() - cartLine.getProductCount());
+			
+			if(product.getQuantity() < 1) {
+				product.setActive(false);
+			}
+			
+			//add trigger to insert a new row to supplier_order_item table if quantity of product less than 5
+			if(product.getQuantity() < 3) {
+				
+				if(productDAO.getSupOrderItemByProductId(product.getId()) == null) {
+					
+					SupplierOrderItem supOrderItem = new SupplierOrderItem();
+					
+					supOrderItem.setProductId(product.getId());
+					supOrderItem.setSupplierId(product.getSupplierId());
+					supOrderItem.setSupOrderDate(new Date());
+					supOrderItem.setQuantity(7);
+					
+					productDAO.addSupOrderItem(supOrderItem);
+				}
+
+			}
+			
 			product.setPurchases(product.getPurchases() + cartLine.getProductCount());
 			productDAO.update(product);
 

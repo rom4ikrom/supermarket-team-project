@@ -48,7 +48,7 @@ public class Product implements Serializable {
 	@Min(value=1, message="The price cannot be less than 1!")
 	private double price;
 	
-	@Min(value=1, message="The quantity cannot be less than 1!")
+	@Min(value=0, message="The quantity cannot be less than 0!")
 	private int quantity;
 	
 //	@Type(type="boolean") //ojdbc
@@ -61,6 +61,9 @@ public class Product implements Serializable {
 	@JsonIgnore
 	@Column(name="region_id")
 	private int regionId;
+	
+	@Column(name = "supplier_id")
+	private int supplierId;
 
 	private int purchases;
 	private int views;
@@ -142,6 +145,12 @@ public class Product implements Serializable {
 	}
 	public void setRegionId(int regionId) {
 		this.regionId = regionId;
+	}
+	public int getSupplierId() {
+		return supplierId;
+	}
+	public void setSupplierId(int supplierId) {
+		this.supplierId = supplierId;
 	}
 	public int getPurchases() {
 		return purchases;

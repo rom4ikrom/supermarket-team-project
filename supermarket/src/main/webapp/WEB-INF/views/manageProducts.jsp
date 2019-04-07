@@ -73,6 +73,7 @@
 					<sf:input class="form-input" path="country" type="text" placeholder="Country" name="country"/>
 
 					<label for="regionId">Select Region</label>
+					
 					<div class="select-style">
 					
 					<sf:select path="regionId" 
@@ -83,6 +84,20 @@
 					</sf:select>
 					
 					</div>
+					
+					<label for="supplierId">Select Supplier</label>
+					
+					<div class="select-style">
+					
+					<sf:select path="supplierId" 
+							id="supplierId" 
+							items="${suppliers}" 
+							itemLabel="companyName" 
+							itemValue="id">
+					</sf:select>
+					
+					</div>
+					
 				</div>
 			</div><!-- End of row -->
 

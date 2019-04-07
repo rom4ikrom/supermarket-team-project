@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import net.romanov.supermarketbackend.dao.ProductDAO;
 import net.romanov.supermarketbackend.dto.Product;
+import net.romanov.supermarketbackend.dto.SupplierOrderItem;
 
 @Repository("productDAO")
 @Transactional
@@ -117,6 +118,33 @@ public class ProductDAOImpl implements ProductDAO {
 				.setParameter("regionId", id)
 				.setMaxResults(count)
 				.getResultList();
+		
+	}
+
+	@Override
+	public boolean addSupOrderItem(SupplierOrderItem supOrderItem) {
+		try {
+			sessionFactory.getCurrentSession().persist(supOrderItem);
+			return true;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public SupplierOrderItem getSupOrderItemByProductId(int productId) {
+		
+		String query = "FROM SupplierOrderItem WHERE product_id = :productId";
+		
+		try {
+			return sessionFactory.getCurrentSession()
+					.createQuery(query, SupplierOrderItem.class)
+					.setParameter("productId", productId)
+					.getSingleResult();
+		} catch (Exception ex) {
+			return null;
+		}
 		
 	}
 
