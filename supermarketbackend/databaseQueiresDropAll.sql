@@ -1,4 +1,3 @@
-drop table payment_details;
 drop table order_item;
 drop table cart_line;
 

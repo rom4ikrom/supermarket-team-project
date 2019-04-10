@@ -55,7 +55,6 @@ public class RegisterHandler {
 		}
 		
 		//check uniqueness of email id
-		
 		if(userDAO.getByEmail(user.getEmail()) != null || supplierDAO.getByEmail(user.getEmail()) != null) {
 			
 			error.addMessage(new MessageBuilder().error().source("email")

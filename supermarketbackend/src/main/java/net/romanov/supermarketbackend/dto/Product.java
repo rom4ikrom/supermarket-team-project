@@ -29,10 +29,10 @@ public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) // h2 database
-//	@Column(name = "ID") //ojdbc
-//	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence") //ojdbc
-//	@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ") //ojdbc
+//	@GeneratedValue(strategy = GenerationType.IDENTITY) // h2 database
+	@Column(name = "ID") //ojdbc
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence") //ojdbc
+	@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ") //ojdbc
 	private int id;
 	
 	@NotBlank(message = "Enter the Fruit Name!")
@@ -51,7 +51,7 @@ public class Product implements Serializable {
 	@Min(value=0, message="The quantity cannot be less than 0!")
 	private int quantity;
 	
-//	@Type(type="boolean") //ojdbc
+	@Type(type="boolean") //ojdbc
 	@Column(name="is_active")
 	private boolean isActive;
 	
