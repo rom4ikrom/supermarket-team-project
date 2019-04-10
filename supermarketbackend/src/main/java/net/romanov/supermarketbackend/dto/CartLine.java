@@ -23,10 +23,10 @@ public class CartLine implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY) //h2 database
-	@Column(name = "ID") //ojdbc
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence") //ojdbc
-	@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ") //ojdbc
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //h2 database
+//	@Column(name = "ID") //ojdbc
+//	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence") //ojdbc
+//	@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ") //ojdbc
 	private int id;
 	
 	@OneToOne
@@ -43,7 +43,7 @@ public class CartLine implements Serializable{
 	@Column(name = "buying_price")
 	private double buyingPrice;
 	
-	@Type(type = "boolean") //ojdbc
+//	@Type(type = "boolean") //ojdbc
 	@Column(name = "is_available")
 	private boolean available = true;
 

@@ -23,10 +23,10 @@ public class Supplier implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY) //h2 database
-	@Column(name = "ID") //ojdbc
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence") //ojdbc
-	@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ") //ojdbc
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //h2 database
+//	@Column(name = "ID") //ojdbc
+//	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence") //ojdbc
+//	@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ") //ojdbc
 	private int id;
 	
 	@Column(name = "company_name")
@@ -54,7 +54,7 @@ public class Supplier implements Serializable{
 
 	private String password;
 	
-	@Type(type = "boolean") //ojdbc
+//	@Type(type = "boolean") //ojdbc
 	private boolean enabled;
 
 	public int getId() {

@@ -22,15 +22,15 @@ public class Region implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY) //h2 database
-	@Column(name = "ID") //ojdbc
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence") //ojdbc
-	@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ") //ojdbc
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //h2 database
+//	@Column(name = "ID") //ojdbc
+//	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence") //ojdbc
+//	@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ") //ojdbc
 	private int id;
 	
 	private String name;
 	
-	@Type(type="boolean") //ojdbc
+//	@Type(type="boolean") //ojdbc
 	@Column(name = "is_active")
 	private boolean active = true;
 
