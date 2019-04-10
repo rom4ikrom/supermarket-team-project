@@ -98,31 +98,16 @@ CREATE TABLE cart_line (
 	CONSTRAINT pk_cartline_id PRIMARY KEY (id)
 );
 
--- payment details table
-CREATE TABLE payment_details (
-	id IDENTITY,
-	user_id int,
-	card_number VARCHAR(25),
-	card_name VARCHAR(255),
-	expiry_date date,
-	cvv VARCHAR(10),
-	is_active boolean,
-	CONSTRAINT fk_payment_details_user_id FOREIGN KEY (user_id) REFERENCES user_detail (id),
-	CONSTRAINT pk_payment_details_id PRIMARY KEY (id)
-);
-
 -- the order detail table to store the order
 CREATE TABLE order_detail (
 	id IDENTITY,
 	user_id int,
-	payment_details_id int,
 	order_total DECIMAL(10,2),
 	order_count int,
 	shipping_id int,
 	billing_id int,
 	order_date date,
 	CONSTRAINT fk_order_detail_user_id FOREIGN KEY (user_id) REFERENCES user_detail (id),
-	CONSTRAINT fk_order_detail_payment_details_id FOREIGN KEY (payment_details_id) REFERENCES payment_details (id),
 	CONSTRAINT fk_order_detail_shipping_id FOREIGN KEY (shipping_id) REFERENCES address (id),
 	CONSTRAINT fk_order_detail_billing_id FOREIGN KEY (billing_id) REFERENCES address (id),
 	CONSTRAINT pk_order_detail_id PRIMARY KEY (id)
@@ -145,20 +130,18 @@ CREATE TABLE order_item (
 -- adding user details
 INSERT INTO user_detail (first_name, last_name, role, email, tel, password, hint, enabled)
 VALUES ('Roman', 'Romanov', 'ADMIN', 'admin@gmail.com', '1234567890', '$2a$10$wwmTKnYUjuck0vFsJznRa.NxJ9MbIuB0fYYtq9vfr.ogkSTmaxrQK', '12345', true);
-INSERT INTO user_detail (first_name, last_name, role, email, tel, password, hint, enabled)
-VALUES ('Roman', 'Romanov', 'USER', 'user@gmail.com', '1234567890', '$2a$10$LmQjCzngF8bzQa0lwqGgNOL2D.j5uWeaRZLujSX04redMpN0P7Pe6', '12345', true);
 
 -- adding supplier details
 INSERT INTO supplier_detail (company_name, first_name, last_name, role, email, tel, password, enabled)
-VALUES ('Company1', 'Roman', 'Sup1', 'SUP', 'sup1@gmail.com', '1234567890', '$2a$10$wwmTKnYUjuck0vFsJznRa.NxJ9MbIuB0fYYtq9vfr.ogkSTmaxrQK', true);
+VALUES ('Company1', 'Supplier', '1', 'SUP', 'sup1@gmail.com', '1234567890', '$2a$10$wwmTKnYUjuck0vFsJznRa.NxJ9MbIuB0fYYtq9vfr.ogkSTmaxrQK', true);
 INSERT INTO supplier_detail (company_name, first_name, last_name, role, email, tel, password, enabled)
-VALUES ('Company2', 'Roman', 'Sup2', 'SUP', 'sup2@gmail.com', '1234567890', '$2a$10$wwmTKnYUjuck0vFsJznRa.NxJ9MbIuB0fYYtq9vfr.ogkSTmaxrQK', true);
+VALUES ('Company2', 'Supplier', '2', 'SUP', 'sup2@gmail.com', '1234567890', '$2a$10$wwmTKnYUjuck0vFsJznRa.NxJ9MbIuB0fYYtq9vfr.ogkSTmaxrQK', true);
 INSERT INTO supplier_detail (company_name, first_name, last_name, role, email, tel, password, enabled)
-VALUES ('Company3', 'Roman', 'Sup3', 'SUP', 'sup3@gmail.com', '1234567890', '$2a$10$wwmTKnYUjuck0vFsJznRa.NxJ9MbIuB0fYYtq9vfr.ogkSTmaxrQK', true);
+VALUES ('Company3', 'Supplier', '3', 'SUP', 'sup3@gmail.com', '1234567890', '$2a$10$wwmTKnYUjuck0vFsJznRa.NxJ9MbIuB0fYYtq9vfr.ogkSTmaxrQK', true);
 INSERT INTO supplier_detail (company_name, first_name, last_name, role, email, tel, password, enabled)
-VALUES ('Company4', 'Roman', 'Sup4', 'SUP', 'sup4@gmail.com', '1234567890', '$2a$10$wwmTKnYUjuck0vFsJznRa.NxJ9MbIuB0fYYtq9vfr.ogkSTmaxrQK', true);
+VALUES ('Company4', 'Supplier', '4', 'SUP', 'sup4@gmail.com', '1234567890', '$2a$10$wwmTKnYUjuck0vFsJznRa.NxJ9MbIuB0fYYtq9vfr.ogkSTmaxrQK', true);
 INSERT INTO supplier_detail (company_name, first_name, last_name, role, email, tel, password, enabled)
-VALUES ('Company5', 'Roman', 'Sup5', 'SUP', 'sup5@gmail.com', '1234567890', '$2a$10$wwmTKnYUjuck0vFsJznRa.NxJ9MbIuB0fYYtq9vfr.ogkSTmaxrQK', true);
+VALUES ('Company5', 'Supplier', '5', 'SUP', 'sup5@gmail.com', '1234567890', '$2a$10$wwmTKnYUjuck0vFsJznRa.NxJ9MbIuB0fYYtq9vfr.ogkSTmaxrQK', true);
 
 -- adding all regions
 INSERT INTO region (name, is_active) VALUES ('Africa', true);

@@ -47,7 +47,8 @@
 					<h3>Payment</h3>
 				</div>
 				
-				<c:if test="${not empty listPaymentDetails}">
+				<%-- used to show saved payment details --%>
+				<%-- <c:if test="${not empty listPaymentDetails}">
 				<h5>Choose Payment Method</h5>
 				
 				<c:forEach items="${listPaymentDetails}" var="paymentDetail">
@@ -70,9 +71,9 @@
 						
 					</div>
 				</c:forEach>
-				</c:if>
+				</c:if> --%>
 				
-				<h5>Add New Payment Details</h5>
+				<h5>Payment Details</h5>
 				
 				<sf:form class="form-container"
 							method="POST"

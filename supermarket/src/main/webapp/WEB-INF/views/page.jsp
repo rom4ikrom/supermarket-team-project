@@ -100,6 +100,11 @@
 				<%@include file="manageProducts.jsp"%>
 			</c:if>
 			
+			<!-- Loading the view supply product content -->
+			<c:if test="${userClickSupplyProducts == true}">
+				<%@include file="supplyProducts.jsp"%>
+			</c:if>
+			
 			<!-- Loading the view basket content -->
 			<c:if test="${userClickShowCart == true}">
 				<%@include file="cart.jsp"%>

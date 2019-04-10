@@ -114,7 +114,8 @@ public class UserDAOImpl implements UserDAO {
 			return null;
 		}
 	}
-
+	
+	/*
 	@Override
 	public List<PaymentDetails> listPaymentDetails(int userId) {
 		
@@ -131,7 +132,7 @@ public class UserDAOImpl implements UserDAO {
 		}
 		
 	}
-
+	
 	@Override
 	public PaymentDetails getPaymentDetails(int paymentId) {
 		
@@ -152,23 +153,6 @@ public class UserDAOImpl implements UserDAO {
 	public boolean addPaymentDetails(PaymentDetails paymentDetails) {
 		try {
 			
-//			EntityManager em = sessionFactory.createEntityManager();
-//			
-//			em.getTransaction().begin();
-//			ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-//			Validator validator = (Validator) factory.getValidator();
-//
-//			Set<ConstraintViolation<PaymentDetails>> constraintViolations = validator.validate(paymentDetails, null);
-//
-//			if (constraintViolations.size() > 0 ) {
-//			System.out.println("Constraint Violations occurred..");
-//			for (ConstraintViolation<PaymentDetails> contraints : constraintViolations) {
-//			System.out.println(contraints.getRootBeanClass().getSimpleName()+
-//			"." + contraints.getPropertyPath() + " " + contraints.getMessage());
-//			  }
-//			}
-//			
-//			em.persist(paymentDetails);
 			sessionFactory.getCurrentSession().persist(paymentDetails);
 			return true;
 		} catch (Exception ex) {
@@ -191,5 +175,6 @@ public class UserDAOImpl implements UserDAO {
 			return null;
 		}
 	}
+	*/
 
 }

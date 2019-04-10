@@ -41,6 +41,10 @@ $(function() {
 			$('#manageProducts').addClass('active');
 			$('#mobManageProducts').addClass('mob-active');
 			break;
+		case 'SupplyProducts':
+			$('#supplyProducts').addClass('active');
+			$('#mobSupplyProducts').addClass('mob-active');
+			break;
 		case 'AccountPersonal':
 			$('#userName').addClass('active');
 			$('#accPersonal').addClass('active');

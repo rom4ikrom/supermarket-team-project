@@ -136,7 +136,9 @@ public class CheckoutHandler {
 		return listCartLines;
 		
 	}
-
+	
+	/*
+	 * get payment details from database for logged user
 	public List<PaymentDetails> getPaymentDetails(CheckoutModel model) throws ParseException {
 
 		List<PaymentDetails> listPaymentDetails = userDAO.listPaymentDetails(model.getUser().getId());
@@ -158,7 +160,10 @@ public class CheckoutHandler {
 		return listPaymentDetails;
 
 	}
+	*/
 	
+	/*
+	 * save selected payment details to checkout model
 	public String savePaymentSelection(CheckoutModel checkoutModel, int paymentId) {
 		
 		String transitionValue = "success";
@@ -172,12 +177,15 @@ public class CheckoutHandler {
 		return transitionValue;
 		
 	}
+	*/
 	
 	
+	//method to validate payment details
 	public String validatePaymentDetails(PaymentDetails paymentDetails, MessageContext error) throws ParseException {
 		
 		String transitionValue = "success";
 		
+		/*
 		String cardNumber = paymentDetails.getCardNumber();
 		
 		if(userDAO.getPaymentByCardNumber(cardNumber) != null) {
@@ -186,6 +194,7 @@ public class CheckoutHandler {
 				
 				transitionValue = "failure";
 		}
+		*/
 		
 		String month = paymentDetails.getMonth();
 		String year = paymentDetails.getYear();
@@ -206,6 +215,10 @@ public class CheckoutHandler {
 		
 	}
 	
+	
+	
+	/*
+	 * method to save payment details to database - not a good decision
 	public String savePaymentDetails(CheckoutModel model, PaymentDetails paymentDetails) {
 		String transitionValue = "success";
 		
@@ -237,7 +250,8 @@ public class CheckoutHandler {
 		return transitionValue;
 		
 	}
-
+	*/
+	
 	public String saveOrder(CheckoutModel cModel) {
 
 		String transitionValue = "success";
@@ -316,12 +330,7 @@ public class CheckoutHandler {
 
 		Date date = new Date();
 
-		//DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy"); 
-
-		//String strDate = dateFormat.format(date); 
-
 		orderDetail.setOrderDate(date);
-		orderDetail.setPaymentDetails(cModel.getCurrentPD());
 
 		//save the order
 		cartLineDAO.addOrderDetail(orderDetail);

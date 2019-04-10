@@ -20,6 +20,12 @@
         </li>
         </security:authorize>
         
+        <security:authorize access="hasAuthority('SUP')">
+        <li>
+          <a id="supplyProducts" href="${contextRoot}/supply/products">Supply Products</a>
+        </li>
+        </security:authorize>
+        
         <security:authorize access="hasAuthority('USER')">
         <li class="nav_right">
           <a id="basket" style="margin-right: 0;" href="${contextRoot}/cart/show">Cart</a>
@@ -61,6 +67,10 @@ is less then 771px -->
   
   <security:authorize access="hasAuthority('ADMIN')">
   	<a id="mobManageProducts" href="${contextRoot}/manage/products">Manage Products</a>
+  </security:authorize>
+  
+  <security:authorize access="hasAuthority('SUP')">
+  	<a id="mobSupplyProducts" href="${contextRoot}/supply/products">Supply Products</a>
   </security:authorize>
   
   <security:authorize access="isAnonymous()">
