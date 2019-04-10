@@ -189,6 +189,19 @@ public class ManagementController {
 			"You have sussesfully activated the product with id " + product.getId();
 	}
 	
+	//view manage suppliers page
+	@RequestMapping(value = {"/suppliers"})
+	public ModelAndView showManageSuppliers() {
+		
+		ModelAndView mv = new ModelAndView("page");
+		
+		mv.addObject("title", "SupplierManagement");
+		mv.addObject("userClickManageSuppliers", true);
+		
+		return mv;
+		
+	}
+	
 	@ModelAttribute("regions")
 	public List<Region> modelRegions() {
 		return regionDAO.list();
@@ -196,7 +209,7 @@ public class ManagementController {
 	
 	@ModelAttribute("suppliers")
 	public List<Supplier> modelSuppliers() {
-		return supplierDAO.list();	
+		return supplierDAO.listActive();	
 	}
 
 }

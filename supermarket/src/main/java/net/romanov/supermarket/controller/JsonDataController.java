@@ -1,17 +1,22 @@
 package net.romanov.supermarket.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import net.romanov.supermarket.model.SupplierProductModel;
 import net.romanov.supermarketbackend.dao.ProductDAO;
-import net.romanov.supermarketbackend.dao.UserDAO;
+import net.romanov.supermarketbackend.dao.SupplierDAO;
 import net.romanov.supermarketbackend.dto.Product;
-import net.romanov.supermarketbackend.dto.User;
+import net.romanov.supermarketbackend.dto.Supplier;
+import net.romanov.supermarketbackend.dto.SupplierOrderItem;
 
 @Controller
 @RequestMapping("/json/data")
@@ -21,7 +26,7 @@ public class JsonDataController {
 	private ProductDAO productDAO;
 	
 	@Autowired
-	private UserDAO userDAO;
+	private SupplierDAO supplierDAO;
 	
 	@RequestMapping("/all/products")
 	@ResponseBody
@@ -39,6 +44,12 @@ public class JsonDataController {
 	@ResponseBody
 	public List<Product> getAllProductsForAdmin() {
 		return productDAO.list();
+	}
+	
+	@RequestMapping("/admin/all/suppliers")
+	@ResponseBody
+	public List<Supplier> getAllSuppliersForAdmin() {
+		return supplierDAO.listAll();
 	}
 	
 	@RequestMapping("/europe/mv/products")
@@ -59,11 +70,76 @@ public class JsonDataController {
 		return productDAO.getProductsByRegion(7, 3);
 	}
 	
-//	@RequestMapping("/user/personal")
-//	@ResponseBody
-//	public User getUserPersonalDetails() {
-//		return userDAO.getUserInfo();
-//	}
+	@RequestMapping("/supply/all/products")
+	@ResponseBody
+	public List<SupplierProductModel> getAllSupplierProducts() {
+		
+		List<SupplierOrderItem> suppItems = supplierDAO.getAllSupplierProducts();
+		
+		List<SupplierProductModel> suppProductModelList = new ArrayList<>();
+		
+		if(suppItems != null) {
+			
+			for(SupplierOrderItem suppItem : suppItems) {
+				
+				Product product = productDAO.get(suppItem.getProductId());
+				
+				SupplierProductModel supProductModel = new SupplierProductModel();
+				
+				supProductModel.setName(product.getName());
+				supProductModel.setVariety(product.getVariety());
+				supProductModel.setQuantity(suppItem.getQuantity());
+				supProductModel.setCountry(product.getCountry());
+				
+				Supplier supplier = supplierDAO.getById(suppItem.getSupplierId());
+				
+				supProductModel.setCompanyName(supplier.getCompanyName());
+				supProductModel.setDate(suppItem.getSupOrderDate().toString());
+				
+				suppProductModelList.add(supProductModel);
+			}
+			
+		}
+		
+		return suppProductModelList;
+		
+	}
 	
+	@RequestMapping("/supply/products")
+	@ResponseBody
+	public List<SupplierProductModel> getSupplierProductsBySupEmail() {
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		
+		String email = auth.getName();
+		
+		Supplier supplier = supplierDAO.getByEmail(email);
+		
+		int id = supplier.getId();
+		
+		List<SupplierOrderItem> suppItems = supplierDAO.getSupplierProductsBySupId(id);
+		
+		List<SupplierProductModel> suppProductModelList = new ArrayList<>();
+		
+		if(suppItems != null) {
+			for(SupplierOrderItem suppItem : suppItems) {
+				
+				Product product = productDAO.get(suppItem.getProductId());
+				
+				SupplierProductModel supProductModel = new SupplierProductModel();
+				
+				supProductModel.setName(product.getName());
+				supProductModel.setVariety(product.getVariety());
+				supProductModel.setQuantity(suppItem.getQuantity());
+				supProductModel.setCountry(product.getCountry());
+				
+				supProductModel.setDate(suppItem.getSupOrderDate().toString());
+				
+				suppProductModelList.add(supProductModel);
+			}
+		}
 
+		return suppProductModelList;
+	}
+	
 }

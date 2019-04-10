@@ -80,4 +80,10 @@ public class SupplierOrderItem implements Serializable {
 		this.supOrderDate = supOrderDate;
 	}
 
+	@Override
+	public String toString() {
+		return "SupplierOrderItem [id=" + id + ", productId=" + productId + ", supplierId=" + supplierId + ", quantity="
+				+ quantity + ", supOrderDate=" + supOrderDate + "]";
+	}
+
 }

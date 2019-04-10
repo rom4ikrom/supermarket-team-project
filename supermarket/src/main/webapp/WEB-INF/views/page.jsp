@@ -100,6 +100,11 @@
 				<%@include file="manageProducts.jsp"%>
 			</c:if>
 			
+			<!-- Loading the view manage suppliers content -->
+			<c:if test="${userClickManageSuppliers == true}">
+				<%@include file="manageSuppliers.jsp"%>
+			</c:if>
+			
 			<!-- Loading the view supply product content -->
 			<c:if test="${userClickSupplyProducts == true}">
 				<%@include file="supplyProducts.jsp"%>

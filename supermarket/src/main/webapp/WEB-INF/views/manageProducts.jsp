@@ -3,12 +3,19 @@
 <section>
 	<div class="container">
 
+		<!-- Navigation -->
+		<%@include file="./shared/adminNavBar.jsp"%>	
+			
+		<div class="text-center">
+			<h3>Product Management</h3>
+		</div>
+		
 		<!-- Form elements -->
 		<sf:form modelAttribute="product"
 			action="${contextRoot}/manage/products" method="POST"
 			enctype="multipart/form-data"
 			class="form-manage-products">
-			<h3>Product Management</h3>
+			
 			<div class="row">
 			
 				<c:if test="${not empty message}">

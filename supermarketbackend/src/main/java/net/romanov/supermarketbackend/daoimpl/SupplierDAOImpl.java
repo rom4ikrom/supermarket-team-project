@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import net.romanov.supermarketbackend.dao.SupplierDAO;
 import net.romanov.supermarketbackend.dto.Supplier;
+import net.romanov.supermarketbackend.dto.SupplierOrderItem;
 
 @Repository("supplierDAO")
 @Transactional
@@ -34,10 +35,26 @@ public class SupplierDAOImpl implements SupplierDAO {
 		}
 		
 	}
+	
+	@Override
+	public Supplier getById(int id) {
+		
+		String selectQuery = "FROM Supplier WHERE id = :id";
+		try {
+			return sessionFactory
+					.getCurrentSession()
+					.createQuery(selectQuery, Supplier.class)
+					.setParameter("id", id)
+					.getSingleResult();
+		} catch(Exception ex) {
+			return null;
+		}
+		
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Supplier> list() {
+	public List<Supplier> listActive() {
 		
 		String selectActiveRegion = "FROM Supplier WHERE enabled = :active";
 		
@@ -47,6 +64,42 @@ public class SupplierDAOImpl implements SupplierDAO {
 		
 		return query.getResultList();
 		
+	}
+	
+	@Override
+	public List<Supplier> listAll() {
+
+		String selectQuery = "FROM Supplier";
+		try {
+			return sessionFactory
+					.getCurrentSession()
+					.createQuery(selectQuery, Supplier.class)
+					.getResultList();
+		} catch(Exception ex) {
+			return null;
+		}
+	}
+
+	@Override
+	public List<SupplierOrderItem> getAllSupplierProducts() {
+		
+		String selectQuery = "FROM SupplierOrderItem";
+		
+		return sessionFactory.getCurrentSession()
+				.createQuery(selectQuery, SupplierOrderItem.class)
+				.getResultList();
+		
+	}
+
+	@Override
+	public List<SupplierOrderItem> getSupplierProductsBySupId(int id) {
+		
+		String selectQuery = "FROM SupplierOrderItem WHERE supplierId = :id";
+		
+		return sessionFactory.getCurrentSession()
+				.createQuery(selectQuery, SupplierOrderItem.class)
+				.setParameter("id", id)
+				.getResultList();
 	}
 
 }

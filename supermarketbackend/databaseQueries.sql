@@ -133,15 +133,15 @@ VALUES ('Roman', 'Romanov', 'ADMIN', 'admin@gmail.com', '1234567890', '$2a$10$ww
 
 -- adding supplier details
 INSERT INTO supplier_detail (company_name, first_name, last_name, role, email, tel, password, enabled)
-VALUES ('Company1', 'Supplier', '1', 'SUP', 'sup1@gmail.com', '1234567890', '$2a$10$wwmTKnYUjuck0vFsJznRa.NxJ9MbIuB0fYYtq9vfr.ogkSTmaxrQK', true);
+VALUES ('Company 1', 'Supplier', '1', 'SUP', 'sup1@gmail.com', '1234567890', '$2a$10$wwmTKnYUjuck0vFsJznRa.NxJ9MbIuB0fYYtq9vfr.ogkSTmaxrQK', true);
 INSERT INTO supplier_detail (company_name, first_name, last_name, role, email, tel, password, enabled)
-VALUES ('Company2', 'Supplier', '2', 'SUP', 'sup2@gmail.com', '1234567890', '$2a$10$wwmTKnYUjuck0vFsJznRa.NxJ9MbIuB0fYYtq9vfr.ogkSTmaxrQK', true);
+VALUES ('Company 2', 'Supplier', '2', 'SUP', 'sup2@gmail.com', '1234567890', '$2a$10$wwmTKnYUjuck0vFsJznRa.NxJ9MbIuB0fYYtq9vfr.ogkSTmaxrQK', true);
 INSERT INTO supplier_detail (company_name, first_name, last_name, role, email, tel, password, enabled)
-VALUES ('Company3', 'Supplier', '3', 'SUP', 'sup3@gmail.com', '1234567890', '$2a$10$wwmTKnYUjuck0vFsJznRa.NxJ9MbIuB0fYYtq9vfr.ogkSTmaxrQK', true);
+VALUES ('Company 3', 'Supplier', '3', 'SUP', 'sup3@gmail.com', '1234567890', '$2a$10$wwmTKnYUjuck0vFsJznRa.NxJ9MbIuB0fYYtq9vfr.ogkSTmaxrQK', true);
 INSERT INTO supplier_detail (company_name, first_name, last_name, role, email, tel, password, enabled)
-VALUES ('Company4', 'Supplier', '4', 'SUP', 'sup4@gmail.com', '1234567890', '$2a$10$wwmTKnYUjuck0vFsJznRa.NxJ9MbIuB0fYYtq9vfr.ogkSTmaxrQK', true);
+VALUES ('Company 4', 'Supplier', '4', 'SUP', 'sup4@gmail.com', '1234567890', '$2a$10$wwmTKnYUjuck0vFsJznRa.NxJ9MbIuB0fYYtq9vfr.ogkSTmaxrQK', true);
 INSERT INTO supplier_detail (company_name, first_name, last_name, role, email, tel, password, enabled)
-VALUES ('Company5', 'Supplier', '5', 'SUP', 'sup5@gmail.com', '1234567890', '$2a$10$wwmTKnYUjuck0vFsJznRa.NxJ9MbIuB0fYYtq9vfr.ogkSTmaxrQK', true);
+VALUES ('Company 5', 'Supplier', '5', 'SUP', 'sup5@gmail.com', '1234567890', '$2a$10$wwmTKnYUjuck0vFsJznRa.NxJ9MbIuB0fYYtq9vfr.ogkSTmaxrQK', true);
 
 -- adding all regions
 INSERT INTO region (name, is_active) VALUES ('Africa', true);
