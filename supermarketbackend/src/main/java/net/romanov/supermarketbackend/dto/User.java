@@ -62,7 +62,7 @@ public class User implements Serializable{
 	@NotBlank(message = "Please enter Password Hint!")
 	private String hint;
 	
-//	@Type(type = "boolean") //ojdbc
+	@Type(type = "boolean") //ojdbc
 	private boolean enabled;
 	
 	@Transient
