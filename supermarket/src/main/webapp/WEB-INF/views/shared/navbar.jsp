@@ -16,7 +16,13 @@
         
         <security:authorize access="hasAuthority('ADMIN')">
         <li>
-          <a id="manageProducts" href="${contextRoot}/manage/products">Manage Products</a>
+          <a id="manage" href="${contextRoot}/manage/products">Manage</a>
+        </li>
+        </security:authorize>
+        
+        <security:authorize access="hasAuthority('SUP')">
+        <li>
+          <a id="supplyProducts" href="${contextRoot}/supply/products">Supply Products</a>
         </li>
         </security:authorize>
         
@@ -60,7 +66,11 @@ is less then 771px -->
   <a id="mobAboutUs" href="${contextRoot}/about">About Us</a>
   
   <security:authorize access="hasAuthority('ADMIN')">
-  	<a id="mobManageProducts" href="${contextRoot}/manage/products">Manage Products</a>
+  	<a id="mobManage" href="${contextRoot}/manage/products">Manage</a>
+  </security:authorize>
+  
+  <security:authorize access="hasAuthority('SUP')">
+  	<a id="mobSupplyProducts" href="${contextRoot}/supply/products">Supply Products</a>
   </security:authorize>
   
   <security:authorize access="isAnonymous()">

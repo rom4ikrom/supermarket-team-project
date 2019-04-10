@@ -27,6 +27,8 @@ import net.romanov.supermarketbackend.dto.OrderDetail;
 import net.romanov.supermarketbackend.dto.OrderItem;
 import net.romanov.supermarketbackend.dto.PaymentDetails;
 import net.romanov.supermarketbackend.dto.Product;
+import net.romanov.supermarketbackend.dto.Supplier;
+import net.romanov.supermarketbackend.dto.SupplierOrderItem;
 import net.romanov.supermarketbackend.dto.User;
 
 @Component
@@ -134,7 +136,9 @@ public class CheckoutHandler {
 		return listCartLines;
 		
 	}
-
+	
+	/*
+	 * get payment details from database for logged user
 	public List<PaymentDetails> getPaymentDetails(CheckoutModel model) throws ParseException {
 
 		List<PaymentDetails> listPaymentDetails = userDAO.listPaymentDetails(model.getUser().getId());
@@ -156,7 +160,10 @@ public class CheckoutHandler {
 		return listPaymentDetails;
 
 	}
+	*/
 	
+	/*
+	 * save selected payment details to checkout model
 	public String savePaymentSelection(CheckoutModel checkoutModel, int paymentId) {
 		
 		String transitionValue = "success";
@@ -170,12 +177,15 @@ public class CheckoutHandler {
 		return transitionValue;
 		
 	}
+	*/
 	
 	
+	//method to validate payment details
 	public String validatePaymentDetails(PaymentDetails paymentDetails, MessageContext error) throws ParseException {
 		
 		String transitionValue = "success";
 		
+		/*
 		String cardNumber = paymentDetails.getCardNumber();
 		
 		if(userDAO.getPaymentByCardNumber(cardNumber) != null) {
@@ -184,6 +194,7 @@ public class CheckoutHandler {
 				
 				transitionValue = "failure";
 		}
+		*/
 		
 		String month = paymentDetails.getMonth();
 		String year = paymentDetails.getYear();
@@ -204,6 +215,10 @@ public class CheckoutHandler {
 		
 	}
 	
+	
+	
+	/*
+	 * method to save payment details to database - not a good decision
 	public String savePaymentDetails(CheckoutModel model, PaymentDetails paymentDetails) {
 		String transitionValue = "success";
 		
@@ -235,7 +250,8 @@ public class CheckoutHandler {
 		return transitionValue;
 		
 	}
-
+	*/
+	
 	public String saveOrder(CheckoutModel cModel) {
 
 		String transitionValue = "success";
@@ -279,6 +295,28 @@ public class CheckoutHandler {
 			//reduce the quantity of product
 			product = cartLine.getProduct();
 			product.setQuantity(product.getQuantity() - cartLine.getProductCount());
+			
+			if(product.getQuantity() < 1) {
+				product.setActive(false);
+			}
+			
+			//add trigger to insert a new row to supplier_order_item table if quantity of product less than 5
+			if(product.getQuantity() < 3) {
+				
+				if(productDAO.getSupOrderItemByProductId(product.getId()) == null) {
+					
+					SupplierOrderItem supOrderItem = new SupplierOrderItem();
+					
+					supOrderItem.setProductId(product.getId());
+					supOrderItem.setSupplierId(product.getSupplierId());
+					supOrderItem.setSupOrderDate(new Date());
+					supOrderItem.setQuantity(7);
+					
+					productDAO.addSupOrderItem(supOrderItem);
+				}
+
+			}
+			
 			product.setPurchases(product.getPurchases() + cartLine.getProductCount());
 			productDAO.update(product);
 
@@ -292,12 +330,7 @@ public class CheckoutHandler {
 
 		Date date = new Date();
 
-		//DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy"); 
-
-		//String strDate = dateFormat.format(date); 
-
 		orderDetail.setOrderDate(date);
-		orderDetail.setPaymentDetails(cModel.getCurrentPD());
 
 		//save the order
 		cartLineDAO.addOrderDetail(orderDetail);

@@ -38,8 +38,18 @@ $(function() {
 			$('#mobHome').addClass('mob-active');
 			break;
 		case 'ProductManagement':
-			$('#manageProducts').addClass('active');
-			$('#mobManageProducts').addClass('mob-active');
+			$('#manage').addClass('active');
+			$('#mobManage').addClass('mob-active');
+			$('#adminManageProducts').addClass('active');
+			break;
+		case 'SupplierManagement':
+			$('#manage').addClass('active');
+			$('#mobManage').addClass('mob-active');
+			$('#adminManageSuppliers').addClass('active');
+			break;
+		case 'SupplyProducts':
+			$('#supplyProducts').addClass('active');
+			$('#mobSupplyProducts').addClass('mob-active');
 			break;
 		case 'AccountPersonal':
 			$('#userName').addClass('active');
@@ -395,7 +405,7 @@ $(function() {
 	//------------------------------------------------------------
 	
 	//handling the clikc event of refresh cart button
-$('button[name="refreshCart"').click(function() {
+	$('button[name="refreshCart"').click(function() {
 		
 		//fetch the cart line id
 		var cartLineId = $(this).attr('value');
@@ -439,13 +449,108 @@ $('button[name="refreshCart"').click(function() {
 	//------------------------------------------------------
 	
 	
+	//code for supplier data table
+	var $supTable = $('#supplierProductsTable');
 	
+	if($supTable.length) {
+		
+		var jsonUrl = '';
+		
+		jsonUrl = window.contextRoot + '/json/data/supply/products';
+		
+		$supTable.DataTable({
+			
+			lengthMenu: [
+				[5, 10, 20, -1],
+				['5 Records', '10 Records', '20 Records', 'All Records']
+			],
+			pageLength: 5,
+			ajax: {
+				url: jsonUrl,
+				dataSrc: ''
+			},
+			
+			columns: [
+				{
+					data: 'name',
+				},
+				{
+					data: 'variety',
+				},
+				{
+					data: 'country',
+				},
+				{
+					data: 'quantity',
+				},
+				{
+					data: 'date',
+				},
+			]
+			
+		});
+		
+	}
 	
+	//-------------------------------------------------
 	
+	//code for manage suppliers data table
+	var $adminSupTable = $('#adminSuppliersTable');
 	
+	if($adminSupTable.length) {
+		
+		var jsonUrl = '';
+		
+		jsonUrl = window.contextRoot + '/json/data/admin/all/suppliers';
+		
+		$adminSupTable.DataTable({
+			
+			lengthMenu: [
+				[5, 10, 20, -1],
+				['5 Records', '10 Records', '20 Records', 'All Records']
+			],
+			pageLength: 5,
+			ajax: {
+				url: jsonUrl,
+				dataSrc: ''
+			},
+			
+			columns: [
+				{
+					data: 'companyName',
+				},
+				{
+					data: 'firstName',
+				},
+				{
+					data: 'lastName',
+				},
+				{
+					data: 'email',
+				},
+				{
+					data: 'tel',
+				},
+				{
+					data: 'enabled',
+					bSortable: false,
+					mRender: function(data, type, row) {
+						
+						if(data) {
+							return 'Yes';
+						} else {
+							return 'No';
+						}
+						
+					}
+				},
+			]
+			
+		});
+		
+	}
 	
-	
-	
+	//--------------------------------------------------------------
 	
 	
 	

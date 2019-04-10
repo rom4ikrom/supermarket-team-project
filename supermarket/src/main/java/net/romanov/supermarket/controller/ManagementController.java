@@ -1,5 +1,6 @@
 package net.romanov.supermarket.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,8 +24,11 @@ import net.romanov.supermarket.util.FileUploadUtility;
 import net.romanov.supermarket.validator.ProductValidator;
 import net.romanov.supermarketbackend.dao.ProductDAO;
 import net.romanov.supermarketbackend.dao.RegionDAO;
+import net.romanov.supermarketbackend.dao.SupplierDAO;
 import net.romanov.supermarketbackend.dto.Product;
 import net.romanov.supermarketbackend.dto.Region;
+import net.romanov.supermarketbackend.dto.Supplier;
+import net.romanov.supermarketbackend.dto.SupplierOrderItem;
 
 @Controller
 @RequestMapping("/manage")
@@ -37,6 +41,9 @@ public class ManagementController {
 	
 	@Autowired
 	private RegionDAO regionDAO;
+	
+	@Autowired
+	private SupplierDAO supplierDAO;
 	
 	//view manage products page
 	@RequestMapping(value = {"/products"}, method = RequestMethod.GET)
@@ -107,10 +114,54 @@ public class ManagementController {
 		
 		if(mProduct.getId() == 0) {
 			//create a new product record if id is 0
+			
+			//add trigger to insert a new row to supplier_order_item table if quantity of product less than 5
+			if(mProduct.getQuantity() < 3) {
+				
+				if(productDAO.getSupOrderItemByProductId(mProduct.getId()) == null) {
+					
+					SupplierOrderItem supOrderItem = new SupplierOrderItem();
+					
+					supOrderItem.setProductId(mProduct.getId());
+					supOrderItem.setSupplierId(mProduct.getSupplierId());
+					supOrderItem.setSupOrderDate(new Date());
+					supOrderItem.setQuantity(7);
+					
+					productDAO.addSupOrderItem(supOrderItem);
+				}
+
+			}
+			
 			productDAO.add(mProduct);
 		} else {
+			
 			//update the product if id is not 0
 			productDAO.update(mProduct);
+			
+			Product updatedProduct = productDAO.get(mProduct.getId());
+			
+			if(updatedProduct.getQuantity() < 3) {
+
+				if(productDAO.getSupOrderItemByProductId(updatedProduct.getId()) == null) {
+
+					SupplierOrderItem supOrderItem = new SupplierOrderItem();
+
+					supOrderItem.setProductId(updatedProduct.getId());
+					supOrderItem.setSupplierId(updatedProduct.getSupplierId());
+					supOrderItem.setSupOrderDate(new Date());
+					supOrderItem.setQuantity(7);
+
+					productDAO.addSupOrderItem(supOrderItem);
+				}
+				
+				if(updatedProduct.getQuantity() < 1) {
+					
+					mProduct.setActive(false);
+					productDAO.update(mProduct);
+				}
+
+			}
+	
 		}
 		
 		if(!mProduct.getFile().getOriginalFilename().equals("")) {
@@ -138,9 +189,27 @@ public class ManagementController {
 			"You have sussesfully activated the product with id " + product.getId();
 	}
 	
+	//view manage suppliers page
+	@RequestMapping(value = {"/suppliers"})
+	public ModelAndView showManageSuppliers() {
+		
+		ModelAndView mv = new ModelAndView("page");
+		
+		mv.addObject("title", "SupplierManagement");
+		mv.addObject("userClickManageSuppliers", true);
+		
+		return mv;
+		
+	}
+	
 	@ModelAttribute("regions")
 	public List<Region> modelRegions() {
 		return regionDAO.list();
+	}
+	
+	@ModelAttribute("suppliers")
+	public List<Supplier> modelSuppliers() {
+		return supplierDAO.listActive();	
 	}
 
 }
