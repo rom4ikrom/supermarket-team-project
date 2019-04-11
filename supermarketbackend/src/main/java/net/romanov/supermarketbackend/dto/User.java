@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
@@ -78,7 +79,7 @@ public class User implements Serializable{
 	@NotBlank(message = "Please enter Password Hint!")
 	private String hint;
 	
-//	@Type(type = "boolean") //ojdbc
+	@Type(type = "boolean") //ojdbc
 	private boolean enabled;
 	
 	@Transient
