@@ -1,0 +1,147 @@
+Supermarket
+
+VIEWS
+JSP Java Server Pages
+
+COMMON VIEWS
+
+1. TopBar Navigation - main navigation of website, has links to Home, View Products and About Us page for all users, Manage only for administrator,
+                        Supply Products only for Suppliers and Cart only for customers.
+2. SideBar Navigation - is consisted of list of regions on view products page.
+3. Footer - contains two links to Contact Us page and Help page.
+
+WEBSITE PAGES
+
+1. Page – is the master page for the website. Is consists of head with CSS linked stylesheets, footer with linked JS files and body with a number
+    of JSP if tests to load needed website page accordingly to user request. The test value comes from controller classes.
+2. Home page -
+3. Products - this page has a DataTable jQuery plugin to show products in a table. The table shows the following:
+                - image of the products
+                - name of fruit
+                - variety of fruit
+                - country of production
+                - price for 1kg bag
+                - quantity of bags
+                - view products button
+                - add to basket button
+  Moreover, there are 2 filter options: search option, which can be used to find product by name, variety, production country, price or quantity and
+  SideBar navigation menu which consists of a list of regions: Africa, Australia, Asia, Europe, North America, Central America, South America or All
+  together. By clicking on one of the listed regions user can view products just from this particular region. Option 'All' will show all products
+  that are available.
+
+4. Single Product Page - contains information about one product including: name, variety, country, description, price and quantity.
+5. Manage Products Page - contains the form to add a new product or edit information about existing one, and a table with all products
+                          on the website.
+6. About Us Page - contains a small paragraph about company history, founders of the website, map with shop location and contact details.
+7. Contact Us Page - has a simple contact us form where users can leave some ideas or feedback.
+8. Customer Login - allows user login into account.
+
+VIEW FLOWS
+
+A flow encapsulates a reusable sequence of steps that can execute in different contexts.
+
+1. Register Flow - has 3 steps / pages to create an account: Personal flow, where a user can enter personal details, contact details together with
+                    chosen password; Address flow, where the user can enter billing address; Confirm page, where the user can check all
+                    previously entered details before confirm.
+2. Checkout Flow - has 3 steps / pages to place an order: Cart page, where a user can view all products in the cart, change the quantity or
+                  some products, and update the total price. The next step is Address page, where the user should choose a shipping address. It can
+                  be either existing billing address or add a new shipping address. Then, there is Payment page, where the user can see all the
+                  products he/she is buying and payment details form to enter card details. The last step, the order confirm page, where the user
+                  can see shipping address, billing address and order total.
+
+Assests Folder - has the following 3 folders:
+  - css - contains custom and linked css files;
+  - js - contains custom and linked JavaScript files;
+  - img - contains header images for some website pages, social media icons and all images for products.
+
+PACKAGES
+
+Controller Package - maps the URL
+
+1. Page Controller - this class is responsible to render the necessary view/page upon user request for guest and authorised users.
+2. Management Controller - this class is responsible to render the necessary view/page only for administrator.
+3. Supplier Controller - this class is responsible to render the necessary view/page only for supplier.
+4. JSON Data Controller - is used to return JSON data files from database. These JSON files are used for displaying in DataTables. For example,
+                          in product table on View Products and Manage Products pages, suppliers table on Manage Suppliers page.
+5. Global Controller - saves current logged user's information into the user model for the current session.
+6. Cart Controller - this class is responsible to render the current of view of user's cart and show the latest updates of cart lines
+                      using CartService methods before proceeding to checkout.
+
+Exception Package
+
+1. Product Not Found Exception - custom exception to show that required product does not exist on the website.
+2. Global Default Exception Handler - renders the custom error pages, when the user manually enter the wrong URL, or when the user does not have
+                                      rights to view admin or supplier pages, or when the product does not exist.
+
+Handler Package
+
+1. Register Handler - validates new user account for email uniqueness and saves user and address details to database.
+2. Checkout Handler - set of methods which get a list of addresses linked to the current logged user, save address selection,
+                      persist new address to the database and validate payment information.
+
+Model Package
+
+1. Register Model - custom object that consist of User object and Address object and used to persist these object to database
+                    as a result of register flow.
+2. Checkout Model - object that consist of User, Cart, OrderDetail and Address object to hold all necessary information for checkout process.
+3. UserModel - is used to hold information about current logged user for current session.
+4. SupplierProductModel - is used to hold product information and supplier information for displaying in Supply Product table only for supplier.
+
+Service Package
+
+1. Cart Service - set of add/update/delete cart lines and validate product price and product quantity methods to keep the user's cart up to date.
+
+Util Package
+
+1. File Upload Util - is used to configure path for upload image from management product form, which is available only for administrator.
+
+Validator Package
+
+1. Product Validator - validates the file extension for the file which is upload as an image for the product.
+                        The image must have either jpeg, png or gif extension.
+
+POM.XML
+Maven project automatically downloads all declared dependencies from pom.xml, which are needed for Spring MVC, Spring Security,
+database connection drives and so on.
+
+DISPATCHER-SERVLET.XML
+Declared the Spring Controller (component scan), viewResolver and flows.
+View Resolver will find all the views the the following mechanism: prefix + view name + suffix. For example: /WEB-INF/views/home.jsp
+
+SPRING-SECURITY.XML
+Declared which login page to use, which columns and tables scan to find user information and access rights to certain pages of the website.
+
+WEB.XML
+This is the configuration file of web applications in java. It instructs the servlet container (tomcat for ex.) which classes to load,
+what parameters to set in the context, and how to intercept requests coming from browsers.
+
+The following can be specified:
+  - what servlets (and filters) you want to use and what URLs you want to map them to
+  - listeners - classes that are notified when some events happen (context starts, session created, etc)
+  - configuration parameters (context-params)
+  - error pages, welcome files
+  - security constraints
+
+Spring MVC
+In Spring MVC web application, it consists of 3 standard MVC (Model, Views, Controller) components :
+
+  - Models – Domain objects that are processed by the service layer (business logic) or persistent layer (database operation).
+  - Views – Display data, normally it’s a JSP page written with the Java Standard Tag Library (JSTL).
+  - Controllers – URL mapping and interact with service layer for business processing and return a Model.
+
+DATABASE CONNECTION
+HibernateConfig - connects web application to database, scans dto package to find entities to create tables and prints out all queries to server console.
+
+DTO / DAO Pattern
+DTO (Data Transfer Object) - is used to transfer the data between classes and modules of the application.
+There are the following DTO classes:
+  User, Address, Supplier, Region, Product, Cart, CartLine, OrderDetail, OrderItem, SupplierOrderItem, PaymentDetails.
+
+DAO (DATA Access Object) - is used to to perform various CRUD operations on the database. The DAO classes
+                            provide methods for insert, delete, update and find methods.
+There are the following DAO classes:
+  UserDAO, RegionDAO, ProductDAO, CartLineDAO, SupplierDAO.
+
+Test Package
+CartLineTestCase, ProductTestCase - jUnit tests that consist of set of testing CRUD methods before using them in web application
+                                    to find and fix any problems.

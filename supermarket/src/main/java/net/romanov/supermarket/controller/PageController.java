@@ -1,6 +1,5 @@
 package net.romanov.supermarket.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,11 +21,13 @@ import net.romanov.supermarket.exception.ProductNotFoundException;
 import net.romanov.supermarketbackend.dao.CartLineDAO;
 import net.romanov.supermarketbackend.dao.ProductDAO;
 import net.romanov.supermarketbackend.dao.RegionDAO;
+import net.romanov.supermarketbackend.dao.SupplierDAO;
 import net.romanov.supermarketbackend.dao.UserDAO;
 import net.romanov.supermarketbackend.dto.Address;
 import net.romanov.supermarketbackend.dto.OrderDetail;
 import net.romanov.supermarketbackend.dto.Product;
 import net.romanov.supermarketbackend.dto.Region;
+import net.romanov.supermarketbackend.dto.Supplier;
 import net.romanov.supermarketbackend.dto.User;
 
 @Controller
@@ -45,6 +46,9 @@ public class PageController {
 	
 	@Autowired
 	private CartLineDAO cartLineDAO;
+	
+	@Autowired
+	private SupplierDAO supplierDAO;
 	
 	//view home page
 	@RequestMapping(value = {"/", "/home" , "/index"})
@@ -203,7 +207,6 @@ public class PageController {
 	}
 	
 	//account pages
-	
 	private static String getUserByEmail() {
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -224,7 +227,16 @@ public class PageController {
 		
 		User user = userDAO.getByEmail(email);
 		
-		mv.addObject("user", user);
+		if(user != null) {
+			mv.addObject("user", user);
+		}
+		
+		Supplier supplier = supplierDAO.getByEmail(email);
+		
+		if(supplier != null) {
+			mv.addObject("user", supplier);
+		}
+		
 		mv.addObject("title", "Account Personal");
 		mv.addObject("userClickAccountPersonal", true);
 		
@@ -240,14 +252,18 @@ public class PageController {
 		
 		String email = getUserByEmail();
 		
-		int userId = userDAO.getByEmail(email).getId();
+		if(userDAO.getByEmail(email) != null) {
+			
+			int userId = userDAO.getByEmail(email).getId();
+			
+			Address billing = userDAO.getBilling(userId);
+			
+			List<Address> shipping = userDAO.listShippingAddresses(userId);
+			
+			mv.addObject("billing", billing);
+			mv.addObject("listShipping", shipping);
+		}
 		
-		Address billing = userDAO.getBilling(userId);
-		
-		List<Address> shipping = userDAO.listShippingAddresses(userId);
-		
-		mv.addObject("billing", billing);
-		mv.addObject("listShipping", shipping);
 		mv.addObject("title", "Account Address");
 		mv.addObject("userClickAccountAddress", true);
 		
@@ -277,7 +293,7 @@ public class PageController {
 		
 	}
 	
-	/*
+	
 	//view staff login page
 	@RequestMapping(value = {"/admin/login"})
 	public ModelAndView adminLogin() {
@@ -290,6 +306,6 @@ public class PageController {
 		return mv;
 
 	}
-	*/
+	
 
 }

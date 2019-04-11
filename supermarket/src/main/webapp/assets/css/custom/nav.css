@@ -76,6 +76,10 @@ nav ul {
   z-index: auto;
 }
 
+.menu li:nth-last-child(2) a{
+	margin-right: 0px;
+}
+
 .menu {
   background-color: inherit;
   border: 0;

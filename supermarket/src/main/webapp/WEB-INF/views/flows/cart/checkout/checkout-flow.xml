@@ -39,33 +39,33 @@
 		<evaluate expression="checkoutHandler.getCartLines(flowScope.checkoutModel)"
 				result="viewScope.listCartLines">
 		</evaluate>
-		<evaluate expression="checkoutHandler.getPaymentDetails(flowScope.checkoutModel)"
+		<!-- <evaluate expression="checkoutHandler.getPaymentDetails(flowScope.checkoutModel)"
 				result="viewScope.listPaymentDetails">
-		</evaluate>
+		</evaluate> -->
 	</on-entry>
-		<transition on="payChosen" to="savePaymentSelection" validate="false"></transition>
+		<!-- <transition on="payChosen" to="savePaymentSelection" validate="false"></transition> -->
 		<transition on="pay" to="validatePaymentDetails"></transition>
 	</view-state>
 	
 	<!-- save payment details selection to checkout model -->
-	<action-state id="savePaymentSelection">
+	<!-- <action-state id="savePaymentSelection">
 		<evaluate expression="checkoutHandler.savePaymentSelection(flowScope.checkoutModel, requestParameters.paymentDetailsId)"/>
 		<transition on="success" to="saveOrder"></transition>
-	</action-state>
+	</action-state> -->
 	
 	<!-- validate payment details -->
 	<action-state id="validatePaymentDetails">
 		<evaluate expression="checkoutHandler.validatePaymentDetails(paymentDetails, messageContext)"></evaluate>
-		<transition on="success" to="savePaymentDetails"></transition>
+		<transition on="success" to="saveOrder"></transition>
 		<transition on="failure" to="payment"></transition>
 	</action-state>
 	
 	<!-- save payment details -->
-	<action-state id="savePaymentDetails">
+	<!-- <action-state id="savePaymentDetails">
 		<evaluate expression="checkoutHandler.savePaymentDetails(flowScope.checkoutModel, paymentDetails)"></evaluate>
 		<transition on="success" to="saveOrder"></transition>
 		<transition on="failure" to="payment"></transition>
-	</action-state>
+	</action-state> -->
 	
 	<!-- action state to save the order -->
 	<action-state id="saveOrder">

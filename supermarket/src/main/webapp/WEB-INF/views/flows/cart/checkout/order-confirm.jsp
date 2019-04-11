@@ -44,10 +44,8 @@
 
 			<div class="col-md-6">
 				<p>Payment Method:</p>
-				<c:set var = "cardNumber" value = "${orderDetail.paymentDetails.cardNumber}"></c:set>
-				<c:set var = "cardNo" value = "${fn:substring(cardNumber, 12, 16)}" />
-				<p>Card Payment: **** ${cardNo}</p>
-				<p>${orderDetail.user.email}</p>
+				<p>Card Payment</p>
+				<p>Email: ${orderDetail.user.email}</p>
 			</div>
 
 			<div class="col-md-6 text-right">

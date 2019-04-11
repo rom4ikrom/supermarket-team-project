@@ -19,6 +19,7 @@ public interface UserDAO {
 	Address getBilling(int userId);
 	List<Address> listShippingAddresses(int userId);
 	
+	/* method for payment details
 	//get user payment details
 	List<PaymentDetails> listPaymentDetails(int userId);
 	PaymentDetails getPaymentDetails(int paymentId);
@@ -27,5 +28,6 @@ public interface UserDAO {
 	boolean addPaymentDetails(PaymentDetails paymentDetails);
 	
 	PaymentDetails getPaymentByCardNumber(String cardNumber);
+	*/
 
 }

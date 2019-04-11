@@ -1,0 +1,38 @@
+.admin-nav {
+  list-style-type: none;
+  margin: 20px 0px 20px 0px;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(27, 40, 0);;
+}
+
+.admin-nav li {
+	float: left;
+}
+
+.admin-nav li a {
+  display: block;
+  color: green;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.admin-nav li a:hover{
+  background-color: green;
+  text-decoration: none;
+  color: white;
+}
+
+.admin-nav .active {
+	background-color: green;
+	color: white;
+}
+
+@media screen and (max-width: 991px) {
+	.admin-nav li {
+		float: none;
+	}
+}
+	
+}

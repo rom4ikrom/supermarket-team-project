@@ -3,12 +3,19 @@
 <section>
 	<div class="container">
 
+		<!-- Navigation -->
+		<%@include file="./shared/adminNavBar.jsp"%>	
+			
+		<div class="text-center">
+			<h3>Product Management</h3>
+		</div>
+		
 		<!-- Form elements -->
 		<sf:form modelAttribute="product"
 			action="${contextRoot}/manage/products" method="POST"
 			enctype="multipart/form-data"
 			class="form-manage-products">
-			<h3>Product Management</h3>
+			
 			<div class="row">
 			
 				<c:if test="${not empty message}">
@@ -73,6 +80,7 @@
 					<sf:input class="form-input" path="country" type="text" placeholder="Country" name="country"/>
 
 					<label for="regionId">Select Region</label>
+					
 					<div class="select-style">
 					
 					<sf:select path="regionId" 
@@ -83,6 +91,20 @@
 					</sf:select>
 					
 					</div>
+					
+					<label for="supplierId">Select Supplier</label>
+					
+					<div class="select-style">
+					
+					<sf:select path="supplierId" 
+							id="supplierId" 
+							items="${suppliers}" 
+							itemLabel="companyName" 
+							itemValue="id">
+					</sf:select>
+					
+					</div>
+					
 				</div>
 			</div><!-- End of row -->
 

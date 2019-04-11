@@ -277,6 +277,10 @@ footer .nav_bottom li a:hover {
 	margin: 5px 20px 5px 0px;
 }
 
+.form-manage-products textarea {
+	resize: none;
+}
+
 .help-block {
 	color: #ff0000;
 	width: 100%;

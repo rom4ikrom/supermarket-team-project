@@ -27,7 +27,7 @@
 	</action-state>
 	
 	<view-state id="billing" view="flows/register/create-address" model="billing">
-		<transition on="personal" to="personal"></transition>
+		<transition on="personal" to="personal" validate="false"></transition>
 		<transition on="confirm" to="confirm"></transition>
 		<on-exit>
 			<evaluate expression="registerHandler.addBilling(flowScope.registerModel, billing)"></evaluate>
